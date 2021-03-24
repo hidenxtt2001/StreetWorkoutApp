@@ -12,5 +12,5 @@
 
 ### Mô tả App
 > Giúp người sử dụng có thể tập luyện các bài tập Workout từ **Cơ bản -> Nâng Cao**, bằng các video hướng dẫn.
-> Bên cạnh đó, App còn có tính năng gợi ý các bài luyện tập hợp lý trong tuần. Thống kê thời gian tập luyện
+> Bên cạnh đó, App còn có tính năng gợi ý các bài luyện tập hợp lý trong tuần. Thống kê thời gian tập luyện.
 > Ngoài ra, App cho phép người dùng chia sẻ **Quá Trình Tập Luyện**
