@@ -6,5 +6,13 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFFFF</color> // màu background
+
+
+
+    //color of app (custom color)
+    <color name ="colorMain">#333333</color> // màu phần mô tả - title
+    <color name ="colorSub">#ffffff</color> // màu nền
+    <color name ="colorSecondary">#e1f4f3</color>
+    <color name ="colorTitle">#706c61</color> //màu text
 </resources>
