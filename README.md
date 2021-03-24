@@ -1,2 +1,3 @@
-# StreetWorkoutApp ![Android Studio]
+# StreetWorkoutApp
+> Android Studio Project
 
