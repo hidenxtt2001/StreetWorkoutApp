@@ -11,7 +11,7 @@
 
 
     //color of app (custom color)
-    <color name ="colorMain">#333333</color> // màu phần mô tả - title
+    <color name ="colorMain">#FF000000</color> // màu phần mô tả - title
     <color name ="colorSub">#ffffff</color> // màu nền
     <color name ="colorSecondary">#e1f4f3</color>
     <color name ="colorTitle">#706c61</color> //màu text
