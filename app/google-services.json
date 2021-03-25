@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1015239281231",
+    "project_id": "street-workout-dd884",
+    "storage_bucket": "street-workout-dd884.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015239281231:android:d17dcd31a8780da19ff83a",
+        "android_client_info": {
+          "package_name": "com.example.streetworkout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015239281231-ulifa0usdmmebatvh485dc94v06mrf63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkobp7E9iu__AbMefUmTVTjtZBB6iWTnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015239281231-ulifa0usdmmebatvh485dc94v06mrf63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
