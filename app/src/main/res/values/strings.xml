@@ -3,7 +3,7 @@
     <string name="sign_in_your_account">Sign In Your Account</string>
     <string name="google">Google</string>
     <string name="facebook">Facebook</string>
-    <string name="facebook_app_id">147810033910037</string>
-    <string name="fb_login_protocol_scheme">fb000000000000</string>
+    <string name="facebook_app_id">178405527302761</string>
+    <string name="fb_login_protocol_scheme">fb178405527302761</string>
     <string name="image_description">Image Description</string>
 </resources>
