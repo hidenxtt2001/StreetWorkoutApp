@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".loginPackage.LoginActivity">
+    tools:context=".Login.LoginActivity">
 
     <RelativeLayout
 
@@ -79,8 +79,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@drawable/google_custom_button_backgound"
-                    android:drawableStart="@drawable/google_icon_drawable"
+                    android:background="@drawable/login_google_custom_button_backgound"
+                    android:drawableStart="@drawable/login_google_icon_drawable"
                     android:minWidth="250dp"
                     android:onClick="LoginGmail_Click"
                     android:paddingStart="30dp"
@@ -109,8 +109,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@drawable/facebook_custom_button_background"
-                    android:drawableStart="@drawable/facebook_icon_drawable"
+                    android:background="@drawable/login_facebook_custom_button_background"
+                    android:drawableStart="@drawable/login_facebook_icon_drawable"
                     android:minWidth="250dp"
                     android:onClick="LoginFacebook_Click"
                     android:paddingStart="30dp"

@@ -12,7 +12,7 @@
         android:theme="@style/Theme.StreetWorkout">
 
         <!-- Login Layout -->
-        <activity android:name=".loginPackage.LoginActivity" >
+        <activity android:name=".Login.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

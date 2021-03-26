@@ -2,10 +2,7 @@ package com.example.streetworkout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.streetworkout.loginPackage.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 

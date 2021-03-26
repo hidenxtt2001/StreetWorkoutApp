@@ -1,4 +1,4 @@
-package com.example.streetworkout.loginPackage;
+package com.example.streetworkout.Login;
 
 import android.view.LayoutInflater;
 import android.view.View;
