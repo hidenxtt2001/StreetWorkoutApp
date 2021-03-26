@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     // Google Value
-    private final int RC_SIGN_IN = 123;
+    private final static int RC_SIGN_IN = 123;
     private GoogleSignInClient mGoogleSignInClient;
 
 
@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            UILoginSuccess();
                         } else {
                             // If sign in fails, display a message to the user.
                         }
