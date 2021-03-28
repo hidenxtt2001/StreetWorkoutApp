@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_item_newsFeed"
+        android:icon="@drawable/menu_newsfeed_fragment"
+        android:title="@string/newsfeed" />
+
+
+    <item
+        android:id="@+id/navigation_item_training"
+        android:icon="@drawable/menu_training_fragment"
+        android:title="@string/training"/>
+
+
+    <item
+        android:id="@+id/navigation_item_calender"
+        android:icon="@drawable/menu_calender_fragment"
+        android:title="@string/calender"/>
+
+
+    <item
+        android:id="@+id/navigation_item_account"
+        android:icon="@drawable/menu_account_fragment"
+        android:title="@string/account"/>
+
+</menu>

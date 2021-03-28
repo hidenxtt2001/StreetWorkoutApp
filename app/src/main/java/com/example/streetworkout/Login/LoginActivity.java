@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.User.UserInfor;
 import com.facebook.AccessToken;
@@ -31,7 +32,6 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -243,12 +243,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void SetProfile(UserInfor userInfor){
-//        Intent profile = new Intent(getApplicationContext(), ProfileActivity.class);
-//        profile.putExtra("userProfile",userInfor);
-//        profile.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        profile.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        customProgressDialog.dismiss();
-//        startActivity(profile);
+       Intent profile = new Intent(getApplicationContext(), MainActivity.class);
+       profile.putExtra("userProfile",userInfor);
+       profile.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+       profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+       profile.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+       customProgressDialog.dismiss();
+       startActivity(profile);
     }
 }
