@@ -6,4 +6,5 @@
     <string name="facebook_app_id">178405527302761</string>
     <string name="fb_login_protocol_scheme">fb178405527302761</string>
     <string name="image_description">Image Description</string>
+    <string name="wolf_icon">wolf icon</string>
 </resources>

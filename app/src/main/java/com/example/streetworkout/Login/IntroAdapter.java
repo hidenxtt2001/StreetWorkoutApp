@@ -20,7 +20,7 @@ public class IntroAdapter extends RecyclerView.Adapter<IntroAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.intro_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.login_intro_item,parent,false);
         return new ViewHolder(view);
     }
 
