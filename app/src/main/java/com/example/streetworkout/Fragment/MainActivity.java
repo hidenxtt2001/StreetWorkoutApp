@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new CalenderFragment();
                     break;
                 case id.navigation_item_account:
-                    selectedFragment = new AccountFragment();
+                    selectedFragment = new AccountFragment(userInfor);
                     break;
             }
 

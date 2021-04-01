@@ -13,4 +13,8 @@
     <string name="newsfeed">NewsFeed</string>
     <string name="calender">Calender</string>
     <string name="account">Account</string>
+    <string name="user_profile">User Profile</string>
+    <string name="workout">Workout</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
 </resources>

@@ -40,6 +40,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -85,7 +87,6 @@ public class LoginActivity extends AppCompatActivity {
         // Already Login
         FirebaseUser user = mAuth.getCurrentUser();
         if(user != null){
-
             UILoginSuccess(user);
         }
 
@@ -218,28 +219,48 @@ public class LoginActivity extends AppCompatActivity {
     //endregion
 
     private void UILoginSuccess(FirebaseUser user){
+
         customProgressDialog.show();
+        final boolean[] checkLoginSuceess = {false};
+        final boolean[] timeOut = {false};
         FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
         DatabaseReference reference = rootNode.getReference().child("UserInfos").child(user.getUid());
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                checkLoginSuceess[0] = true;
+                if(timeOut[0]) return;
                 if(snapshot.exists()){
                     SetProfile(snapshot.getValue(UserInfor.class));
                 }
                 else {
-                    UserInfor userInfor = new UserInfor(user.getUid(),user.getDisplayName(),user.getEmail(), Objects.requireNonNull(user.getPhotoUrl()).toString());
+                    UserInfor userInfor = new UserInfor(user.getUid());
+                    userInfor.setDislayName(user.getDisplayName());
+                    userInfor.setEmail(user.getEmail());
+                    userInfor.setUserName(user.getEmail().split("@")[0]);
+                    userInfor.setUrlAvatar(user.getPhotoUrl().toString());
                     reference.setValue(userInfor);
                     SetProfile(userInfor);
                 }
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+        Timer timer = new Timer();
+        TimerTask checkTimeout = new TimerTask() {
+            @Override
+            public void run() {
+                timeOut[0] = true;
+                if(!checkLoginSuceess[0]){
+                    customProgressDialog.dismiss();
+                }
+            }
+        };
+        timer.schedule(checkTimeout,50000);
+
     }
 
     private void SetProfile(UserInfor userInfor){
@@ -248,7 +269,6 @@ public class LoginActivity extends AppCompatActivity {
        profile.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
        profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
        profile.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-       customProgressDialog.dismiss();
        startActivity(profile);
     }
 }
