@@ -1,5 +1,6 @@
-package com.example.streetworkout.Fragment;
+package com.example.streetworkout.Fragment.AccountFragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,6 +44,22 @@ public class AccountFragment extends Fragment {
         // Name
         TextView nameDislay = root.findViewById(R.id.nameDislay);
         nameDislay.setText(userInfor.getDislayName());
+        // Username
+        TextView userName = root.findViewById(R.id.userName);
+        userName.setText(userInfor.getUserName());
+        // EditProfile
+        Button editProfile = root.findViewById(R.id.editProfile);
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditProfile_Click(v);
+            }
+        });
         return root;
+    }
+
+    public void EditProfile_Click(View view){
+        Intent editProfile = new Intent(getActivity(),AccountEditProfile.class);
+        startActivity(editProfile);
     }
 }

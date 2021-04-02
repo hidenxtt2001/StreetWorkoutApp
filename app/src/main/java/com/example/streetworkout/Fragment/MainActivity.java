@@ -8,7 +8,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.streetworkout.R;
+import com.example.streetworkout.Fragment.AccountFragment.AccountFragment;
 import com.example.streetworkout.User.UserInfor;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
