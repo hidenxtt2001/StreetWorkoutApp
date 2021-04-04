@@ -7,8 +7,13 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
@@ -248,17 +253,21 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-        Timer timer = new Timer();
+        Handler handler = new Handler();
+
         TimerTask checkTimeout = new TimerTask() {
             @Override
             public void run() {
                 timeOut[0] = true;
                 if(!checkLoginSuceess[0]){
+
                     customProgressDialog.dismiss();
+                    ShowToast("Network not connection");
                 }
             }
         };
-        timer.schedule(checkTimeout,50000);
+        handler.postDelayed(checkTimeout,50000);
+
 
     }
 
@@ -269,5 +278,15 @@ public class LoginActivity extends AppCompatActivity {
        profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
        profile.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
        startActivity(profile);
+    }
+
+    private void ShowToast(String message){
+        View customLayout = LayoutInflater.from(this).inflate(R.layout.toast_custom,(ViewGroup) findViewById(R.id.toastGroup));
+        TextView content = customLayout.findViewById(R.id.toastMessage);
+        content.setText(message);
+        Toast toast = new Toast(getApplicationContext());
+        toast.setView(customLayout);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.show();
     }
 }

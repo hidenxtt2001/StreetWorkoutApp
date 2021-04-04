@@ -18,4 +18,5 @@
     <string name="followers">Followers</string>
     <string name="following">Following</string>
     <string name="edit_profile">Edit profile</string>
+    <string name="icon">Icon</string>
 </resources>
