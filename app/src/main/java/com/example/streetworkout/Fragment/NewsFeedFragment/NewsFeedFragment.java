@@ -1,4 +1,4 @@
-package com.example.streetworkout.Fragment;
+package com.example.streetworkout.Fragment.NewsFeedFragment;
 
 import android.os.Bundle;
 
@@ -11,11 +11,10 @@ import android.view.ViewGroup;
 import com.example.streetworkout.R;
 
 
-public class TrainingFragment extends Fragment {
+public class NewsFeedFragment extends Fragment {
 
 
-
-    public TrainingFragment() {
+    public NewsFeedFragment() {
         // Required empty public constructor
     }
 
@@ -23,12 +22,13 @@ public class TrainingFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.main_fragment_training, container, false);
+        return inflater.inflate(R.layout.main_fragment_newsfeed, container, false);
     }
 }
