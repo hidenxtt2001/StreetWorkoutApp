@@ -6,11 +6,10 @@ import java.io.Serializable;
 
 public class UserInfor implements Serializable {
     private String uid;
-    private String dislayName;
+    private String displayName;
     private String userName;
     private String email;
     private String urlAvatar;
-    private String birthDay;
     private int workoutStatus = 0;
     private int followersStatus = 0;
     private int followingStatus = 0;
@@ -35,18 +34,6 @@ public class UserInfor implements Serializable {
         return urlAvatar;
     }
 
-    public String getDislayName() {
-        return dislayName;
-    }
-
-    public String getBirthDay() {
-        return birthDay;
-    }
-
-    public void setDislayName(String dislayName) {
-        this.dislayName = dislayName;
-    }
-
     public String getUserName() {
         return userName;
     }
@@ -61,10 +48,6 @@ public class UserInfor implements Serializable {
 
     public void setUrlAvatar(String urlAvatar) {
         this.urlAvatar = urlAvatar;
-    }
-
-    public void setBirthDay(String birthDay) {
-        this.birthDay = birthDay;
     }
 
     public void setFollowersStatus(int followersStatus) {
@@ -89,5 +72,13 @@ public class UserInfor implements Serializable {
 
     public int getFollowingStatus() {
         return followingStatus;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 }

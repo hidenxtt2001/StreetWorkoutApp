@@ -13,4 +13,10 @@ public class AccountEditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_account_editprofile);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.nothing,R.anim.bottom_down);
+    }
 }

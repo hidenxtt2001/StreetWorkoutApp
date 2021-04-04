@@ -39,7 +39,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
-import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -235,7 +234,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 else {
                     UserInfor userInfor = new UserInfor(user.getUid());
-                    userInfor.setDislayName(user.getDisplayName());
+                    userInfor.setDisplayName(user.getDisplayName());
                     userInfor.setEmail(user.getEmail());
                     userInfor.setUserName(user.getEmail().split("@")[0]);
                     userInfor.setUrlAvatar(user.getPhotoUrl().toString());

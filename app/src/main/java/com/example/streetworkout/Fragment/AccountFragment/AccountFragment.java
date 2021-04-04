@@ -43,7 +43,7 @@ public class AccountFragment extends Fragment {
         Picasso.get().load(Uri.parse(userInfor.getUrlAvatar())).into((ImageView)root.findViewById(R.id.avatarProfile));
         // Name
         TextView nameDislay = root.findViewById(R.id.nameDislay);
-        nameDislay.setText(userInfor.getDislayName());
+        nameDislay.setText(userInfor.getDisplayName());
         // Username
         TextView userName = root.findViewById(R.id.userName);
         userName.setText(userInfor.getUserName());
@@ -61,5 +61,7 @@ public class AccountFragment extends Fragment {
     public void EditProfile_Click(View view){
         Intent editProfile = new Intent(getActivity(),AccountEditProfile.class);
         startActivity(editProfile);
+        getActivity().overridePendingTransition(R.anim.bottom_up,R.anim.nothing);
     }
+
 }
