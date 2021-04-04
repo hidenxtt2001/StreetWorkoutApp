@@ -61,7 +61,7 @@ public class AccountFragment extends Fragment {
     public void EditProfile_Click(View view){
         Intent editProfile = new Intent(getActivity(),AccountEditProfile.class);
         startActivity(editProfile);
-        getActivity().overridePendingTransition(R.anim.bottom_up,R.anim.nothing);
+        getActivity().overridePendingTransition(R.anim.from_bottom_up,R.anim.to_top);
     }
 
 }

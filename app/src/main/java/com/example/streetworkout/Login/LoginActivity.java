@@ -271,6 +271,8 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
+
     private void SetProfile(UserInfor userInfor){
        Intent profile = new Intent(getApplicationContext(), MainActivity.class);
        profile.putExtra("userProfile",userInfor);
