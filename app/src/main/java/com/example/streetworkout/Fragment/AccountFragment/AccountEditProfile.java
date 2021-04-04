@@ -16,6 +16,7 @@ public class AccountEditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_account_editprofile);
 
+
         // Toolbar
         Toolbar toolbar = findViewById(R.id.actionCustomBar);
         toolbar.setTitle("");
