@@ -54,11 +54,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
+                android:layout_margin="30dp"
+                android:fontFamily="@font/nunito_extrabold"
                 android:text="@string/app_name"
                 android:textAllCaps="false"
                 android:textColor="@color/colorTitle"
-                android:textSize="25sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -90,7 +91,8 @@
                     android:text="@string/google"
                     android:textAllCaps="false"
                     android:textColor="@color/colorSub"
-                    android:textSize="20sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
             </FrameLayout>
 
 
@@ -120,7 +122,8 @@
                     android:text="@string/facebook"
                     android:textAllCaps="false"
                     android:textColor="@color/colorSub"
-                    android:textSize="20sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
             </FrameLayout>
 
         </LinearLayout>

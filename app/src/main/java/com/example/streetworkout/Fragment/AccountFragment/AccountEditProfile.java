@@ -35,6 +35,6 @@ public class AccountEditProfile extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.to_down,R.anim.from_bottom_down);
+        overridePendingTransition(R.anim.to_down_light,R.anim.from_bottom_down_light);
     }
 }

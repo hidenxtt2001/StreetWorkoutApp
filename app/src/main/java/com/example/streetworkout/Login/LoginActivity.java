@@ -88,12 +88,6 @@ public class LoginActivity extends AppCompatActivity {
         // Setup Facebook
         SetupFacebookLogin();
 
-        // Already Login
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user != null){
-            UILoginSuccess(user);
-        }
-
     }
 
     void SetupIntro(){
@@ -278,8 +272,8 @@ public class LoginActivity extends AppCompatActivity {
        profile.putExtra("userProfile",userInfor);
        profile.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
        profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-       profile.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
        startActivity(profile);
+       overridePendingTransition(R.anim.from_right_start,R.anim.from_left_end);
     }
 
     private void ShowToast(String message){
