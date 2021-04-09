@@ -98,6 +98,7 @@ public class SplashScreen extends AppCompatActivity {
                 timeOut[0] = true;
                 if(!checkLoginSuceess[0]){
                     ShowToast("Network not connection");
+                    GotoLogin();
                 }
             }
         };

@@ -32,15 +32,16 @@
             android:textStyle="bold"
             />
     </androidx.appcompat.widget.Toolbar>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -175,8 +176,7 @@
                     android:text="@string/edit_profile"
                     android:textAllCaps="false"
                     android:textSize="15sp"
-                    android:textStyle="normal"
-                    />
+                    android:textStyle="normal" />
             </LinearLayout>
 
         </LinearLayout>

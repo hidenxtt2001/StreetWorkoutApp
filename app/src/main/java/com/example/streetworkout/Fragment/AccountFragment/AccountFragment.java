@@ -39,6 +39,15 @@ public class AccountFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.main_fragment_account, container, false);
+        // Setup Infor
+        SetupInfor();
+        // Setup Event
+        SetupCLickEvent();
+
+        return root;
+    }
+
+    private void SetupInfor(){
         // Set Avatar Profile
         Picasso.get().load(Uri.parse(userInfor.getUrlAvatar())).into((ImageView)root.findViewById(R.id.avatarProfile));
         // Name
@@ -47,6 +56,18 @@ public class AccountFragment extends Fragment {
         // Username
         TextView userName = root.findViewById(R.id.userName);
         userName.setText(userInfor.getUserName());
+        // Workout Success
+        TextView workoutSucess = root.findViewById(R.id.workoutShow);
+        workoutSucess.setText(String.valueOf(userInfor.getWorkoutStatus()));
+        // Follower
+        TextView follower = root.findViewById(R.id.followerShow);
+        follower.setText(String.valueOf(userInfor.getFollowersStatus()));
+        // Following
+        TextView following = root.findViewById(R.id.followingShow);
+        following.setText(String.valueOf(userInfor.getFollowingStatus()));
+    }
+
+    private void SetupCLickEvent(){
         // EditProfile
         Button editProfile = root.findViewById(R.id.editProfile);
         editProfile.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +76,6 @@ public class AccountFragment extends Fragment {
                 EditProfile_Click(v);
             }
         });
-        return root;
     }
 
     public void EditProfile_Click(View view){
