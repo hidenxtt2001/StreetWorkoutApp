@@ -26,11 +26,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="@string/user_profile"
-            android:textColor="@color/colorMain"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
@@ -82,6 +82,8 @@
                                 android:id="@+id/workoutShow"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
                                 android:text="0"
                                 android:textColor="@color/colorMain"
                                 android:textSize="15sp"
@@ -90,6 +92,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
                                 android:text="@string/workout"
                                 android:textColor="@color/colorTitle"
                                 android:textSize="15sp" />
@@ -106,6 +110,8 @@
                                 android:id="@+id/followerShow"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
                                 android:text="0"
                                 android:textColor="@color/colorMain"
                                 android:textSize="15sp"
@@ -114,6 +120,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
                                 android:text="@string/followers"
                                 android:textColor="@color/colorTitle"
                                 android:textSize="15sp" />
@@ -130,6 +138,8 @@
                                 android:id="@+id/followingShow"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
                                 android:text="0"
                                 android:textColor="@color/colorMain"
                                 android:textSize="15sp"
@@ -138,6 +148,8 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
                                 android:text="@string/following"
                                 android:textColor="@color/colorTitle"
                                 android:textSize="15sp" />
@@ -163,20 +175,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="30dp"
+                android:gravity="center"
+                android:paddingStart="20dp"
                 android:paddingTop="10dp"
-                android:paddingEnd="30dp"
+                android:paddingEnd="20dp"
                 android:paddingBottom="10dp">
 
                 <android.widget.Button
                     android:id="@+id/editProfile"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="35dp"
                     android:background="@drawable/menu_account_background_button"
                     android:text="@string/edit_profile"
                     android:textAllCaps="false"
                     android:textSize="15sp"
-                    android:textStyle="normal" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>
