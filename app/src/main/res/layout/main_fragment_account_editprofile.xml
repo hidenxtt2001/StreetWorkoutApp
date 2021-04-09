@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.AccountFragment.AccountEditProfile">
-
+    tools:context=".Fragment.AccountFragment.AccountEditProfile"
+    android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/actionCustomBar"
         android:layout_width="match_parent"
@@ -31,5 +31,241 @@
             android:textStyle="bold"
             />
     </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:gravity="center">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatarProfile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="20dp" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+        <LinearLayout
+            android:id="@+id/bottombar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/your_profile"
+                android:textSize="20sp"
+                android:padding="10dp"
+                android:textColor="@color/black" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:padding="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:padding="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/city"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:padding="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/state"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:padding="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/country"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:padding="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bio"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:padding="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text"
+                />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fitness_profile"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:padding="10dp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/height"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:padding="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/goals"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:padding="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/max_pullups"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:padding="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/max_pushups"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:padding="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/max_squats"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:padding="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/max_dips"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:padding="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:backgroundTint="@color/black"
+                android:autofillHints=""
+                android:inputType="text" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
 
 </LinearLayout>

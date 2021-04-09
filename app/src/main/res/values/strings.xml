@@ -19,4 +19,19 @@
     <string name="following">Following</string>
     <string name="edit_profile">Edit profile</string>
     <string name="icon">Icon</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="user_name">User name</string>
+    <string name="email">Email</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="country">Country</string>
+    <string name="bio">Bio</string>
+    <string name="fitness_profile">Fitness profile</string>
+    <string name="gender">Gender</string>
+    <string name="height">Height</string>
+    <string name="goals">Goals</string>
+    <string name="max_pullups">Max pullups</string>
+    <string name="max_pushups">Max pushups</string>
+    <string name="max_squats">Max squats</string>
+    <string name="max_dips">Max dips</string>
 </resources>
