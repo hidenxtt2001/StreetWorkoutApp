@@ -20,8 +20,10 @@ public class CustomProgressDialog extends Dialog {
         super.show();
     }
 
+
     public CustomProgressDialog(@NonNull Context context) {
         super(context);
 
     }
+
 }

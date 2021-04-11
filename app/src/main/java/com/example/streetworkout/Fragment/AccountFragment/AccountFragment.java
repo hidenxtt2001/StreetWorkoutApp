@@ -58,13 +58,13 @@ public class AccountFragment extends Fragment {
         userName.setText(userInfor.getUserName());
         // Workout Success
         TextView workoutSucess = root.findViewById(R.id.workoutShow);
-        workoutSucess.setText(String.valueOf(userInfor.getWorkoutStatus()));
+        workoutSucess.setText(String.valueOf(userInfor.getStatus().getWorkoutStatus()));
         // Follower
         TextView follower = root.findViewById(R.id.followerShow);
-        follower.setText(String.valueOf(userInfor.getFollowersStatus()));
+        follower.setText(String.valueOf(userInfor.getStatus().getFollowersStatus()));
         // Following
         TextView following = root.findViewById(R.id.followingShow);
-        following.setText(String.valueOf(userInfor.getFollowingStatus()));
+        following.setText(String.valueOf(userInfor.getStatus().getFollowingStatus()));
     }
 
     private void SetupCLickEvent(){

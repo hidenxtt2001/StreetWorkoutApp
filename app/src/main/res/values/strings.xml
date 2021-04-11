@@ -20,4 +20,13 @@
     <string name="edit_profile">Edit profile</string>
     <string name="icon">Icon</string>
     <string name="make_your_dream">- Make your dream -</string>
+    <string name="hi">Hi,</string>
+    <string name="complete_your_profile">Complete Your Profile</string>
+    <string name="username">Username</string>
+    <string name="birthday">Birthday</string>
+    <string name="get_started">Get Started</string>
+    <string name="next">Next</string>
+    <string name="choose_your_level_skill">Choose Your Level Skill</string>
+    <string name="image_level_skill">Image Level Skill</string>
+    <string name="level_skill">Level Skill</string>
 </resources>

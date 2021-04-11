@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.streetworkout.Fragment.MainActivity;
+import com.example.streetworkout.Login.UserInformation.InputUserProfile;
 import com.example.streetworkout.R;
 import com.example.streetworkout.User.UserInfor;
 import com.facebook.AccessToken;
@@ -63,7 +64,11 @@ public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
 
     //Facebook Value
+    private final static int RC_SIGN_FACEBOOK = 64206;
     private CallbackManager mCallbackManager;
+
+    // Profile Input
+    private final static int RC_INPUT = 64222;
 
     // Waiting for Loading Data
     private CustomProgressDialog customProgressDialog;
@@ -78,6 +83,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // Setup CustomProgress
         customProgressDialog = new CustomProgressDialog(this);
+        customProgressDialog.setCanceledOnTouchOutside(false);
+        customProgressDialog.setCancelable(false);
 
         // Data Setup
         mAuth = FirebaseAuth.getInstance();
@@ -108,19 +115,33 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account.getIdToken());
-            } catch (ApiException e) {
-                Log.e("My App",e.getMessage());
-            }
+        switch (requestCode){
+            case RC_SIGN_IN:
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                try {
+                    // Google Sign In was successful, authenticate with Firebase
+                    GoogleSignInAccount account = task.getResult(ApiException.class);
+                    firebaseAuthWithGoogle(account.getIdToken());
+                } catch (ApiException e) {
+                    Log.e("My App",e.getMessage());
+                }
+                break;
+            case RC_SIGN_FACEBOOK:
+                mCallbackManager.onActivityResult(requestCode, resultCode, data);
+                break;
+            case RC_INPUT:
+                if(resultCode == RESULT_OK){
+                    SetProfile(InputUserProfile.userInfor);
+                }
+                else if (resultCode == RESULT_CANCELED){
+                    customProgressDialog.dismiss();
+                    mAuth.signOut();
+                }
+                break;
+            default:
+                break;
         }
-        else {
-            mCallbackManager.onActivityResult(requestCode, resultCode, data);
-        }
+
 
 
 
@@ -235,10 +256,11 @@ public class LoginActivity extends AppCompatActivity {
                     UserInfor userInfor = new UserInfor(user.getUid());
                     userInfor.setDisplayName(user.getDisplayName());
                     userInfor.setEmail(user.getEmail());
-                    userInfor.setUserName(user.getEmail().split("@")[0]);
                     userInfor.setUrlAvatar(user.getPhotoUrl().toString());
-                    reference.setValue(userInfor);
-                    SetProfile(userInfor);
+                    Intent inputProfile = new Intent(getApplicationContext(), InputUserProfile.class);
+                    inputProfile.putExtra("userProfile",userInfor);
+                    startActivityForResult(inputProfile,RC_INPUT);
+                    overridePendingTransition(R.anim.from_bottom_up_light,R.anim.to_top_light);
                 }
 
             }
@@ -264,7 +286,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-
 
 
     private void SetProfile(UserInfor userInfor){

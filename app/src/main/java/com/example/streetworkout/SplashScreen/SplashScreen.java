@@ -45,11 +45,12 @@ public class SplashScreen extends AppCompatActivity {
                     UILoginSuccess(user);
                 }
                 else {
+                    mAuth.signOut();
                     GotoLogin();
                 }
             }
         };
-        timer.postDelayed(task,1000);
+        timer.postDelayed(task,500);
 
     }
 
@@ -82,6 +83,7 @@ public class SplashScreen extends AppCompatActivity {
                     SetProfile(snapshot.getValue(UserInfor.class));
                 }
                 else {
+                    GotoLogin();
                 }
 
             }
