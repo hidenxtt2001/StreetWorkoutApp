@@ -20,6 +20,7 @@
             android:layout_margin="10dp"
             />
         <android.widget.Button
+            android:layout_margin="10dp"
             android:id="@+id/succesProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,10 +28,12 @@
             android:background="@drawable/login_create_account_button_background"
             android:textAllCaps="false"
             android:textColor="@color/colorSub"
+            android:textStyle="bold"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
+            android:stateListAnimator="@null"
             />
     </LinearLayout>
 

@@ -161,7 +161,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <TextView
                     android:id="@+id/nameDislay"
                     android:layout_width="wrap_content"
@@ -169,7 +168,9 @@
                     android:layout_marginStart="20dp"
                     android:textColor="@color/colorMain"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:fontFamily="@font/nunito_semibold"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -188,8 +189,10 @@
                     android:background="@drawable/menu_account_background_button"
                     android:text="@string/edit_profile"
                     android:textAllCaps="false"
+                    android:textColor="@color/colorSecondary"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:stateListAnimator="@null"/>
             </LinearLayout>
 
         </LinearLayout>
