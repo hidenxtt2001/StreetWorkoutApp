@@ -79,6 +79,7 @@ public class SplashScreen extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 checkLoginSuceess[0] = true;
                 if(timeOut[0]) return;
+                reference.removeEventListener(this);
                 if(snapshot.exists()){
                     SetProfile(snapshot.getValue(UserInfor.class));
                 }

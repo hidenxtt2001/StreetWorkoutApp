@@ -49,7 +49,8 @@ public class AccountFragment extends Fragment {
 
     private void SetupInfor(){
         // Set Avatar Profile
-        Picasso.get().load(Uri.parse(userInfor.getUrlAvatar())).into((ImageView)root.findViewById(R.id.avatarProfile));
+        //
+        Picasso.get().load(Uri.parse(userInfor.getUrlAvatar())).placeholder(R.drawable.menu_account_fragment_avatar).error(R.drawable.menu_account_fragment_avatar).into((ImageView)root.findViewById(R.id.avatarProfile));
         // Name
         TextView nameDislay = root.findViewById(R.id.nameDislay);
         nameDislay.setText(userInfor.getDisplayName());
