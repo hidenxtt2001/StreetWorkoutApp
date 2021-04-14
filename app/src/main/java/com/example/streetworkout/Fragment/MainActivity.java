@@ -1,12 +1,12 @@
 package com.example.streetworkout.Fragment;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.streetworkout.Fragment.AccountFragment.AccountFragment;
 import com.example.streetworkout.Fragment.CalenderFragment.CalenderFragment;
@@ -15,7 +15,8 @@ import com.example.streetworkout.Fragment.TrainningFragment.TrainingFragment;
 import com.example.streetworkout.User.UserInfor;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import static com.example.streetworkout.R.*;
+import static com.example.streetworkout.R.id;
+import static com.example.streetworkout.R.layout;
 
 public class MainActivity extends AppCompatActivity {
 
