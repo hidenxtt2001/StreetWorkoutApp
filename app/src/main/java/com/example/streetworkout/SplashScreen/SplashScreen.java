@@ -35,31 +35,20 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-        Handler timer = new Handler();
-        Runnable task = new Runnable() {
-            @Override
-            public void run() {
-                FirebaseUser user = mAuth.getCurrentUser();
-                if(user != null){
-                    UILoginSuccess(user);
-                }
-                else {
-                    mAuth.signOut();
-                    GotoLogin();
-                }
-            }
-        };
-        timer.postDelayed(task,500);
-
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null){
+            UILoginSuccess(user);
+        }
+        else {
+            mAuth.signOut();
+            GotoLogin();
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 0){
-            finish();
-        }
+        finish();
     }
 
     private void GotoLogin() {

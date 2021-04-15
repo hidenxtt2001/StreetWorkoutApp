@@ -95,8 +95,9 @@
                                 android:ellipsize="end"
                                 android:maxLines="1"
                                 android:text="@string/workout"
-                                android:textColor="@color/colorTitle"
-                                android:textSize="15sp" />
+                                android:textColor="@color/colorTitle_2"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -123,8 +124,9 @@
                                 android:ellipsize="end"
                                 android:maxLines="1"
                                 android:text="@string/followers"
-                                android:textColor="@color/colorTitle"
-                                android:textSize="15sp" />
+                                android:textColor="@color/colorTitle_2"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -151,8 +153,9 @@
                                 android:ellipsize="end"
                                 android:maxLines="1"
                                 android:text="@string/following"
-                                android:textColor="@color/colorTitle"
-                                android:textSize="15sp" />
+                                android:textColor="@color/colorTitle_2"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -161,16 +164,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/nameDislay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:textColor="@color/colorMain"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/nunito_semibold"
-                    />
+                    android:textColor="@color/colorTitle_1"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -182,17 +184,21 @@
                 android:paddingEnd="20dp"
                 android:paddingBottom="10dp">
 
-                <android.widget.Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/editProfile"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:background="@drawable/menu_account_background_button"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorSub"
+                    android:padding="8dp"
+                    android:stateListAnimator="@null"
                     android:text="@string/edit_profile"
                     android:textAllCaps="false"
                     android:textColor="@color/colorSecondary"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:stateListAnimator="@null"/>
+                    app:cornerRadius="10dp"
+                    app:strokeColor="@color/colorSecondary"
+                    app:strokeWidth="2.5dp" />
             </LinearLayout>
 
         </LinearLayout>

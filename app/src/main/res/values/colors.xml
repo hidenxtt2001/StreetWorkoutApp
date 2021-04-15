@@ -12,9 +12,17 @@
 
     //color of app (custom color)
     <color name ="colorMain">#000000</color> // màu phần mô tả - title
+    <color name ="colorMain_2">#3b3b3b</color> // màu phần mô tả - title
+    <color name ="colorMain_3">#767676</color> // màu phần mô tả - title
     <color name ="colorSub">#ffffff</color> // màu nền
+    <color name ="colorSub_1">#ededed</color> // màu nền
+    <color name ="colorSub_2">#dcdcdc</color> // màu nền
     <color name ="colorSecondary">#92DCD8</color>
-    <color name ="colorTitle">#6E6C6C</color> //màu text
+    <color name ="colorSecondary_1">#a1d5d2</color>
+    <color name ="colorSecondary_2">#b0cecc</color>
+    <color name ="colorTitle">#4c4c4c</color> //màu text
+    <color name ="colorTitle_1">#707070</color> //màu text
+    <color name ="colorTitle_2">#949494</color> //màu text
     <color name="colorError">#d44000</color>
 
     // Border Color Input Text

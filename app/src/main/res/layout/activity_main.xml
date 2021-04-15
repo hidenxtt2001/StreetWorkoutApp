@@ -19,7 +19,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorSub"
         app:itemIconTint="@color/color_custom_bottom_navigation"
-        app:itemRippleColor="@color/colorTitle"
+        app:itemRippleColor="@color/colorTitle_2"
         app:labelVisibilityMode="unlabeled"
         app:elevation="5dp"
         app:menu="@menu/menu_bottom_navigation"
