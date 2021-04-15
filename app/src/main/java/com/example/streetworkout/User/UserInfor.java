@@ -15,6 +15,7 @@ public class UserInfor implements Serializable {
     private String urlAvatar;
     private Status status;
     private String birthDay;
+    private String gender;
     private int experienceLevel;
 
     public Status getStatus() {
@@ -24,6 +25,7 @@ public class UserInfor implements Serializable {
     public void setStatus(Status status) {
         this.status = status;
     }
+
 
     public static class Status implements Serializable {
         private int workoutStatus = 0;
@@ -117,5 +119,13 @@ public class UserInfor implements Serializable {
 
     public void setExperienceLevel(int experienceLevel) {
         this.experienceLevel = experienceLevel;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

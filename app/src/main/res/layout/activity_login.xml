@@ -75,24 +75,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <android.widget.Button
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/loginGmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@drawable/login_google_custom_button_backgound"
-                    android:drawableStart="@drawable/login_google_icon_drawable"
+                    android:backgroundTint="@color/colorGoogle"
                     android:minWidth="250dp"
                     android:onClick="LoginGmail_Click"
-                    android:paddingStart="30dp"
-                    android:paddingTop="8dp"
-                    android:paddingEnd="30dp"
-                    android:paddingBottom="8dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     android:text="@string/google"
                     android:textAllCaps="false"
                     android:textColor="@color/colorSub"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/login_google_icon_drawable" />
             </FrameLayout>
 
 
@@ -106,24 +105,23 @@
                     android:layout_height="wrap_content"
                     android:visibility="gone" />
 
-                <android.widget.Button
+                <com.google.android.material.button.MaterialButton
+                    app:cornerRadius="20dp"
                     android:id="@+id/loginFacebook"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorFacebook"
                     android:layout_margin="10dp"
-                    android:background="@drawable/login_facebook_custom_button_background"
-                    android:drawableStart="@drawable/login_facebook_icon_drawable"
+                    app:icon="@drawable/login_facebook_icon_drawable"
                     android:minWidth="250dp"
                     android:onClick="LoginFacebook_Click"
-                    android:paddingStart="30dp"
-                    android:paddingTop="8dp"
-                    android:paddingEnd="30dp"
-                    android:paddingBottom="8dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     android:text="@string/facebook"
                     android:textAllCaps="false"
                     android:textColor="@color/colorSub"
                     android:textSize="18sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </FrameLayout>
 
         </LinearLayout>
