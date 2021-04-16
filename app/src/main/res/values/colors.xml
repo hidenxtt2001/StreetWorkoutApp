@@ -20,7 +20,7 @@
     <color name ="colorSecondary">#92DCD8</color>
     <color name ="colorSecondary_1">#a1d5d2</color>
     <color name ="colorSecondary_2">#b0cecc</color>
-    <color name ="colorTitle">#4c4c4c</color> //màu text
+    <color name ="colorTitle">#4D4D4D</color> //màu text
     <color name ="colorTitle_1">#707070</color> //màu text
     <color name ="colorTitle_2">#949494</color> //màu text
     <color name="colorError">#d44000</color>
