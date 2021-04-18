@@ -1,12 +1,12 @@
 package com.example.streetworkout.User;
 
 import androidx.annotation.NonNull;
+import androidx.room.Entity;
 
 import com.google.firebase.database.DatabaseReference;
 
 import java.io.Serializable;
 import java.util.Date;
-
 public class UserInfor implements Serializable {
     private String uid;
     private String displayName;
