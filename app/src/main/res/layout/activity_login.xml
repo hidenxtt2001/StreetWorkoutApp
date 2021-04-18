@@ -81,17 +81,19 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/colorGoogle"
-                    android:minWidth="250dp"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/login_google_png"
+                    app:iconTint="@null"
+                    app:iconSize="30dp"
+                    android:minWidth="220dp"
                     android:onClick="LoginGmail_Click"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:text="@string/google"
                     android:textAllCaps="false"
                     android:textColor="@color/colorSub"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:cornerRadius="20dp"
-                    app:icon="@drawable/login_google_icon_drawable" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </FrameLayout>
 
 
@@ -106,14 +108,16 @@
                     android:visibility="gone" />
 
                 <com.google.android.material.button.MaterialButton
-                    app:cornerRadius="20dp"
                     android:id="@+id/loginFacebook"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/colorFacebook"
                     android:layout_margin="10dp"
-                    app:icon="@drawable/login_facebook_icon_drawable"
-                    android:minWidth="250dp"
+                    app:cornerRadius="15dp"
+                    android:backgroundTint="@color/colorFacebook"
+                    app:icon="@drawable/login_facebook_png"
+                    app:iconTint="@null"
+                    app:iconSize="30dp"
+                    android:minWidth="220dp"
                     android:onClick="LoginFacebook_Click"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
@@ -121,7 +125,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/colorSub"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
             </FrameLayout>
 
         </LinearLayout>

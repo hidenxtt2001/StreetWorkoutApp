@@ -25,6 +25,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.identity.BeginSignInRequest;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -53,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     // Intro
     ViewPager2 introView;
     DotsIndicator dotsIndicator;
-    int [] images = {R.drawable.wolf_icon_white,R.drawable.wolf_icon_black,R.drawable.wolf_icon_white};
+    int[] images = {R.drawable.wolf_icon_white, R.drawable.wolf_icon_white, R.drawable.wolf_icon_white};
     IntroAdapter introAdapter;
 
     // Data User
@@ -97,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    void SetupIntro(){
+    void SetupIntro() {
         // Initialize Viewpager2
         introView = findViewById(R.id.introScroll);
         // Indicate DotIndicate
@@ -115,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        switch (requestCode){
+        switch (requestCode) {
             case RC_SIGN_IN:
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
                 try {
@@ -123,17 +124,16 @@ public class LoginActivity extends AppCompatActivity {
                     GoogleSignInAccount account = task.getResult(ApiException.class);
                     firebaseAuthWithGoogle(account.getIdToken());
                 } catch (ApiException e) {
-                    Log.e("My App",e.getMessage());
+                    Log.e("My App", e.getMessage());
                 }
                 break;
             case RC_SIGN_FACEBOOK:
                 mCallbackManager.onActivityResult(requestCode, resultCode, data);
                 break;
             case RC_INPUT:
-                if(resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     SetProfile(InputUserProfile.userInfor);
-                }
-                else if (resultCode == RESULT_CANCELED){
+                } else if (resultCode == RESULT_CANCELED) {
                     customProgressDialog.dismiss();
                     mAuth.signOut();
                 }
@@ -141,8 +141,6 @@ public class LoginActivity extends AppCompatActivity {
             default:
                 break;
         }
-
-
 
 
     }
@@ -156,7 +154,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    private void SetupGoogleLogin(){
+    private void SetupGoogleLogin() {
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -188,13 +186,12 @@ public class LoginActivity extends AppCompatActivity {
     //region Facebook Login
 
 
-
     public void LoginFacebook_Click(View view) {
-        LoginButton loginButton =findViewById(R.id.loginFacebookReal);
+        LoginButton loginButton = findViewById(R.id.loginFacebookReal);
         loginButton.performClick();
     }
 
-    private void SetupFacebookLogin(){
+    private void SetupFacebookLogin() {
         mCallbackManager = CallbackManager.Factory.create();
         // Initialize Facebook Login button
         LoginButton loginButton = findViewById(R.id.loginFacebookReal);
@@ -237,7 +234,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //endregion
 
-    private void UILoginSuccess(FirebaseUser user){
+    private void UILoginSuccess(FirebaseUser user) {
 
         customProgressDialog.show();
         final boolean[] checkLoginSuceess = {false};
@@ -248,25 +245,18 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 checkLoginSuceess[0] = true;
-                if(timeOut[0]) return;
-                if(snapshot.exists()){
+                if (timeOut[0]) return;
+                if (snapshot.exists()) {
                     SetProfile(snapshot.getValue(UserInfor.class));
-                }
-                else {
-                    UserInfor userInfor = new UserInfor(user.getUid());
-                    userInfor.setDisplayName(user.getDisplayName());
-                    userInfor.setEmail(user.getEmail());
-                    userInfor.setUrlAvatar(user.getPhotoUrl().toString());
-                    Intent inputProfile = new Intent(getApplicationContext(), InputUserProfile.class);
-                    inputProfile.putExtra("userProfile",userInfor);
-                    startActivityForResult(inputProfile,RC_INPUT);
-                    overridePendingTransition(R.anim.from_bottom_up_light,R.anim.to_top_light);
+                } else {
+                    SetupProfile(user);
                 }
 
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                customProgressDialog.dismiss();
             }
         });
         Handler handler = new Handler();
@@ -275,30 +265,38 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void run() {
                 timeOut[0] = true;
-                if(!checkLoginSuceess[0]){
-
+                if (!checkLoginSuceess[0]) {
                     customProgressDialog.dismiss();
                     ShowToast("Network not connection");
                 }
             }
         };
-        handler.postDelayed(checkTimeout,50000);
+        handler.postDelayed(checkTimeout, 20000);
 
 
     }
 
-
-    private void SetProfile(UserInfor userInfor){
-       Intent profile = new Intent(getApplicationContext(), MainActivity.class);
-       profile.putExtra("userProfile",userInfor);
-       profile.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-       profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-       startActivity(profile);
-       overridePendingTransition(R.anim.from_right_start,R.anim.from_left_end);
+    private void SetupProfile(FirebaseUser user){
+        UserInfor userInfor = new UserInfor(user.getUid());
+        userInfor.setDisplayName(user.getDisplayName());
+        userInfor.setEmail(user.getEmail());
+        userInfor.setUrlAvatar(user.getPhotoUrl().toString());
+        Intent inputProfile = new Intent(getApplicationContext(), InputUserProfile.class);
+        inputProfile.putExtra("userProfile", userInfor);
+        startActivityForResult(inputProfile, RC_INPUT);
+        overridePendingTransition(R.anim.from_bottom_up_light, R.anim.to_top_light);
     }
 
-    private void ShowToast(String message){
-        View customLayout = LayoutInflater.from(this).inflate(R.layout.toast_custom,(ViewGroup) findViewById(R.id.toastGroup));
+    private void SetProfile(UserInfor userInfor) {
+        customProgressDialog.dismiss();
+        Intent profile = new Intent();
+        profile.putExtra("userProfile", userInfor);
+        setResult(RESULT_OK, profile);
+        onBackPressed();
+    }
+
+    private void ShowToast(String message) {
+        View customLayout = LayoutInflater.from(this).inflate(R.layout.toast_custom, (ViewGroup) findViewById(R.id.toastGroup));
         TextView content = customLayout.findViewById(R.id.toastMessage);
         content.setText(message);
         Toast toast = new Toast(getApplicationContext());

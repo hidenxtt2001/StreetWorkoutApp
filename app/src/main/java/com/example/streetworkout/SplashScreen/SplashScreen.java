@@ -30,19 +30,20 @@ import java.util.TimerTask;
 
 public class SplashScreen extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user != null){
-            UILoginSuccess(user);
-        }
-        else {
-            mAuth.signOut();
-            GotoLogin();
-        }
+        Handler timer = new Handler();
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                MainAcitityAccess();
+            }
+        };
+        timer.postDelayed(task,500);
     }
 
     @Override
@@ -51,63 +52,8 @@ public class SplashScreen extends AppCompatActivity {
         finish();
     }
 
-    private void GotoLogin() {
-        Intent login = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivityForResult(login,0);
-        overridePendingTransition(R.anim.from_right_start,R.anim.from_left_end);
-    }
-
-    private void UILoginSuccess(FirebaseUser user){
-
-        final boolean[] checkLoginSuceess = {false};
-        final boolean[] timeOut = {false};
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        DatabaseReference reference = rootNode.getReference().child("UserInfos").child(user.getUid());
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                checkLoginSuceess[0] = true;
-                if(timeOut[0]) return;
-                reference.removeEventListener(this);
-                if(snapshot.exists()){
-                    SetProfile(snapshot.getValue(UserInfor.class));
-                }
-                else {
-                    GotoLogin();
-                }
-
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        Handler handler = new Handler();
-
-        TimerTask checkTimeout = new TimerTask() {
-            @Override
-            public void run() {
-                timeOut[0] = true;
-                if(!checkLoginSuceess[0]){
-                    ShowToast("Network not connection");
-                    GotoLogin();
-                }
-            }
-        };
-        handler.postDelayed(checkTimeout,20000);
-    }
-    private void ShowToast(String message){
-        View customLayout = LayoutInflater.from(this).inflate(R.layout.toast_custom,(ViewGroup) findViewById(R.id.toastGroup));
-        TextView content = customLayout.findViewById(R.id.toastMessage);
-        content.setText(message);
-        Toast toast = new Toast(getApplicationContext());
-        toast.setView(customLayout);
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.show();
-    }
-    private void SetProfile(UserInfor userInfor){
+    private void MainAcitityAccess(){
         Intent profile = new Intent(getApplicationContext(), MainActivity.class);
-        profile.putExtra("userProfile",userInfor);
         startActivityForResult(profile,0);
         overridePendingTransition(R.anim.from_right_start,R.anim.from_left_end);
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Login.UserInformation.FragmentInput.InputUserInfor">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:gravity="center"
         android:orientation="vertical"
+        android:gravity="center"
         android:padding="20dp">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -22,9 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:hint="@string/username"
             app:counterEnabled="true"
-            app:counterMaxLength="30">
+            app:counterMaxLength="30"
+            android:hint="@string/username">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/userName"
@@ -65,24 +65,25 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.button.MaterialButton
-            android:backgroundTint="@color/colorSecondary"
-            app:cornerRadius="20dp"
             android:id="@+id/nextInfo"
+            app:cornerRadius="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:paddingStart="30dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="30dp"
-            android:paddingBottom="10dp"
-            android:stateListAnimator="@null"
-            android:text="@string/next"
-            android:textAllCaps="false"
-            android:textColor="@color/colorSub"
+            android:backgroundTint="@color/colorSecondary"
+            android:gravity="center"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:text="@string/next"
+            android:textColor="@color/colorSub"
+            android:paddingStart="45dp"
+            android:paddingEnd="45dp"
+            android:textStyle="bold"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textAllCaps="false"
+            android:stateListAnimator="@null"
+            />
     </LinearLayout>
 
 
