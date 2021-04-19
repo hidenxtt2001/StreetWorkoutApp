@@ -61,6 +61,10 @@ dependencies {
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
     annotationProcessor 'androidx.room:room-compiler:2.2.6'
 
+    // Country Picker
+    implementation 'com.hbb20:ccp:2.5.1'
+
     // Json Parse
     implementation 'com.google.code.gson:gson:2.8.6'
+
 }

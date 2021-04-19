@@ -16,6 +16,7 @@ public class UserInfor implements Serializable {
     private Status status;
     private String birthDay;
     private String gender;
+    private String country = "VN";
     private int experienceLevel;
 
     public Status getStatus() {
@@ -24,6 +25,14 @@ public class UserInfor implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
 

@@ -20,7 +20,7 @@
         android:background="@color/colorSub"
         app:itemIconTint="@color/color_custom_bottom_navigation"
         app:itemRippleColor="@color/colorTitle_2"
-        app:itemIconSize="30dp"
+        app:itemIconSize="28dp"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_bottom_navigation"
         android:elevation="5dp"/>
