@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.User.UserInfor;
 import com.squareup.picasso.Picasso;
@@ -82,7 +83,7 @@ public class AccountFragment extends Fragment {
     public void EditProfile_Click(View view){
         Intent editProfile = new Intent(getActivity(),AccountEditProfile.class);
         editProfile.putExtra("userProfile",userInfor);
-        startActivityForResult(editProfile,0);
+        getActivity().startActivityForResult(editProfile, MainActivity.RC_EDITPROFILE);
         getActivity().overridePendingTransition(R.anim.from_bottom_up_light,R.anim.to_top_light);
     }
 

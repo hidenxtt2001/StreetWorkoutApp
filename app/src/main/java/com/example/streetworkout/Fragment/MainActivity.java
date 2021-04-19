@@ -1,8 +1,11 @@
 package com.example.streetworkout.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.MenuItem;
@@ -21,6 +24,7 @@ import com.example.streetworkout.R;
 import com.example.streetworkout.User.UserInfor;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
@@ -32,7 +36,11 @@ public class MainActivity extends AppCompatActivity {
     public static UserInfor userInfor;
     private static FirebaseAuth mAuth;
     // Value Intent
-    private final static int RC_LOGINACCOUNT = 12412;
+    public final static int RC_LOGINACCOUNT = 12412;
+    public final static int RC_EDITPROFILE = 45352;
+    // Value Result
+    public final static int RESULT_LOGOUT = 94733;
+    public final static int RESULT_SAVEPROFILE = 83944;
     // Save Data User
     SharedPreferences UserData;
     SharedPreferences.Editor EditUserData;
@@ -105,11 +113,54 @@ public class MainActivity extends AppCompatActivity {
                     EditUserData.putBoolean("alreadyLogin",true);
                     EditUserData.apply();
                 }
+            case RC_EDITPROFILE:
+                if(resultCode == RESULT_LOGOUT){
+                    EditUserData.putString("userProfile",null);
+                    EditUserData.putBoolean("alreadyLogin",false);
+                    EditUserData.apply();
+                    LoginAccount();
+                }
+                else if (resultCode == RESULT_SAVEPROFILE){
+                    UserInfor temp = (UserInfor) data.getExtras().getSerializable("userProfile");
+                    if(UpdateNewAccount(temp)){
+                        userInfor = temp;
+                        EditUserData.putString("userProfile",new Gson().toJson(userInfor));
+                        EditUserData.apply();
+                    }
+                    else {
+                        //TODO: Show message Error Update Data Account Profile
+                    }
+                }
         }
+    }
+
+    private boolean UpdateNewAccount(UserInfor temp){
+        if(isNetworkAvailable(getApplicationContext())) {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference reference = database.getReference().child("UserInfos");
+            reference.child(userInfor.getUid()).setValue(temp);
+            return true;
+        }
+        return false;
     }
 
     private void LoginAccount(){
         Intent login = new Intent(getApplicationContext(), LoginActivity.class);
         startActivityForResult(login,RC_LOGINACCOUNT);
+    }
+
+    public static boolean isNetworkAvailable(Context con) {
+        try {
+            ConnectivityManager cm = (ConnectivityManager) con
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+
+            if (networkInfo != null && networkInfo.isConnected()) {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

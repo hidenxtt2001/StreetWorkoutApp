@@ -29,10 +29,10 @@
     <string name="choose_your_level_skill">Choose Your Level Skill</string>
     <string name="image_level_skill">Image Level Skill</string>
     <string name="level_skill">Level Skill</string>
-    <string name="your_name">Your name</string>
-    <string name="email">Email</string>
-    <string name="country">Country</string>
     <string name="gender">Gender</string>
-    <string name="sign_out">Sign out</string>
+    <string name="country">Country</string>
+    <string name="email">Email</string>
+    <string name="your_name">Your Name</string>
+    <string name="sign_out">Sign Out</string>
     <string name="save">Save</string>
 </resources>

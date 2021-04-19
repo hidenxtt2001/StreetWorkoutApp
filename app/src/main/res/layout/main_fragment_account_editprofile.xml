@@ -37,6 +37,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,157 +64,162 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:paddingStart="50dp"
+                android:paddingEnd="50dp">
 
                 <EditText
                     android:id="@+id/yourname_edit"
+                    android:padding="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_height="wrap_content"
                     android:autofillHints=""
                     android:background="@drawable/menu_account_fragment_editprofile_background"
                     android:hint="@string/your_name"
                     android:inputType="text"
-                    android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorMain_1"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/username_edit"
+                    android:focusable="false"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="30dp"
                     android:autofillHints=""
                     android:background="@drawable/menu_account_fragment_editprofile_background"
                     android:hint="@string/username"
                     android:inputType="textEmailAddress"
-                    android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorMain_1"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/email_edit"
+                    android:padding="15dp"
+                    android:focusable="false"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="30dp"
                     android:autofillHints=""
                     android:background="@drawable/menu_account_fragment_editprofile_background"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
-                    android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorMain_1"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/birthday_edit"
+                    android:padding="15dp"
+                    android:focusable="false"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="30dp"
                     android:autofillHints=""
                     android:background="@drawable/menu_account_fragment_editprofile_background"
                     android:hint="@string/birthday"
                     android:inputType="text"
-                    android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorMain_1"
                     android:textStyle="bold" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="30dp"
-                    android:background="@drawable/menu_account_fragment_editprofile_background"
                     android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/country_edit"
+                        android:padding="15dp"
+                        android:focusable="false"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/menu_account_fragment_editprofile_background"
                         android:hint="@string/country"
-                        android:paddingStart="30dp"
-                        android:paddingEnd="30dp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:textColor="@color/colorMain_1"
+                        android:textStyle="bold"
+                        android:importantForAutofill="no"
+                        android:inputType="text" />
 
                     <com.hbb20.CountryCodePicker
+                        app:ccp_defaultNameCode="VN"
+                        android:layout_marginEnd="15dp"
                         android:id="@+id/cpp"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:gravity="center"
+                        android:layout_centerVertical="true"
+                        app:ccp_showFlag="true"
                         app:ccp_autoDetectCountry="true"
-                        app:ccp_showFullName="true"
+                        app:ccp_showArrow="false"
+                        app:ccp_showFullName="false"
                         app:ccp_showNameCode="false"
                         app:ccp_showPhoneCode="false" />
                 </RelativeLayout>
 
                 <EditText
                     android:id="@+id/gender_edit"
+                    android:padding="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginRight="30dp"
                     android:autofillHints=""
                     android:background="@drawable/menu_account_fragment_editprofile_background"
                     android:hint="@string/gender"
                     android:inputType="text"
-                    android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/colorMain_1"
                     android:textStyle="bold" />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="30dp">
 
-                    <com.google.android.material.button.MaterialButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:text="@string/sign_out"
-                        android:textAllCaps="false"
-                        android:textColor="#92DCD8"
-                        android:textStyle="bold"
-                        app:backgroundTint="@color/white"
-                        app:cornerRadius="15dp"
-                        app:icon="@drawable/main_fragment_account_editprofile_ic_signout"
-                        app:iconSize="30dp"
-                        app:iconTint="@null" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:paddingStart="45dp"
-                        android:paddingEnd="45dp"
-                        android:layout_alignParentEnd="true"
-                        android:backgroundTint="#92DCD8"
-                        android:text="@string/save"
-                        android:textAllCaps="false"
-                        android:textColor="@color/colorSub"
-                        android:textStyle="bold"
-                        app:backgroundTint="@color/colorSub"
-                        app:cornerRadius="15dp" />
-                </RelativeLayout>
             </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="40dp"
+                >
+
+                <com.google.android.material.button.MaterialButton
+                    android:onClick="SignOut_Click"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/sign_out"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorSecondary"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/white"
+                    app:cornerRadius="15dp"
+                    app:iconPadding="15dp"
+                    android:textSize="18sp"
+                    app:icon="@drawable/menu_fragment_account_editprofile_signout"
+                    app:iconSize="30dp"
+                    app:iconTint="@null"
+                    android:stateListAnimator="@null"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:onClick="SaveProfile_Click"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:iconTint="@null"
+                    android:layout_alignParentEnd="true"
+                    android:backgroundTint="@color/colorSecondary"
+                    android:paddingStart="25dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="25dp"
+                    app:iconPadding="15dp"
+                    android:paddingBottom="10dp"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorSub"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/colorSub"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/menu_fragment_account_editprofile_save"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
+                    app:iconSize="30dp" />
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
