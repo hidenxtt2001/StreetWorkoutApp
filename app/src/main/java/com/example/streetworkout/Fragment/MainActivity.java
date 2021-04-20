@@ -87,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new CalenderFragment();
                     break;
                 case id.navigation_item_account:
-                    selectedFragment = new AccountFragment(userInfor);
+                    AccountFragment.userInfor = userInfor;
+                    selectedFragment = new AccountFragment();
                     break;
             }
 
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
                         userInfor = temp;
                         EditUserData.putString("userProfile",new Gson().toJson(userInfor));
                         EditUserData.apply();
+                        AccountFragment.userInfor = userInfor;
                     }
                     else {
                         //TODO: Show message Error Update Data Account Profile
