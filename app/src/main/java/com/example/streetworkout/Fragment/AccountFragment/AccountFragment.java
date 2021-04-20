@@ -18,17 +18,17 @@ import com.example.streetworkout.R;
 import com.example.streetworkout.User.UserInfor;
 import com.squareup.picasso.Picasso;
 
+import java.util.Objects;
+
 
 public class AccountFragment extends Fragment {
 
     View root;
-    final UserInfor userInfor;
-    public AccountFragment(UserInfor userInfor) {
+    public static UserInfor userInfor;
+    public AccountFragment() {
         // Required empty public constructor
-        this.userInfor = userInfor;
+
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

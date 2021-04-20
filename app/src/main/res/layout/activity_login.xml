@@ -12,7 +12,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_weight="3.5"
         android:background="@color/colorMain"
         android:orientation="horizontal">
 
@@ -41,7 +41,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_weight="3"
+        android:layout_weight="4"
         android:background="@color/colorMain">
 
         <LinearLayout
@@ -54,7 +54,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
+                android:layout_margin="20dp"
                 android:fontFamily="@font/nunito_extrabold"
                 android:text="@string/app_name"
                 android:textAllCaps="false"
@@ -87,8 +87,8 @@
                     app:iconSize="30dp"
                     android:minWidth="220dp"
                     android:onClick="LoginGmail_Click"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:text="@string/google"
                     android:textAllCaps="false"
                     android:textColor="@color/colorSub"
@@ -119,8 +119,8 @@
                     app:iconSize="30dp"
                     android:minWidth="220dp"
                     android:onClick="LoginFacebook_Click"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:text="@string/facebook"
                     android:textAllCaps="false"
                     android:textColor="@color/colorSub"
