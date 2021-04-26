@@ -37,7 +37,8 @@
             android:layout_marginStart="20dp"
             android:text="Main Title"
             android:textColor="@color/colorTitle"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:fontFamily="@font/nunito_bold"/>
     </LinearLayout>
 
     <ImageView

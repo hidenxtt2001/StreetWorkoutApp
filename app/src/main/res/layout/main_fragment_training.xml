@@ -13,7 +13,7 @@ android:layout_height="match_parent"
     <FrameLayout
         android:id="@+id/mainExcercise"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="240dp">
 
 
     </FrameLayout>
@@ -36,6 +36,7 @@ android:layout_height="match_parent"
             android:text="Programs"
             android:textColor="@color/colorMain"
             android:textSize="25sp"
+            android:fontFamily="@font/nunito_black"
 
             />
 
@@ -47,6 +48,7 @@ android:layout_height="match_parent"
             android:text="View All"
             android:textColor="@color/colorMain_1"
             android:textSize="20sp"
+            android:fontFamily="@font/nunito_semibold"
 
 
             />
@@ -81,6 +83,7 @@ android:layout_height="match_parent"
             android:text="Knowledge"
             android:textColor="@color/colorMain"
             android:textSize="25sp"
+            android:fontFamily="@font/nunito_black"
 
 
             />
