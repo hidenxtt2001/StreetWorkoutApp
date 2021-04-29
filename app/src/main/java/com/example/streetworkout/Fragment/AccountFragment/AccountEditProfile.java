@@ -91,6 +91,7 @@ public class AccountEditProfile extends AppCompatActivity {
         , R.layout.main_fragment_account_editprofile_spinner_text_style, getResources().getStringArray(R.array.names));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGender.setAdapter(myAdapter);
+        spinnerGender.setSelection(userInfor.getGender().equals("male") ? 0 : 1);
     }
 
     private void getNameCountry() {
@@ -156,6 +157,7 @@ public class AccountEditProfile extends AppCompatActivity {
         userInfor.setDisplayName(yourname.getText().toString());
         userInfor.setBirthDay(birthday.getText().toString());
         userInfor.setCountry(cpp.getSelectedCountryNameCode());
+        userInfor.setGender(spinnerGender.getSelectedItemPosition() == 0 ? "male" : "female");
         Intent saveProfile = new Intent();
         saveProfile.putExtra("userProfile",userInfor);
         setResult(MainActivity.RESULT_SAVEPROFILE,saveProfile);
