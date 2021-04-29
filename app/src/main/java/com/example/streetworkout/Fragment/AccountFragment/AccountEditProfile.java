@@ -9,9 +9,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.streetworkout.Fragment.MainActivity;
@@ -25,6 +27,7 @@ import com.squareup.picasso.Picasso;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -32,7 +35,8 @@ import java.util.Objects;
 public class AccountEditProfile extends AppCompatActivity {
 
     static UserInfor userInfor;
-    EditText yourname, username, email, birthday, country, gender;
+    EditText yourname, username, email, birthday, country;
+    Spinner spinnerGender;
     CountryCodePicker cpp;
     DatePickerDialog datePickerDialog;
 
@@ -56,8 +60,8 @@ public class AccountEditProfile extends AppCompatActivity {
         email = findViewById(R.id.email_edit);
         birthday = findViewById(R.id.birthday_edit);
         country = findViewById(R.id.country_edit);
-        gender = findViewById(R.id.gender_edit);
         cpp = findViewById(R.id.cpp);
+        spinnerGender = findViewById(R.id.gender_spinner);
         SetupInfor();
         getNameCountry();
 
@@ -69,7 +73,6 @@ public class AccountEditProfile extends AppCompatActivity {
         String user_username = userInfor.getUserName();
         String user_email = userInfor.getEmail();
         String user_birthday = userInfor.getBirthDay();
-        String user_gender = userInfor.getGender();
 
         yourname.setText(user_yourname);
         username.setText(user_username);
@@ -81,9 +84,13 @@ public class AccountEditProfile extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-        gender.setText(user_gender);
+        //gender.setText(user_gender);
         cpp.setCountryForNameCode(userInfor.getCountry());
         SetupCalendar();
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(AccountEditProfile.this
+        , R.layout.main_fragment_account_editprofile_spinner_text_style, getResources().getStringArray(R.array.names));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerGender.setAdapter(myAdapter);
     }
 
     private void getNameCountry() {
@@ -149,7 +156,6 @@ public class AccountEditProfile extends AppCompatActivity {
         userInfor.setDisplayName(yourname.getText().toString());
         userInfor.setBirthDay(birthday.getText().toString());
         userInfor.setCountry(cpp.getSelectedCountryNameCode());
-        userInfor.setGender(gender.getText().toString());
         Intent saveProfile = new Intent();
         saveProfile.putExtra("userProfile",userInfor);
         setResult(MainActivity.RESULT_SAVEPROFILE,saveProfile);
