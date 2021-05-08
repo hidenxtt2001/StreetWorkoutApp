@@ -16,13 +16,14 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.User.UserInfor;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hbb20.CountryCodePicker;
-import com.squareup.picasso.Picasso;
+
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -68,7 +69,7 @@ public class AccountEditProfile extends AppCompatActivity {
     }
 
     private void SetupInfor(){
-        Picasso.get().load(Uri.parse(userInfor.getUrlAvatar())).into((ImageView)findViewById(R.id.avatarProfile));
+        Glide.with(this.getApplicationContext()).load(Uri.parse(userInfor.getUrlAvatar())).into((ImageView)findViewById(R.id.avatarProfile));
         String user_yourname = userInfor.getDisplayName();
         String user_username = userInfor.getUserName();
         String user_email = userInfor.getEmail();
