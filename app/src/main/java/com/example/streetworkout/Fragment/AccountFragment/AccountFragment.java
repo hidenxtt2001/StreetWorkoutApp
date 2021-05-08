@@ -13,10 +13,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.User.UserInfor;
-import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
 
@@ -51,7 +51,7 @@ public class AccountFragment extends Fragment {
     private void SetupInfor(){
         // Set Avatar Profile
         //
-        Picasso.get().load(Uri.parse(userInfor.getUrlAvatar())).into((ImageView)root.findViewById(R.id.avatarProfile));
+        Glide.with(this.getActivity().getApplicationContext()).load(Uri.parse(userInfor.getUrlAvatar())).into((ImageView)root.findViewById(R.id.avatarProfile));
         // Name
         TextView nameDislay = root.findViewById(R.id.nameDislay);
         nameDislay.setText(userInfor.getDisplayName());
