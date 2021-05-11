@@ -69,55 +69,55 @@
 
                 <EditText
                     android:id="@+id/yourname_edit"
-                    android:padding="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autofillHints=""
                     android:background="@drawable/menu_account_fragment_editprofile_background"
                     android:hint="@string/your_name"
                     android:inputType="text"
+                    android:padding="15dp"
                     android:textColor="@color/colorMain_1"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/username_edit"
-                    android:focusable="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="15dp"
                     android:layout_marginTop="20dp"
                     android:autofillHints=""
                     android:background="@drawable/menu_account_fragment_editprofile_background"
+                    android:focusable="false"
                     android:hint="@string/username"
                     android:inputType="textEmailAddress"
+                    android:padding="15dp"
                     android:textColor="@color/colorMain_1"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/email_edit"
-                    android:padding="15dp"
-                    android:focusable="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:autofillHints=""
                     android:background="@drawable/menu_account_fragment_editprofile_background"
+                    android:focusable="false"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
+                    android:padding="15dp"
                     android:textColor="@color/colorMain_1"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/birthday_edit"
-                    android:padding="15dp"
-                    android:focusable="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:autofillHints=""
                     android:background="@drawable/menu_account_fragment_editprofile_background"
+                    android:focusable="false"
                     android:hint="@string/birthday"
                     android:inputType="text"
+                    android:padding="15dp"
                     android:textColor="@color/colorMain_1"
                     android:textStyle="bold" />
 
@@ -129,85 +129,79 @@
 
                     <EditText
                         android:id="@+id/country_edit"
-                        android:padding="15dp"
-                        android:focusable="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/menu_account_fragment_editprofile_background"
+                        android:focusable="false"
                         android:hint="@string/country"
-                        android:textColor="@color/colorMain_1"
-                        android:textStyle="bold"
                         android:importantForAutofill="no"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:padding="15dp"
+                        android:textColor="@color/colorMain_1"
+                        android:textStyle="bold" />
 
                     <com.hbb20.CountryCodePicker
-                        app:ccp_defaultNameCode="VN"
-                        android:layout_marginEnd="15dp"
                         android:id="@+id/cpp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        app:ccp_showFlag="true"
+                        android:layout_marginEnd="15dp"
                         app:ccp_autoDetectCountry="true"
+                        app:ccp_defaultNameCode="VN"
                         app:ccp_showArrow="false"
+                        app:ccp_showFlag="true"
                         app:ccp_showFullName="false"
                         app:ccp_showNameCode="false"
                         app:ccp_showPhoneCode="false" />
                 </RelativeLayout>
 
-                <EditText
-                    android:id="@+id/gender_edit"
-                    android:padding="15dp"
+                <Spinner
+                    android:id="@+id/gender_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:autofillHints=""
                     android:background="@drawable/menu_account_fragment_editprofile_background"
-                    android:hint="@string/gender"
-                    android:inputType="text"
-                    android:textColor="@color/colorMain_1"
-                    android:textStyle="bold" />
-
-
+                    android:padding="4dp"
+                    />
             </LinearLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="40dp"
-                >
+                android:layout_margin="40dp">
 
                 <com.google.android.material.button.MaterialButton
-                    android:onClick="SignOut_Click"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="SignOut_Click"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
+                    android:stateListAnimator="@null"
                     android:text="@string/sign_out"
                     android:textAllCaps="false"
                     android:textColor="@color/colorSecondary"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:backgroundTint="@color/white"
                     app:cornerRadius="15dp"
-                    app:iconPadding="15dp"
-                    android:textSize="18sp"
                     app:icon="@drawable/menu_fragment_account_editprofile_signout"
+                    app:iconPadding="15dp"
                     app:iconSize="30dp"
-                    app:iconTint="@null"
-                    android:stateListAnimator="@null"/>
+                    app:iconTint="@null" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:onClick="SaveProfile_Click"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:iconTint="@null"
                     android:layout_alignParentEnd="true"
                     android:backgroundTint="@color/colorSecondary"
+                    android:onClick="SaveProfile_Click"
                     android:paddingStart="25dp"
                     android:paddingTop="10dp"
                     android:paddingEnd="25dp"
-                    app:iconPadding="15dp"
                     android:paddingBottom="10dp"
+                    android:shadowDx="0"
+                    android:shadowDy="0"
                     android:text="@string/save"
                     android:textAllCaps="false"
                     android:textColor="@color/colorSub"
@@ -216,9 +210,9 @@
                     app:backgroundTint="@color/colorSub"
                     app:cornerRadius="15dp"
                     app:icon="@drawable/menu_fragment_account_editprofile_save"
-                    android:shadowDx="0"
-                    android:shadowDy="0"
-                    app:iconSize="30dp" />
+                    app:iconPadding="15dp"
+                    app:iconSize="30dp"
+                    app:iconTint="@null" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

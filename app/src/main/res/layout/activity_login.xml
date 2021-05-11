@@ -92,7 +92,7 @@
                     android:text="@string/google"
                     android:textAllCaps="false"
                     android:textColor="@color/colorSub"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
             </FrameLayout>
 
@@ -124,7 +124,7 @@
                     android:text="@string/facebook"
                     android:textAllCaps="false"
                     android:textColor="@color/colorSub"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
             </FrameLayout>
 

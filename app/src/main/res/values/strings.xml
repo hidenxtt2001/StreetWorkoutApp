@@ -35,4 +35,9 @@
     <string name="your_name">Your Name</string>
     <string name="sign_out">Sign Out</string>
     <string name="save">Save</string>
+    <!-- List gender -->
+    <string-array name="names">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

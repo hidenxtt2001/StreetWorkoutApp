@@ -20,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.streetworkout.Login.UserInformation.FragmentInput.InputUserInfor;
 import com.example.streetworkout.R;
 import com.example.streetworkout.User.UserInfor;
@@ -31,7 +32,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -102,7 +102,7 @@ public class InputUserProfile extends AppCompatActivity {
 
         nameDisplay.setText(userInfor.getDisplayName());
 
-        Picasso.get().load(Uri.parse(userInfor.getUrlAvatar())).into(userAvatar);
+        Glide.with(this.getApplicationContext()).load(Uri.parse(userInfor.getUrlAvatar())).into(userAvatar);
 
         //userName.setText(userInfor.getEmail().split("@")[0]);
     }

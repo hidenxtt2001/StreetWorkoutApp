@@ -15,7 +15,7 @@ public class UserInfor implements Serializable {
     private String urlAvatar;
     private Status status;
     private String birthDay;
-    private String gender;
+    private String gender = "male";
     private String country = "VN";
     private int experienceLevel;
 
