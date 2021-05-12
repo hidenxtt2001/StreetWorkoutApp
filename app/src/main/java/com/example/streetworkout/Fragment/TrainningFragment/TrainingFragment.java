@@ -1,5 +1,6 @@
 package com.example.streetworkout.Fragment.TrainningFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -78,8 +79,9 @@ public class TrainingFragment extends Fragment {
         View=view.findViewById(R.id.Listknowledge);
 
 
-        arrayList.add(new Knowledge(R.drawable.training_vector_workoutlibrary,"Workout Library"));
+
         arrayList.add(new Knowledge(R.drawable.training_vector_bodybuilder,"Excercise Library"));
+
         LinearLayoutManager llm = new LinearLayoutManager(this.getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         View.setLayoutManager(llm);
