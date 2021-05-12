@@ -36,6 +36,7 @@
         android:lines="1"
         android:maxLines="1"
         android:text="Name Exercise"
+        android:fontFamily="@font/nunito_bold"
         android:textSize="15sp"
         android:textStyle="bold" />
 

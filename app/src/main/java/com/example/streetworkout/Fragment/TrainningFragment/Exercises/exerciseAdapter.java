@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.streetworkout.Fragment.TrainningFragment.getExLibValue;
 import com.example.streetworkout.R;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -32,6 +33,9 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
     ArrayList<Exercise> exercises = new ArrayList<>();
     FirebaseDatabase reference;
 
+    getExLibValue bodyPart;
+    getExLibValue Lvl;
+
     public exerciseAdapter(Context context) {
         this.context = context;
 
@@ -44,44 +48,7 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
         return new ViewHolder(view);
     }
 
-    String check(int input) {
-        switch (input) {
-            case 0: {
-                return "Back";
 
-            }
-            case 1: {
-                return "Bicept";
-
-            }
-            case 2: {
-                return "Legs";
-
-            }
-            case 3: {
-                return "Chest";
-
-            }
-            case 4: {
-                return "Tricept";
-
-            }
-            case 5: {
-                return "Abs";
-
-            }
-            case 6: {
-                return "Shoulder";
-
-            }
-            case 7: {
-                return "Whole Body";
-
-            }
-        }
-        return "Unknown";
-
-    }
 
 
     void clicked(View input, int pos) {
@@ -125,7 +92,7 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
                     TextView setbodypart = setText.findViewById(R.id.exerciseItemLayout);
                     ExerciseLevelSkill exerciseBodyPart = data.getValue(ExerciseLevelSkill.class);
                     if (exerciseBodyPart != null) {
-                        setbodypart.setText(check(exerciseBodyPart.getLevelValue()));
+                        setbodypart.setText(bodyPart.bodyPart(exerciseBodyPart.getLevelValue()));
                         levels.addView(setText);
                     }
 
@@ -151,7 +118,7 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
                     TextView setbodypart = setText.findViewById(R.id.exerciseItemLayout);
                     ExerciseBodyPart exerciseBodyPart = data.getValue(ExerciseBodyPart.class);
                     if (exerciseBodyPart != null) {
-                        setbodypart.setText(check(exerciseBodyPart.getBodyValue()));
+                        setbodypart.setText(Lvl.Level(exerciseBodyPart.getBodyValue()));
                         muscles.addView(setText);
                     }
 
