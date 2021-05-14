@@ -16,6 +16,8 @@
         android:textColor="@color/white"
         android:background="@drawable/training_background_items_corner"
         android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="16dp"
         />
 
 </RelativeLayout>

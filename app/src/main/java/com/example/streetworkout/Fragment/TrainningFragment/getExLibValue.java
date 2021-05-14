@@ -26,35 +26,35 @@ public class getExLibValue {
     public String bodyPart(int input) {
         switch (input) {
             case 0: {
-                return "Back";
+                return "BACK";
 
             }
             case 1: {
-                return "Bicept";
+                return "BICEPT";
 
             }
             case 2: {
-                return "Legs";
+                return "LEGS";
 
             }
             case 3: {
-                return "Chest";
+                return "CHEST";
 
             }
             case 4: {
-                return "Tricept";
+                return "TRICEPT";
 
             }
             case 5: {
-                return "Abs";
+                return "ABS";
 
             }
             case 6: {
-                return "Shoulder";
+                return "SHOULDER";
 
             }
             case 7: {
-                return "Whole Body";
+                return "WHOLE BODY";
 
             }
         }
@@ -66,15 +66,15 @@ public class getExLibValue {
     public String Level(int input) {
         switch (input) {
             case 0: {
-                return "Beginner";
+                return "BEGINNER";
 
             }
             case 1: {
-                return "Intermediate";
+                return "INTERMEDIATE";
 
             }
             case 2: {
-                return "Advanced";
+                return "ADVANCE";
 
             }
         }
