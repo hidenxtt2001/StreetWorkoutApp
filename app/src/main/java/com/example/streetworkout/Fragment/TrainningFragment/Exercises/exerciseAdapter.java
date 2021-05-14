@@ -33,8 +33,8 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
     ArrayList<Exercise> exercises = new ArrayList<>();
     FirebaseDatabase reference;
 
-    getExLibValue bodyPart;
-    getExLibValue Lvl;
+    getExLibValue bodyPart= new getExLibValue();
+    getExLibValue Lvl= new getExLibValue();
 
     public exerciseAdapter(Context context) {
         this.context = context;
@@ -47,6 +47,8 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.training_exercise_items, parent, false);
         return new ViewHolder(view);
     }
+
+
 
 
 
@@ -89,10 +91,11 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
                 ) {
 
                     View setText = LayoutInflater.from(context).inflate(R.layout.training_items_layout, null, false);
-                    TextView setbodypart = setText.findViewById(R.id.exerciseItemLayout);
-                    ExerciseLevelSkill exerciseBodyPart = data.getValue(ExerciseLevelSkill.class);
-                    if (exerciseBodyPart != null) {
-                        setbodypart.setText(bodyPart.bodyPart(exerciseBodyPart.getLevelValue()));
+                    TextView setLevel = setText.findViewById(R.id.exerciseItemLayout);
+                    ExerciseLevelSkill exerciseLevelSkill = data.getValue(ExerciseLevelSkill.class);
+                    if (exerciseLevelSkill != null) {
+
+                        setLevel.setText(Lvl.Level(exerciseLevelSkill.getLevelValue()));
                         levels.addView(setText);
                     }
 
@@ -118,7 +121,7 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
                     TextView setbodypart = setText.findViewById(R.id.exerciseItemLayout);
                     ExerciseBodyPart exerciseBodyPart = data.getValue(ExerciseBodyPart.class);
                     if (exerciseBodyPart != null) {
-                        setbodypart.setText(Lvl.Level(exerciseBodyPart.getBodyValue()));
+                        setbodypart.setText(bodyPart.bodyPart(exerciseBodyPart.getBodyValue()));
                         muscles.addView(setText);
                     }
 

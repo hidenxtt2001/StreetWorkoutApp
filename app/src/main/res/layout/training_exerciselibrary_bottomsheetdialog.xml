@@ -32,28 +32,28 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="Name"
         android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/black"
+        android:textColor="@color/colorMain"
         android:textSize="32dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:text="Difficulty levels"
         android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/black"
+        android:textColor="@color/colorTitle_1"
         android:textSize="20dp" />
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/add_lvl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:orientation="horizontal"
         app:flexWrap="wrap"
@@ -62,19 +62,20 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/nunito_bold"
         android:text="Muscle group"
-        android:textColor="@color/black"
+        android:textColor="@color/colorTitle_1"
         android:textSize="20dp" />
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/add_muscle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal"
         app:flexWrap="wrap" />
 

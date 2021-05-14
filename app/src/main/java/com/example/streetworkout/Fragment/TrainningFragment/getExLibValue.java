@@ -4,6 +4,8 @@ public class getExLibValue {
     String bodyPart;
     String level;
 
+    public getExLibValue() {
+    }
 
     public String getBodyPart() {
         return bodyPart;
@@ -56,7 +58,7 @@ public class getExLibValue {
 
             }
         }
-        return bodyPart;
+        return bodyPart.toUpperCase();
     }
 
 
@@ -76,7 +78,7 @@ public class getExLibValue {
 
             }
         }
-        return level;
+        return level.toUpperCase();
 
     }
 }
