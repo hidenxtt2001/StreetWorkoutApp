@@ -23,6 +23,7 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
@@ -136,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (resultCode == RESULT_CANCELED) {
                     customProgressDialog.dismiss();
                     mAuth.signOut();
+                    LoginManager.getInstance().logOut();
                 }
                 break;
             default:
@@ -173,7 +175,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            UILoginSuccess(user);
+                            UILoginSuccess(user,1,idToken);
                         } else {
                             // If sign in fails, display a message to the user.
                         }
@@ -224,7 +226,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            UILoginSuccess(user);
+                            UILoginSuccess(user,2,token.getToken());
                         } else {
                             // If sign in fails, display a message to the user.
                         }
@@ -234,7 +236,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //endregion
 
-    private void UILoginSuccess(FirebaseUser user) {
+    private void UILoginSuccess(FirebaseUser user,int loginTypes,String accessToken) {
 
         customProgressDialog.show();
         final boolean[] checkLoginSuceess = {false};
@@ -249,7 +251,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     SetProfile(snapshot.getValue(UserInfor.class));
                 } else {
-                    SetupProfile(user);
+                    SetupProfile(user,loginTypes,accessToken);
                 }
 
             }
@@ -276,11 +278,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void SetupProfile(FirebaseUser user){
+    private void SetupProfile(FirebaseUser user, int loginTypes,String token){
         UserInfor userInfor = new UserInfor(user.getUid());
         userInfor.setDisplayName(user.getDisplayName());
         userInfor.setEmail(user.getEmail());
         userInfor.setUrlAvatar(user.getPhotoUrl().toString());
+        userInfor.setLoginTypes(loginTypes);
+        userInfor.setAccessToken(token);
         Intent inputProfile = new Intent(getApplicationContext(), InputUserProfile.class);
         inputProfile.putExtra("userProfile", userInfor);
         startActivityForResult(inputProfile, RC_INPUT);

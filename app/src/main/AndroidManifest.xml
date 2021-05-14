@@ -42,5 +42,8 @@
             </intent-filter>
         </activity>
     </application>
+    <queries>
+        <package android:name="com.facebook.katana"/>
+    </queries>
 
 </manifest>

@@ -1,13 +1,17 @@
 package com.example.streetworkout.Fragment.AccountFragment;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -20,10 +24,18 @@ import com.bumptech.glide.Glide;
 import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.User.UserInfor;
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.JsonObject;
 import com.hbb20.CountryCodePicker;
 
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -69,7 +81,32 @@ public class AccountEditProfile extends AppCompatActivity {
     }
 
     private void SetupInfor(){
-        Glide.with(this.getApplicationContext()).load(Uri.parse(userInfor.getUrlAvatar())).into((ImageView)findViewById(R.id.avatarProfile));
+        switch (userInfor.getLoginTypes()){
+            case 1:
+                Glide.with(this.getApplicationContext()).load(Uri.parse(userInfor.getUrlAvatar())).into((ImageView)findViewById(R.id.avatarProfile));
+                break;
+            case 2:
+                GraphRequest request = GraphRequest.newGraphPathRequest(
+                        AccessToken.getCurrentAccessToken(),
+                        "/" + userInfor.getUrlAvatar().replaceAll("\\D+","") + "/picture?redirect=0&type=large",
+                        new GraphRequest.Callback() {
+                            @Override
+                            public void onCompleted(GraphResponse response) {
+                                JSONObject result = response.getJSONObject();
+                                try {
+                                    String link = result.getJSONObject("data").getString("url").toString();
+                                    Glide.with(getApplicationContext()).load(Uri.parse(link)).into((ImageView)findViewById(R.id.avatarProfile));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+
+                request.executeAsync();
+                break;
+        }
+
+
         String user_yourname = userInfor.getDisplayName();
         String user_username = userInfor.getUserName();
         String user_email = userInfor.getEmail();
