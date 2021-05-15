@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheetContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/training_bottomsheetdialog_corner"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:src="@drawable/training_vector_remove"
+        android:layout_marginBottom="5dp"
+
+        />
+
+
+
+    <VideoView
+        android:id="@+id/vid"
+        android:layout_width="match_parent"
+        android:layout_height="221dp"
+
+        />
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Name"
+        android:fontFamily="@font/nunito_bold"
+        android:textColor="@color/colorMain"
+        android:textSize="32dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Difficulty levels"
+        android:fontFamily="@font/nunito_bold"
+        android:textColor="@color/colorTitle_1"
+        android:textSize="20dp" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/add_lvl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        app:flexWrap="wrap"
+         />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Muscle group"
+        android:textColor="@color/colorTitle_1"
+        android:textSize="20dp" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/add_muscle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        app:flexWrap="wrap" />
+
+
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.TrainningFragment.ExerciseLibrary">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <!--
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:layout_marginTop="20dp"
+            android:layout_width="315dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/training_background_searchbar"
+            android:drawableStart="@drawable/training_vector_search"
+            android:drawablePadding="10dp"
+            android:hint="Search"
+            android:paddingStart="10dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:textColorHint="@color/white"
+            android:layout_marginBottom="10dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/excercise_library"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+
+            />
+    </LinearLayout>
+    <!--
+    </ScrollView>-->
+</RelativeLayout>

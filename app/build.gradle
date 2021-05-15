@@ -67,5 +67,7 @@ dependencies {
 
     // Json Parse
     implementation 'com.google.code.gson:gson:2.8.6'
+    //Google Flexbox
+    implementation 'com.google.android:flexbox:2.0.1'
 
 }

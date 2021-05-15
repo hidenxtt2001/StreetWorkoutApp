@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StreetWorkout">
-        <activity android:name=".Login.UserInformation.InputUserProfile"></activity>
+        <activity android:name=".Fragment.TrainningFragment.ExerciseLibrary"></activity>
+        <activity android:name=".Login.UserInformation.InputUserProfile" />
         <activity android:name=".SplashScreen.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Fragment.AccountFragment.AccountEditProfile" /> <!-- Login Layout -->
-        <activity android:name=".Login.LoginActivity"></activity> <!-- Main -->
+        <activity android:name=".Login.LoginActivity" /> <!-- Main -->
         <activity android:name=".Fragment.MainActivity" /> <!-- Facebook -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
