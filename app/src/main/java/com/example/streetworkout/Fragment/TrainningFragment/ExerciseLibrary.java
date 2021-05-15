@@ -38,6 +38,7 @@ public class ExerciseLibrary extends AppCompatActivity {
         setContentView(R.layout.main_fragment_traning_exercise_library);
 
         customToolbar = findViewById(R.id.customToolbar);
+        customToolbar.setTitle("");
         setSupportActionBar(customToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.excercise_library);

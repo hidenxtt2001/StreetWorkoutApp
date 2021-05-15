@@ -50,11 +50,6 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
         return new ViewHolder(view);
     }
 
-
-
-
-
-
     void clicked(View input, int pos) {
         if(bottomSheetDialog.isShowing()) return;
         View bottomSheetView = LayoutInflater.from(context).inflate(R.layout.main_fragment_training_exerciselibrary_bottomsheetdialog, null, false);
