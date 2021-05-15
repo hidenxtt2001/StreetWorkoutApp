@@ -101,7 +101,6 @@ public class InputUserProfile extends AppCompatActivity {
     private void SetupUserInfo() {
 
         nameDisplay.setText(userInfor.getDisplayName());
-
         Glide.with(this.getApplicationContext()).load(Uri.parse(userInfor.getUrlAvatar())).into(userAvatar);
 
         //userName.setText(userInfor.getEmail().split("@")[0]);

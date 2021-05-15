@@ -17,6 +17,12 @@ import com.bumptech.glide.Glide;
 import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.User.UserInfor;
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Objects;
 
@@ -51,7 +57,31 @@ public class AccountFragment extends Fragment {
     private void SetupInfor(){
         // Set Avatar Profile
         //
-        Glide.with(this.getActivity().getApplicationContext()).load(Uri.parse(userInfor.getUrlAvatar())).into((ImageView)root.findViewById(R.id.avatarProfile));
+        switch (userInfor.getLoginTypes()){
+            case 1:
+                Glide.with(this.getActivity().getApplicationContext()).load(Uri.parse(userInfor.getUrlAvatar())).into((ImageView)root.findViewById(R.id.avatarProfile));
+                break;
+            case 2:
+                GraphRequest request = GraphRequest.newGraphPathRequest(
+                        AccessToken.getCurrentAccessToken(),
+                        "/" + userInfor.getUrlAvatar().replaceAll("\\D+","") + "/picture?redirect=0&type=large",
+                        new GraphRequest.Callback() {
+                            @Override
+                            public void onCompleted(GraphResponse response) {
+                                JSONObject result = response.getJSONObject();
+                                try {
+                                    String link = result.getJSONObject("data").getString("url").toString();
+                                    Glide.with(getActivity().getApplicationContext()).load(Uri.parse(link)).into((ImageView)root.findViewById(R.id.avatarProfile));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+
+                request.executeAsync();
+                break;
+        }
+
         // Name
         TextView nameDislay = root.findViewById(R.id.nameDislay);
         nameDislay.setText(userInfor.getDisplayName());
