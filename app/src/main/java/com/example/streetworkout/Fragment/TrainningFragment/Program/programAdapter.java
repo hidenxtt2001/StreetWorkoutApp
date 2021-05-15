@@ -16,7 +16,6 @@ import com.example.streetworkout.R;
 
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class programAdapter extends RecyclerView.Adapter<programAdapter.SliderViewHolder> {
 
@@ -32,7 +31,7 @@ public class programAdapter extends RecyclerView.Adapter<programAdapter.SliderVi
     @Override
     public SliderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new SliderViewHolder(
-                LayoutInflater.from(parent.getContext()).inflate(R.layout.training_program_layout, parent, false)
+                LayoutInflater.from(parent.getContext()).inflate(R.layout.main_fragment_training_program_layout, parent, false)
         );
     }
 

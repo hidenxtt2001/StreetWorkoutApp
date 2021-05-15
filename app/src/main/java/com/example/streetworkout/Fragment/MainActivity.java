@@ -53,17 +53,19 @@ public class MainActivity extends AppCompatActivity {
         UserData = getPreferences(MODE_PRIVATE);
         EditUserData = UserData.edit();
         EditUserData.apply();
+
+
+        super.onCreate(savedInstanceState);
+        setContentView(layout.activity_main);
         if(!UserData.getBoolean("alreadyLogin",false)){
             LoginAccount();
         }
         else {
             Gson gson = new Gson();
             userInfor = gson.fromJson(UserData.getString("userProfile", null),UserInfor.class);
+            AccountFragment.userInfor = userInfor;
             getSupportFragmentManager().beginTransaction().replace(id.fragment_container, new AccountFragment()).commit();
         }
-
-        super.onCreate(savedInstanceState);
-        setContentView(layout.activity_main);
         // Set up bottom navigation
         BottomNavigationView bottomNavigationView = findViewById(id.main_bottom_navigation);
         bottomNavigationView.getMenu().getItem(3).setChecked(true);

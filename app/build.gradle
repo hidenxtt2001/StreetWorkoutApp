@@ -70,4 +70,7 @@ dependencies {
     //Google Flexbox
     implementation 'com.google.android:flexbox:2.0.1'
 
+    // Video Library
+    implementation 'com.yqritc:android-scalablevideoview:1.0.4'
+
 }

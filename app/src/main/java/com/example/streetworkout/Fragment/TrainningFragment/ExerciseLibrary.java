@@ -31,7 +31,7 @@ public class ExerciseLibrary extends AppCompatActivity {
         getWindow().getDecorView().getBackground().setDither(true);
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_exercise_library);
+        setContentView(R.layout.main_fragment_traning_exercise_library);
 
 
         recyclerView = findViewById(R.id.excercise_library);

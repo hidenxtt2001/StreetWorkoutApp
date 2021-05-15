@@ -23,7 +23,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.yqritc.scalablevideoview.ScalableVideoView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHolder> {
@@ -35,16 +37,16 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
 
     getExLibValue bodyPart= new getExLibValue();
     getExLibValue Lvl= new getExLibValue();
-
+    private BottomSheetDialog bottomSheetDialog;
     public exerciseAdapter(Context context) {
         this.context = context;
-
+        bottomSheetDialog =new BottomSheetDialog(context,R.style.BottomSheetDialogTheme );
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.training_exercise_items, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_fragment_training_exercise_items, parent, false);
         return new ViewHolder(view);
     }
 
@@ -54,8 +56,8 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
 
 
     void clicked(View input, int pos) {
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context,R.style.BottomSheetDialogTheme );
-        View bottomSheetView = LayoutInflater.from(context).inflate(R.layout.training_exerciselibrary_bottomsheetdialog, null, false);
+        if(bottomSheetDialog.isShowing()) return;
+        View bottomSheetView = LayoutInflater.from(context).inflate(R.layout.main_fragment_training_exerciselibrary_bottomsheetdialog, null, false);
 
         //init linearlayout
         FlexboxLayout levels;
@@ -69,16 +71,20 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
         TextView setnameExercise = bottomSheetView.findViewById(R.id.title);
         setnameExercise.setText(exercises.get(pos).getNameExercise());
 
-        VideoView setvideoExercise = bottomSheetView.findViewById(R.id.vid);
-        Uri uri = Uri.parse(exercises.get(pos).getLinkVideo());
-        setvideoExercise.setVideoURI(uri);
-        setvideoExercise.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setLooping(true);
-            }
-        });
-        setvideoExercise.start();
+        ScalableVideoView setvideoExercise = bottomSheetView.findViewById(R.id.vid);
+
+        try {
+            setvideoExercise.setDataSource(exercises.get(pos).getLinkVideo().toString());
+            setvideoExercise.setLooping(true);
+            setvideoExercise.prepare(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    setvideoExercise.start();
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         //add lvl
@@ -90,7 +96,7 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
                 for (DataSnapshot data : snapshot.getChildren()
                 ) {
 
-                    View setText = LayoutInflater.from(context).inflate(R.layout.training_items_layout, null, false);
+                    View setText = LayoutInflater.from(context).inflate(R.layout.main_fragment_training_items_layout, null, false);
                     TextView setLevel = setText.findViewById(R.id.exerciseItemLayout);
                     ExerciseLevelSkill exerciseLevelSkill = data.getValue(ExerciseLevelSkill.class);
                     if (exerciseLevelSkill != null) {
@@ -116,7 +122,7 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
                 for (DataSnapshot data : snapshot.getChildren()
                 ) {
                     //rename body_muscle_part
-                    View setText = LayoutInflater.from(context).inflate(R.layout.training_items_layout, null, false);
+                    View setText = LayoutInflater.from(context).inflate(R.layout.main_fragment_training_items_layout, null, false);
                     //rename cho nay lun--------------------------------\/
                     TextView setbodypart = setText.findViewById(R.id.exerciseItemLayout);
                     ExerciseBodyPart exerciseBodyPart = data.getValue(ExerciseBodyPart.class);
@@ -135,7 +141,6 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
             }
         });
 
-
         bottomSheetDialog.setContentView(bottomSheetView);
         bottomSheetDialog.show();
     }
@@ -144,7 +149,7 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         /*Picasso.get().load(exercises.get(position).getLinkImage()).placeholder(R.color.black).into(holder.disImage);*/
-        Glide.with(context).load(exercises.get(position).getLinkImage()).placeholder(R.color.black).into(holder.disImage);
+        Glide.with(context).load(exercises.get(position).getLinkImage()).placeholder(R.color.colorMain_2).into(holder.disImage);
         holder.nameExercise.setText(exercises.get(position).getNameExercise());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

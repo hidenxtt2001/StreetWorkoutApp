@@ -35,10 +35,10 @@
         android:ellipsize="end"
         android:lines="1"
         android:maxLines="1"
-        android:text="Name Exercise"
+        android:text="@string/name_exercise"
         android:fontFamily="@font/nunito_bold"
-        android:textColor="@color/colorMain"
-        android:textSize="16dp"
+        android:textColor="@color/colorMain_1"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

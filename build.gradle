@@ -3,6 +3,8 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://google.bintray.com/flexbox-layout" }
         mavenCentral()
     }
     dependencies {
@@ -18,6 +20,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://google.bintray.com/flexbox-layout" }
         mavenCentral()
     }
 }

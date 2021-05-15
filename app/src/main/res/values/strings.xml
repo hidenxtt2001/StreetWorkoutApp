@@ -35,6 +35,10 @@
     <string name="your_name">Your Name</string>
     <string name="sign_out">Sign Out</string>
     <string name="save">Save</string>
+    <string name="name_exercise">Name Exercise</string>
+    <string name="name">Name</string>
+    <string name="difficulty_levels">Difficulty levels</string>
+    <string name="muscle_group">Muscle group</string>
     <!-- List gender -->
     <string-array name="names">
         <item>Male</item>

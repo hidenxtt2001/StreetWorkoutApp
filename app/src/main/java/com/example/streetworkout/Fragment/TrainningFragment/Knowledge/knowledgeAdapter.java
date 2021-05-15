@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.streetworkout.Fragment.TrainningFragment.ExerciseLibrary;
-import com.example.streetworkout.Fragment.TrainningFragment.TrainingFragment;
 import com.example.streetworkout.R;
 
 import java.util.List;
@@ -33,7 +32,7 @@ public class knowledgeAdapter extends RecyclerView.Adapter<knowledgeAdapter.View
     @Override
     public knowledgeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context)
-                .inflate(R.layout.training_knowledge_layout, parent, false);
+                .inflate(R.layout.main_fragment_training_knowledge_layout, parent, false);
 
         return new ViewHolder(view);
     }

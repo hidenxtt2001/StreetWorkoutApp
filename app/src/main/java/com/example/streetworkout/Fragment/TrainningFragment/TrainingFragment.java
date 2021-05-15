@@ -1,6 +1,5 @@
 package com.example.streetworkout.Fragment.TrainningFragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.Fragment.TrainningFragment.Knowledge.Knowledge;
 import com.example.streetworkout.Fragment.TrainningFragment.Knowledge.knowledgeAdapter;
 import com.example.streetworkout.Fragment.TrainningFragment.Program.Program;
@@ -91,7 +89,7 @@ public class TrainingFragment extends Fragment {
 
 
         LayoutInflater layout=getLayoutInflater();
-        View mainEx = layout.inflate(R.layout.training_main_excercise,null);
+        View mainEx = layout.inflate(R.layout.main_fragment_training_main_excercise,null);
         FrameLayout formain;
         formain = view.findViewById(R.id.mainExcercise);
         formain.addView(mainEx);

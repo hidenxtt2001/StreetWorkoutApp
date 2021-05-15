@@ -12,40 +12,33 @@
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:scaleType="centerCrop"
-        android:src="@drawable/training_vector_remove"
         android:layout_marginBottom="5dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/training_vector_remove" />
 
-        />
-
-
-
-    <VideoView
+    <com.yqritc.scalablevideoview.ScalableVideoView
         android:id="@+id/vid"
+        app:scalableType="centerCrop"
         android:layout_width="match_parent"
-        android:layout_height="221dp"
-
-        />
-
-
+        android:layout_height="221dp" />
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Name"
         android:fontFamily="@font/nunito_bold"
+        android:text="@string/name"
         android:textColor="@color/colorMain"
-        android:textSize="32dp" />
+        android:textSize="32sp" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
-        android:text="Difficulty levels"
         android:fontFamily="@font/nunito_bold"
+        android:text="@string/difficulty_levels"
         android:textColor="@color/colorTitle_1"
         android:textSize="20dp" />
 
@@ -56,18 +49,17 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:orientation="horizontal"
-        app:flexWrap="wrap"
-         />
+        app:flexWrap="wrap" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/nunito_bold"
-        android:text="Muscle group"
+        android:text="@string/muscle_group"
         android:textColor="@color/colorTitle_1"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/add_muscle"
