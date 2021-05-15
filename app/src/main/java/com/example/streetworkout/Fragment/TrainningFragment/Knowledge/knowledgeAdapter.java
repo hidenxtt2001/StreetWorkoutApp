@@ -53,7 +53,6 @@ clicked();
     {
         Intent exerciseLibrary= new Intent(context, ExerciseLibrary.class);
         context.startActivity(exerciseLibrary);
-
     }
     @Override
     public int getItemCount() {

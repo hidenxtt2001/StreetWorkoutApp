@@ -72,8 +72,8 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
         setnameExercise.setText(exercises.get(pos).getNameExercise());
 
         ScalableVideoView setvideoExercise = bottomSheetView.findViewById(R.id.vid);
-
         try {
+
             setvideoExercise.setDataSource(exercises.get(pos).getLinkVideo().toString());
             setvideoExercise.setLooping(true);
             setvideoExercise.prepare(new MediaPlayer.OnPreparedListener() {

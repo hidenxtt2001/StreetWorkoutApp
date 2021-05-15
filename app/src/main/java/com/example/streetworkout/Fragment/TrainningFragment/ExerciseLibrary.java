@@ -2,6 +2,7 @@ package com.example.streetworkout.Fragment.TrainningFragment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class ExerciseLibrary extends AppCompatActivity {
 
     RecyclerView recyclerView;
@@ -24,16 +27,19 @@ public class ExerciseLibrary extends AppCompatActivity {
     FirebaseDatabase reference;
     String lastnode;
     ProgressBar loading;
+    Toolbar customToolbar;
     boolean isLoaded = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().getDecorView().getBackground().setDither(true);
+        //getWindow().getDecorView().getBackground().setDither(true);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main_fragment_traning_exercise_library);
 
-
+        customToolbar = findViewById(R.id.customToolbar);
+        setSupportActionBar(customToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recyclerView = findViewById(R.id.excercise_library);
         loading = findViewById(R.id.progressBar);
         loading.setVisibility(View.VISIBLE);
@@ -108,4 +114,9 @@ public class ExerciseLibrary extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 }

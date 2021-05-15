@@ -39,6 +39,8 @@
     <string name="name">Name</string>
     <string name="difficulty_levels">Difficulty levels</string>
     <string name="muscle_group">Muscle group</string>
+    <string name="search">Search</string>
+    <string name="exercise_library">Exercise Library</string>
     <!-- List gender -->
     <string-array name="names">
         <item>Male</item>

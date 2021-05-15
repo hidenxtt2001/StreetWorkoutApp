@@ -84,7 +84,7 @@ public class TrainingFragment extends Fragment {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         View.setLayoutManager(llm);
 
-        adapter = new knowledgeAdapter(this.getContext(),arrayList);
+        adapter = new knowledgeAdapter(this.getActivity(),arrayList);
         View.setAdapter(adapter);
 
 
