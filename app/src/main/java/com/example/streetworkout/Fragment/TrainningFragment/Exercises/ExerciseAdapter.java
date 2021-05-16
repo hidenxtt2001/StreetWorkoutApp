@@ -3,6 +3,7 @@ package com.example.streetworkout.Fragment.TrainningFragment.Exercises;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +24,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.yqritc.scalablevideoview.ScalableVideoView;
+import com.potyvideo.library.AndExoPlayerView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHolder> {
+public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHolder> {
 
 
     Context context;
@@ -38,7 +39,7 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
     getExLibValue bodyPart= new getExLibValue();
     getExLibValue Lvl= new getExLibValue();
     private BottomSheetDialog bottomSheetDialog;
-    public exerciseAdapter(Context context) {
+    public ExerciseAdapter(Context context) {
         this.context = context;
         bottomSheetDialog =new BottomSheetDialog(context,R.style.BottomSheetDialogTheme );
     }
@@ -49,6 +50,8 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_fragment_training_exercise_items, parent, false);
         return new ViewHolder(view);
     }
+
+
 
     void clicked(View input, int pos) {
         if(bottomSheetDialog.isShowing()) return;
@@ -66,20 +69,8 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
         TextView setnameExercise = bottomSheetView.findViewById(R.id.title);
         setnameExercise.setText(exercises.get(pos).getNameExercise());
 
-        ScalableVideoView setvideoExercise = bottomSheetView.findViewById(R.id.vid);
-        try {
-
-            setvideoExercise.setDataSource(exercises.get(pos).getLinkVideo().toString());
-            setvideoExercise.setLooping(true);
-            setvideoExercise.prepare(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    setvideoExercise.start();
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        AndExoPlayerView setvideoExercise = bottomSheetView.findViewById(R.id.vid);
+        setvideoExercise.setSource(exercises.get(pos).getLinkVideo().toString());
 
 
         //add lvl
@@ -144,7 +135,7 @@ public class exerciseAdapter extends RecyclerView.Adapter<exerciseAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         /*Picasso.get().load(exercises.get(position).getLinkImage()).placeholder(R.color.black).into(holder.disImage);*/
-        Glide.with(context).load(exercises.get(position).getLinkImage()).placeholder(R.color.colorMain_2).into(holder.disImage);
+        Glide.with(context).load(exercises.get(position).getLinkImage()).placeholder(R.drawable.wolf_icon_black).into(holder.disImage);
         holder.nameExercise.setText(exercises.get(position).getNameExercise());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,19 +11,17 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.streetworkout.Fragment.TrainningFragment.Exercises.Exercise;
-import com.example.streetworkout.Fragment.TrainningFragment.Exercises.exerciseAdapter;
+import com.example.streetworkout.Fragment.TrainningFragment.Exercises.ExerciseAdapter;
 import com.example.streetworkout.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Objects;
-
 public class ExerciseLibrary extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    com.example.streetworkout.Fragment.TrainningFragment.Exercises.exerciseAdapter exerciseAdapter;
+    ExerciseAdapter exerciseAdapter;
     FirebaseDatabase reference;
     String lastnode;
     ProgressBar loading;
@@ -45,7 +43,7 @@ public class ExerciseLibrary extends AppCompatActivity {
         loading = findViewById(R.id.progressBar);
         loading.setVisibility(View.VISIBLE);
 
-        exerciseAdapter = new exerciseAdapter(this);
+        exerciseAdapter = new ExerciseAdapter(this);
         recyclerView.setAdapter(exerciseAdapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getApplicationContext());

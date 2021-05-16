@@ -1,101 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
->
-
-<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:scrollbars="none">
 
-
-    <FrameLayout
-        android:id="@+id/mainExcercise"
-        android:layout_width="match_parent"
-        android:layout_height="240dp">
-
-
-    </FrameLayout>
-
-    <RelativeLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
-        android:layout_marginBottom="20dp"
-
-        >
-
-        <TextView
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Programs"
-            android:textColor="@color/colorMain"
-            android:textSize="25sp"
-            android:fontFamily="@font/nunito_black"
-
-            />
-
-        <TextView
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="View All"
-            android:textColor="@color/colorMain_1"
-            android:textSize="20sp"
-            android:fontFamily="@font/nunito_semibold"
-
-
-            />
-    </RelativeLayout>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/programViewpager"
-        android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
-
-        >
-
-    </androidx.viewpager2.widget.ViewPager2>
-
-    <RelativeLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
-        android:layout_marginBottom="20dp"
-
-        >
-
-        <TextView
-            android:layout_centerVertical="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Knowledge"
-            android:textColor="@color/colorMain"
-            android:textSize="25sp"
-            android:fontFamily="@font/nunito_black"
-
-
-            />
-    </RelativeLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Listknowledge"
-        android:overScrollMode="never"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@null" />
+        android:orientation="vertical">
 
-</LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/mainExcercise"
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/nunito_black"
+                android:text="@string/programs"
+                android:textColor="@color/colorMain"
+                android:textSize="23sp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="@string/view_all"
+                android:textColor="@color/colorMain_1"
+                android:textSize="18sp"
+
+
+                />
+        </RelativeLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/programViewpager"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="40dp"
+            >
+
+        </androidx.viewpager2.widget.ViewPager2>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/nunito_black"
+                android:text="@string/knowledge"
+                android:textColor="@color/colorMain"
+                android:textSize="23sp" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:id="@+id/Listknowledge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:overScrollMode="never" />
+
+    </LinearLayout>
 
 </ScrollView>

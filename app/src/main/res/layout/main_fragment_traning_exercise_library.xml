@@ -12,14 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@string/exercise_library"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+
     </androidx.appcompat.widget.Toolbar>
 
     <ProgressBar
@@ -36,29 +29,13 @@
         android:orientation="vertical">
 
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/training_background_searchbar"
-            android:drawableStart="@drawable/training_vector_search"
-            android:drawablePadding="10dp"
-            android:hint="@string/search"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:padding="8dp"
-            android:textColorHint="@color/white" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/excercise_library"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-
             />
     </LinearLayout>
     <!--
