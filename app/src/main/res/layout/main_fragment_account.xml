@@ -45,6 +45,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -53,128 +54,131 @@
                     android:layout_height="80dp"
                     android:layout_margin="10dp" />
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:baselineAligned="true"
-                        android:orientation="horizontal"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:weightSum="3">
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
+                            android:baselineAligned="true"
+                            android:orientation="horizontal"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:weightSum="3">
 
-                            <TextView
-                                android:id="@+id/workoutShow"
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:text="0"
-                                android:textColor="@color/colorMain_1"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                                <TextView
+                                    android:id="@+id/workoutShow"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="0"
+                                    android:textColor="@color/colorMain_1"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/workout"
+                                    android:textColor="@color/colorTitle_2"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:text="@string/workout"
-                                android:textColor="@color/colorTitle_2"
-                                android:textStyle="bold"
-                                android:textSize="15sp"
-                                />
-                        </LinearLayout>
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
+                                <TextView
+                                    android:id="@+id/followerShow"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="0"
+                                    android:textColor="@color/colorMain_1"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
-                            <TextView
-                                android:id="@+id/followerShow"
-                                android:layout_width="wrap_content"
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/followers"
+                                    android:textColor="@color/colorTitle_2"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:text="0"
-                                android:textColor="@color/colorMain_1"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:text="@string/followers"
-                                android:textColor="@color/colorTitle_2"
-                                android:textStyle="bold"
-                                android:textSize="15sp" />
-                        </LinearLayout>
+                                <TextView
+                                    android:id="@+id/followingShow"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="0"
+                                    android:textColor="@color/colorMain_1"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/followingShow"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:text="0"
-                                android:textColor="@color/colorMain_1"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:text="@string/following"
-                                android:textColor="@color/colorTitle_2"
-                                android:textStyle="bold"
-                                android:textSize="15sp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/following"
+                                    android:textColor="@color/colorTitle_2"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
+                </RelativeLayout>
+
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/nameDislay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
+                    android:fontFamily="@font/nunito_semibold"
                     android:textColor="@color/colorMain_1"
                     android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/nunito_semibold"
-                    />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -188,19 +192,19 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/editProfile"
-                    app:cornerRadius="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/edit_profile"
-                    app:strokeWidth="2.5dp"
-                    app:strokeColor="@color/colorSecondary"
-                    android:textAllCaps="false"
                     android:backgroundTint="@color/colorSub"
+                    android:padding="7dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/edit_profile"
+                    android:textAllCaps="false"
                     android:textColor="@color/colorSecondary"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:padding="7dp"
-                    android:stateListAnimator="@null"/>
+                    app:cornerRadius="15dp"
+                    app:strokeColor="@color/colorSecondary"
+                    app:strokeWidth="2.5dp" />
             </LinearLayout>
 
         </LinearLayout>

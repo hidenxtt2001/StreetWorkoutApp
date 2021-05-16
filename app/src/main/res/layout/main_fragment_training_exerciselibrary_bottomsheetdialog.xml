@@ -16,15 +16,22 @@
         android:scaleType="centerCrop"
         android:src="@drawable/training_vector_remove" />
 
-    <com.potyvideo.library.AndExoPlayerView
-        android:id="@+id/vid"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="195dp"
-        app:andexo_full_screen="false"
-        app:andexo_play_when_ready="true"
-        app:andexo_show_controller="false"
-        app:andexo_resize_mode="Fill"
-        app:andexo_loop="infinite"/>
+        android:layout_height="210dp"
+        android:background="@color/colorMain_2"
+        >
+        <com.potyvideo.library.AndExoPlayerView
+            android:id="@+id/vid"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            app:andexo_full_screen="false"
+            app:andexo_play_when_ready="true"
+            app:andexo_show_controller="false"
+            app:andexo_resize_mode="Fill"
+            app:andexo_loop="infinite"/>
+    </FrameLayout>
+
 
     <TextView
         android:id="@+id/title"

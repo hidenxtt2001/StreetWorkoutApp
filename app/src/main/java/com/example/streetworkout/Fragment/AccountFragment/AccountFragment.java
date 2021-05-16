@@ -30,6 +30,7 @@ import java.util.Objects;
 public class AccountFragment extends Fragment {
 
     View root;
+    boolean isEditProfile = false;
     public static UserInfor userInfor;
     public AccountFragment() {
         // Required empty public constructor
@@ -105,7 +106,10 @@ public class AccountFragment extends Fragment {
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isEditProfile) return;
+                isEditProfile = true;
                 EditProfile_Click(v);
+                isEditProfile = false;
             }
         });
     }
