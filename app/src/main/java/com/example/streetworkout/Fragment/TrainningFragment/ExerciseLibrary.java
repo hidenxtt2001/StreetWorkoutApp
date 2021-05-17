@@ -86,9 +86,23 @@ public class ExerciseLibrary extends AppCompatActivity {
         errorLoading.setVisibility(View.GONE);
         loading.setVisibility(View.VISIBLE);
         recyclerView.clearOnScrollListeners();
+        final boolean[] checkLoaded = {false};
+        final boolean[] checkTimeout = {false};
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                if(checkLoaded[0]) return;
+                checkTimeout[0] = true;
+                loading.setVisibility(View.GONE);
+                errorLoading.setVisibility(View.VISIBLE);
+            }
+        };
         reference.getReference("Exercises").child("Exercise").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(checkTimeout[0]) return;
+                checkLoaded[0] = true;
                 loading.setVisibility(View.GONE);
                 for (DataSnapshot data : snapshot.getChildren()) {
                     Exercise exercise = data.getValue(Exercise.class);
@@ -104,7 +118,7 @@ public class ExerciseLibrary extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                errorLoading.setVisibility(View.VISIBLE);
+                checkLoaded[0] = true;
             }
         });
     }
