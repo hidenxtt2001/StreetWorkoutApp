@@ -199,11 +199,11 @@
                     android:stateListAnimator="@null"
                     android:text="@string/edit_profile"
                     android:textAllCaps="false"
-                    android:textColor="@color/colorSecondary"
+                    android:textColor="@color/colorSecondary_1"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:cornerRadius="15dp"
-                    app:strokeColor="@color/colorSecondary"
+                    app:strokeColor="@color/colorSecondary_1"
                     app:strokeWidth="2.5dp" />
             </LinearLayout>
 

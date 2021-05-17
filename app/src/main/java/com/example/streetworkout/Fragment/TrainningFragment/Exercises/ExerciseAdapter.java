@@ -156,6 +156,11 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
 
     }
 
+    public void clearExerciseItem(){
+        exercises.clear();
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameExercise;
         ImageView disImage;

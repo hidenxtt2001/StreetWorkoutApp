@@ -46,6 +46,7 @@
     <string name="knowledge">Knowledge</string>
     <string name="rep_building">Rep Building</string>
     <string name="april_1_1997">APRIL 1, 1997</string>
+    <string name="something_happended_try_again">Something happended. Try again.</string>
     <!-- List gender -->
     <string-array name="names">
         <item>Male</item>
