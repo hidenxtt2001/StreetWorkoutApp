@@ -82,6 +82,7 @@ public class ExerciseLibrary extends AppCompatActivity {
     }
 
     private void SearchShow(String searchText) {
+
         exerciseAdapter.clearExerciseItem();
         errorLoading.setVisibility(View.GONE);
         loading.setVisibility(View.VISIBLE);
@@ -98,6 +99,7 @@ public class ExerciseLibrary extends AppCompatActivity {
                 errorLoading.setVisibility(View.VISIBLE);
             }
         };
+        handler.postDelayed(runnable, 10000);
         reference.getReference("Exercises").child("Exercise").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
