@@ -73,4 +73,7 @@ dependencies {
     // Video Library
     implementation 'com.yqritc:android-scalablevideoview:1.0.4'
 
+    //Palette
+    implementation 'androidx.palette:palette:1.0.0'
+
 }
