@@ -64,8 +64,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingStart="50dp"
-                android:paddingEnd="50dp">
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp">
 
                 <EditText
                     android:id="@+id/yourname_edit"
@@ -162,14 +162,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/menu_account_fragment_editprofile_background"
-                    android:padding="4dp"
-                    />
+                    android:padding="4dp" />
             </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="40dp">
+                android:layout_margin="30dp">
 
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
@@ -186,8 +185,8 @@
                     app:backgroundTint="@color/white"
                     app:cornerRadius="15dp"
                     app:icon="@drawable/menu_fragment_account_editprofile_signout"
-                    app:iconPadding="15dp"
-                    app:iconSize="30dp"
+                    app:iconPadding="10dp"
+                    app:iconSize="25dp"
                     app:iconTint="@null" />
 
                 <com.google.android.material.button.MaterialButton
@@ -196,10 +195,10 @@
                     android:layout_alignParentEnd="true"
                     android:backgroundTint="@color/colorSecondary"
                     android:onClick="SaveProfile_Click"
-                    android:paddingStart="25dp"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="25dp"
-                    android:paddingBottom="10dp"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
                     android:shadowDx="0"
                     android:shadowDy="0"
                     android:text="@string/save"
@@ -210,8 +209,8 @@
                     app:backgroundTint="@color/colorSub"
                     app:cornerRadius="15dp"
                     app:icon="@drawable/menu_fragment_account_editprofile_save"
-                    app:iconPadding="15dp"
-                    app:iconSize="30dp"
+                    app:iconPadding="10dp"
+                    app:iconSize="25dp"
                     app:iconTint="@null" />
             </RelativeLayout>
         </LinearLayout>

@@ -68,8 +68,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="5dp"
                     android:src="@drawable/training_vector_love"
@@ -82,7 +82,7 @@
                     android:layout_gravity="center_vertical"
                     android:text="100"
                     android:textColor="@color/colorSub"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:fontFamily="@font/nunito_regular"/>
 
 
@@ -95,8 +95,8 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="5dp"
                     android:src="@drawable/training_vector_chat" />
@@ -105,10 +105,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/nunito_regular"
                     android:text="999"
                     android:textColor="@color/colorSub"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/nunito_regular"/>
+                    android:textSize="15sp" />
 
 
             </LinearLayout>
@@ -127,10 +127,10 @@
             android:gravity="center_horizontal">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:src="@drawable/training_vector_fire" />
 
             <TextView
@@ -139,7 +139,7 @@
                 android:layout_gravity="center_vertical"
                 android:text="Beginner"
                 android:textColor="@color/colorSub"
-                android:textSize="17sp"
+                android:textSize="15sp"
                 android:fontFamily="@font/nunito_regular"/>
         </LinearLayout>
 

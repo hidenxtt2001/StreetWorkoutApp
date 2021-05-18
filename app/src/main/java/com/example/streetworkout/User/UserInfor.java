@@ -18,7 +18,6 @@ public class UserInfor implements Serializable {
     private String gender = "male";
     private String country = "VN";
     private int loginTypes; // 1 : Google , 2 : Facebook
-    private String accessToken;
     private int experienceLevel;
 
     public Status getStatus() {
@@ -44,15 +43,6 @@ public class UserInfor implements Serializable {
     public void setLoginTypes(int loginTypes) {
         this.loginTypes = loginTypes;
     }
-
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
-
 
     public static class Status implements Serializable {
         private int workoutStatus = 0;

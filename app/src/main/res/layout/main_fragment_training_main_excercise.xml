@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,83 +10,87 @@
         android:scaleType="fitXY"
         android:src="@drawable/training_dark_linear_gradient" />
 
-    <TextView
-        android:id="@+id/datetime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="110dp"
-        android:text="APRIL 1, 1997"
-        android:textColor="@color/colorTitle_2"
-        android:textSize="16sp"
-        android:fontFamily="@font/nunito_light"/>
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/datetime"
-        android:layout_marginStart="30dp"
-        android:text="Rep Building"
-        android:textColor="@color/colorSub"
-        android:textSize="30sp"
-        android:fontFamily="@font/nunito_bold"
-        />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="30dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/training_vector_fire" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="Beginner"
-                android:textColor="@color/colorSub"
-                android:textSize="17sp"
-                android:fontFamily="@font/nunito_regular"
-                />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/datetime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp">
+            android:fontFamily="@font/nunito_light"
+            android:text="@string/april_1_1997"
+            android:textColor="@color/colorTitle_2"
+            android:textSize="16sp" />
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="11dp"
-                android:src="@drawable/training_vector_muscle" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_bold"
+            android:text="@string/rep_building"
+            android:textColor="@color/colorSub"
+            android:textSize="27sp" />
 
-            <TextView
+        <LinearLayout
+            android:id="@+id/inforGroupExercise"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="Legs"
-                android:textColor="@color/colorSub"
-                android:fontFamily="@font/nunito_regular"
-                android:textSize="17sp" />
+                android:layout_marginEnd="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/training_vector_fire" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/nunito_regular"
+                    android:text="Beginner"
+                    android:textColor="@color/colorSub"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/training_vector_muscle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/nunito_regular"
+                    android:text="Legs"
+                    android:textColor="@color/colorSub"
+                    android:textSize="17sp" />
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
-
-
     </LinearLayout>
 
 
@@ -95,7 +98,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -106,7 +110,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="5dp"
                 android:src="@drawable/training_vector_love"
 
                 />
@@ -115,10 +119,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:fontFamily="@font/nunito_regular"
                 android:text="100"
                 android:textColor="@color/colorSub"
-                android:textSize="18sp"
-                android:fontFamily="@font/nunito_regular"/>
+                android:textSize="15sp" />
 
 
         </LinearLayout>
@@ -126,23 +130,23 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp">
+            >
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="5dp"
                 android:src="@drawable/training_vector_chat" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:fontFamily="@font/nunito_regular"
                 android:text="999"
                 android:textColor="@color/colorSub"
-                android:textSize="18sp"
-                android:fontFamily="@font/nunito_regular"/>
+                android:textSize="15sp" />
 
 
         </LinearLayout>

@@ -175,7 +175,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            UILoginSuccess(user,1,idToken);
+                            UILoginSuccess(user,1);
                         } else {
                             // If sign in fails, display a message to the user.
                         }
@@ -226,7 +226,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            UILoginSuccess(user,2,token.getToken());
+                            UILoginSuccess(user,2);
                         } else {
                             // If sign in fails, display a message to the user.
                         }
@@ -236,7 +236,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //endregion
 
-    private void UILoginSuccess(FirebaseUser user,int loginTypes,String accessToken) {
+    private void UILoginSuccess(FirebaseUser user,int loginTypes) {
 
         customProgressDialog.show();
         final boolean[] checkLoginSuceess = {false};
@@ -251,7 +251,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     SetProfile(snapshot.getValue(UserInfor.class));
                 } else {
-                    SetupProfile(user,loginTypes,accessToken);
+                    SetupProfile(user,loginTypes);
                 }
 
             }
@@ -278,13 +278,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void SetupProfile(FirebaseUser user, int loginTypes,String token){
+    private void SetupProfile(FirebaseUser user, int loginTypes){
         UserInfor userInfor = new UserInfor(user.getUid());
         userInfor.setDisplayName(user.getDisplayName());
         userInfor.setEmail(user.getEmail());
         userInfor.setUrlAvatar(user.getPhotoUrl().toString());
         userInfor.setLoginTypes(loginTypes);
-        userInfor.setAccessToken(token);
         Intent inputProfile = new Intent(getApplicationContext(), InputUserProfile.class);
         inputProfile.putExtra("userProfile", userInfor);
         startActivityForResult(inputProfile, RC_INPUT);

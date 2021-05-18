@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:padding="5dp">
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp">
+        android:layout_height="wrap_content">
 
 
         <androidx.cardview.widget.CardView
 
             android:layout_width="55dp"
-            app:cardElevation="0dp"
             android:layout_height="55dp"
             app:cardBackgroundColor="@color/colorMain_1"
-            tools:ignore="MissingConstraints"
-            app:cardCornerRadius="15dp">
+            app:cardCornerRadius="15dp"
+            app:cardElevation="0dp"
+            tools:ignore="MissingConstraints">
+
             <ImageView
-                android:layout_margin="8dp"
                 android:id="@+id/imageKnowledge"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_margin="8dp" />
 
         </androidx.cardview.widget.CardView>
 
@@ -35,10 +34,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="20dp"
+            android:fontFamily="@font/nunito_bold"
             android:text="Main Title"
             android:textColor="@color/colorTitle"
-            android:textSize="18sp"
-            android:fontFamily="@font/nunito_bold"/>
+            android:textSize="18sp" />
     </LinearLayout>
 
     <ImageView
@@ -47,7 +46,6 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center_vertical"
-        android:layout_marginEnd="30dp"
         android:src="@drawable/training_vector_arrow" />
 
 </RelativeLayout>

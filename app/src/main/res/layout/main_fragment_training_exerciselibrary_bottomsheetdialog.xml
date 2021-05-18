@@ -9,18 +9,30 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
+        android:layout_width="157dp"
+        android:layout_height="20dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="5dp"
+        android:contentDescription="TODO"
         android:scaleType="centerCrop"
         android:src="@drawable/training_vector_remove" />
 
-    <com.yqritc.scalablevideoview.ScalableVideoView
-        android:id="@+id/vid"
-        app:scalableType="centerCrop"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="221dp" />
+        android:layout_height="210dp"
+        android:background="@color/colorMain_2"
+        >
+        <com.potyvideo.library.AndExoPlayerView
+            android:id="@+id/vid"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            app:andexo_full_screen="false"
+            app:andexo_play_when_ready="true"
+            app:andexo_show_controller="false"
+            app:andexo_resize_mode="Fill"
+            app:andexo_loop="infinite"/>
+    </FrameLayout>
+
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -30,17 +42,17 @@
         android:fontFamily="@font/nunito_bold"
         android:text="@string/name"
         android:textColor="@color/colorMain"
-        android:textSize="32sp" />
+        android:textSize="28sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/nunito_bold"
         android:text="@string/difficulty_levels"
         android:textColor="@color/colorTitle_1"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/add_lvl"
@@ -55,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/nunito_bold"
         android:text="@string/muscle_group"
         android:textColor="@color/colorTitle_1"

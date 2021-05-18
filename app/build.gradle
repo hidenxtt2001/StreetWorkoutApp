@@ -70,8 +70,8 @@ dependencies {
     //Google Flexbox
     implementation 'com.google.android:flexbox:2.0.1'
 
-    // Video Library
-    implementation 'com.yqritc:android-scalablevideoview:1.0.4'
+    //Video View
+    implementation 'com.github.HamidrezaAmz:MagicalExoPlayer:2.0.6'
 
     //Palette
     implementation 'androidx.palette:palette:1.0.0'

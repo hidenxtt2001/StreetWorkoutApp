@@ -9,12 +9,14 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/customToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/exercise_library"
@@ -22,45 +24,69 @@
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
+    <EditText
+        android:layout_marginBottom="10dp"
+        android:id="@+id/search_bar_custom"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:indeterminateTint="@color/colorMain" />
+        android:layout_below="@id/customToolbar"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/training_background_searchbar"
+        android:drawableStart="@drawable/training_vector_search"
+        android:drawablePadding="10dp"
+        android:hint="@string/search"
+        android:importantForAutofill="no"
+        android:textSize="15sp"
+        android:textColor="@color/colorMain_2"
+        android:textStyle="bold"
+        android:inputType="text"
+        android:textCursorDrawable="@drawable/main_fragment_training_exercise_custom_search_cursor"
+        android:padding="8dp" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/customToolbar"
+        android:layout_below="@id/search_bar_custom"
         android:orientation="vertical">
 
-
-        <EditText
-            android:layout_width="match_parent"
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/training_background_searchbar"
-            android:drawableStart="@drawable/training_vector_search"
-            android:drawablePadding="10dp"
-            android:hint="@string/search"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:padding="8dp"
-            android:textColorHint="@color/white" />
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/colorMain_2" />
+
+        <LinearLayout
+            android:id="@+id/errorLoading"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/wolf_icon_gray"
+                android:contentDescription="TODO" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/something_happended_try_again"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/excercise_library"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-
-            />
-    </LinearLayout>
+            android:layout_gravity="center_horizontal" />
+    </RelativeLayout>
     <!--
     </ScrollView>-->
 </RelativeLayout>
