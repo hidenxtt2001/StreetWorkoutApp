@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toolbar;
 
+import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExercise;
 import com.example.streetworkout.R;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -67,16 +68,10 @@ public class CalenderFragment extends Fragment {
 
 
 
-    private List<ExercisesEachDay> getListExercises(){
-        List<ExercisesEachDay> list = new ArrayList<>();
-        list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Chest"));
-        list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Whole body"));
-        list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Legs"));
-        list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Chest"));
-        list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Chest"));
-        list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Chest"));
-        list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Chest"));
-        list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Chest"));
+    private List<WeekExercise> getListExercises(){
+        List<WeekExercise> list = new ArrayList<>();
+        list.add(new WeekExercise("Chest"));
+        list.add(new WeekExercise("Legs"));
         return list;
     }
 
