@@ -70,8 +70,8 @@ public class CalenderFragment extends Fragment {
     private List<ExercisesEachDay> getListExercises(){
         List<ExercisesEachDay> list = new ArrayList<>();
         list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Chest"));
-        list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Chest"));
-        list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Chest"));
+        list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Whole body"));
+        list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Legs"));
         list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Chest"));
         list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Chest"));
         list.add(new ExercisesEachDay(R.drawable.calendar_image_dayone, "Workouts", "Chest"));

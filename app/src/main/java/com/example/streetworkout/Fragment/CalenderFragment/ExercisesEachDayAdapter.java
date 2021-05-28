@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +40,7 @@ public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachD
         holder.imageDay.setImageResource(exercisesEachDay.getResourceImg());
         holder.txtDescribe.setText(exercisesEachDay.getNameDescribe());
         holder.txtExercise.setText(exercisesEachDay.getNameExercise());
+
     }
 
     @Override
