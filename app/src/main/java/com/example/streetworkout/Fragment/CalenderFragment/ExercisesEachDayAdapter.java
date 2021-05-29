@@ -1,5 +1,6 @@
 package com.example.streetworkout.Fragment.CalenderFragment;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExercise;
+import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseDaily;
 import com.example.streetworkout.R;
 
 import java.util.List;
 
 public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachDayAdapter.ExercisesViewHolder> {
+    Context context;
+    private List<WeekExerciseDaily> mListWeek;
 
-    private List<WeekExercise> mListWeek;
-
-    public void setData(List<WeekExercise> list) {
+    public void setData(List<WeekExerciseDaily> list) {
         this.mListWeek = list;
         notifyDataSetChanged();
     }
@@ -33,12 +35,12 @@ public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachD
 
     @Override
     public void onBindViewHolder(@NonNull ExercisesEachDayAdapter.ExercisesViewHolder holder, int position) {
-        WeekExercise weekExercise = mListWeek.get(position);
-        if(weekExercise == null) {
+        WeekExerciseDaily weekExerciseDaily = mListWeek.get(position);
+        if(weekExerciseDaily == null) {
             return;
         }
 
-        holder.txtNameDay.setText(weekExercise.getNameWeekExercise());
+/*        holder.txtNameDay.setText(weekExerciseDaily.getNameWeekExercise());*/
         holder.txtCountDay.setText(String.valueOf(position+1));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

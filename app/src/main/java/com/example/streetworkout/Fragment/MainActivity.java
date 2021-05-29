@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Display;
 import android.view.MenuItem;
 
@@ -17,6 +19,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.streetworkout.Fragment.AccountFragment.AccountFragment;
 import com.example.streetworkout.Fragment.CalenderFragment.CalenderFragment;
+import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExercise;
+import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseUser;
 import com.example.streetworkout.Fragment.NewsFeedFragment.NewsFeedFragment;
 import com.example.streetworkout.Fragment.TrainningFragment.TrainingFragment;
 import com.example.streetworkout.Login.LoginActivity;
@@ -25,8 +29,11 @@ import com.example.streetworkout.User.UserInfor;
 import com.facebook.login.LoginManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import static com.example.streetworkout.R.id;
@@ -46,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences UserData;
     SharedPreferences.Editor EditUserData;
+
+    // Load Data Week
+    public static WeekExerciseUser weekExerciseUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Login Status
@@ -64,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             Gson gson = new Gson();
             userInfor = gson.fromJson(UserData.getString("userProfile", null),UserInfor.class);
             AccountFragment.userInfor = userInfor;
+            loadDataWeekUser();
             getSupportFragmentManager().beginTransaction().replace(id.fragment_container, new AccountFragment()).commit();
         }
         // Set up bottom navigation
@@ -111,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode){
             case RC_LOGINACCOUNT:
                 if(resultCode != RESULT_OK){
+                    loadDataWeekUser();
                     finish();
                 }
                 else {
@@ -173,5 +186,58 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return false;
+    }
+
+    //load data week exercise user
+    public void loadDataWeekUser(){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                checkWeek();
+            }
+        };
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(runnable, 1000);
+    }
+    public void checkWeek(){
+        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
+        mRef.child("WeekExercises").child("WeekExerciseUser").child(userInfor.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull  DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    weekExerciseUser = snapshot.getValue(WeekExerciseUser.class);
+                }
+                else {
+                    mRef.child("WeekExercises").child("WeekExercise").limitToFirst(1).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull  DataSnapshot snapshot) {
+                            WeekExercise weekExercise = null;
+                            if(snapshot.exists()){
+                                for (DataSnapshot snap: snapshot.getChildren()
+                                     ) {
+                                    weekExercise = snap.getValue(WeekExercise.class);
+                                    break;
+                                }
+                                weekExerciseUser = new WeekExerciseUser(weekExercise.getIdWeekExercise());
+                                mRef.child("WeekExercises").child("WeekExerciseUser").child(userInfor.getUid()).setValue(weekExerciseUser);
+                            }
+                            else{}
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull  DatabaseError error) {
+
+                        }
+                    });
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull  DatabaseError error) {
+
+            }
+        });
     }
 }

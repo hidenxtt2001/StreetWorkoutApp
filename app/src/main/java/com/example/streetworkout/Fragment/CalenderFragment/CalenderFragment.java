@@ -19,6 +19,7 @@ import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExer
 import com.example.streetworkout.R;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,8 +58,8 @@ public class CalenderFragment extends Fragment {
         recyclerViewExercise.setLayoutManager(linearLayoutManager);
 
         exercisesEachDayAdapter = new ExercisesEachDayAdapter();
-        exercisesEachDayAdapter.setData(getListExercises());
-        recyclerViewExercise.setAdapter(exercisesEachDayAdapter);
+        /*exercisesEachDayAdapter.setData(getListExercises());
+        recyclerViewExercise.setAdapter(exercisesEachDayAdapter);*/
 
         /*initToolbarAnimation();*/
 
@@ -68,12 +69,7 @@ public class CalenderFragment extends Fragment {
 
 
 
-    private List<WeekExercise> getListExercises(){
-        List<WeekExercise> list = new ArrayList<>();
-        list.add(new WeekExercise("Chest"));
-        list.add(new WeekExercise("Legs"));
-        return list;
-    }
+
 
     private void initToolbarAnimation(){
         collapsingToolbarLayout.setTitle(getString(R.string.app_name));
@@ -88,6 +84,10 @@ public class CalenderFragment extends Fragment {
                 collapsingToolbarLayout.setStatusBarScrimColor(getResources().getColor(R.color.colorMain));
             }
         });
+
+    }
+
+    private void initData(){
 
     }
 
