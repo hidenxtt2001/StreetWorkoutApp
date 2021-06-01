@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences UserData;
     SharedPreferences.Editor EditUserData;
 
-    // Load Data Week
+    // Load Data Week -> Storage
     public static WeekExerciseUser weekExerciseUser;
 
     @Override
@@ -199,14 +199,19 @@ public class MainActivity extends AppCompatActivity {
         Handler handler = new Handler(Looper.getMainLooper());
         handler.postDelayed(runnable, 1000);
     }
+
+    // Check Week Exercises of User have existed
     public void checkWeek(){
         DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
+        // find in WeekExercises in Firebase
         mRef.child("WeekExercises").child("WeekExerciseUser").child(userInfor.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull  DataSnapshot snapshot) {
+                // Check if the data already exists
                 if(snapshot.exists()){
                     weekExerciseUser = snapshot.getValue(WeekExerciseUser.class);
                 }
+                // Create new Week Exercise for User
                 else {
                     mRef.child("WeekExercises").child("WeekExercise").limitToFirst(1).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override

@@ -12,17 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExercise;
 import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseDaily;
+import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseUser;
 import com.example.streetworkout.R;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachDayAdapter.ExercisesViewHolder> {
     Context context;
     private List<WeekExerciseDaily> mListWeek;
 
-    public void setData(List<WeekExerciseDaily> list) {
+
+    public void setData(Context context, List<WeekExerciseDaily> list) {
         this.mListWeek = list;
-        notifyDataSetChanged();
+        this.context = context;
     }
 
     @NonNull
@@ -40,7 +43,6 @@ public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachD
             return;
         }
 
-/*        holder.txtNameDay.setText(weekExerciseDaily.getNameWeekExercise());*/
         holder.txtCountDay.setText(String.valueOf(position+1));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
