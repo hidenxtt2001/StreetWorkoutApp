@@ -213,7 +213,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // Create new Week Exercise for User
                 else {
-                    mRef.child("WeekExercises").child("WeekExercise").limitToFirst(1).addListenerForSingleValueEvent(new ValueEventListener() {
+                    int checkLevel = (userInfor.getExperienceLevel() * 5) + 1;
+                    mRef.child("WeekExercises").child("WeekExercise").limitToFirst(checkLevel).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull  DataSnapshot snapshot) {
                             WeekExercise weekExercise = null;
