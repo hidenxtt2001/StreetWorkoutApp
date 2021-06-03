@@ -12,6 +12,10 @@ public class WeekExerciseUser implements Serializable {
     private boolean day6 = false;
     private boolean day7 = false;
 
+    public WeekExerciseUser(){
+
+    }
+
     public WeekExerciseUser(String idWeekExercise) {
         this.idWeekExercise = idWeekExercise;
     }

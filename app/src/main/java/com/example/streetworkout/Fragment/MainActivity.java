@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PixelFormat;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.Display;
 import android.view.MenuItem;
+import android.view.Window;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +28,7 @@ import com.example.streetworkout.Fragment.TrainningFragment.TrainingFragment;
 import com.example.streetworkout.Login.LoginActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.User.UserInfor;
+import com.example.streetworkout.User.ViewModel.UserInforViewModel;
 import com.facebook.login.LoginManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,8 +57,17 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences UserData;
     SharedPreferences.Editor EditUserData;
 
+    public static UserInforViewModel userInforViewModel;
+
     // Load Data Week -> Storage
     public static WeekExerciseUser weekExerciseUser;
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        Window window = getWindow();
+        window.setFormat(PixelFormat.RGBA_8888);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -202,48 +214,6 @@ public class MainActivity extends AppCompatActivity {
 
     // Check Week Exercises of User have existed
     public void checkWeek(){
-        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
-        // find in WeekExercises in Firebase
-        mRef.child("WeekExercises").child("WeekExerciseUser").child(userInfor.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull  DataSnapshot snapshot) {
-                // Check if the data already exists
-                if(snapshot.exists()){
-                    weekExerciseUser = snapshot.getValue(WeekExerciseUser.class);
-                }
-                // Create new Week Exercise for User
-                else {
-                    int checkLevel = (userInfor.getExperienceLevel() * 5) + 1;
-                    mRef.child("WeekExercises").child("WeekExercise").limitToFirst(checkLevel).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull  DataSnapshot snapshot) {
-                            WeekExercise weekExercise = null;
-                            if(snapshot.exists()){
-                                for (DataSnapshot snap: snapshot.getChildren()
-                                     ) {
-                                    weekExercise = snap.getValue(WeekExercise.class);
-                                    break;
-                                }
-                                weekExerciseUser = new WeekExerciseUser(weekExercise.getIdWeekExercise());
-                                mRef.child("WeekExercises").child("WeekExerciseUser").child(userInfor.getUid()).setValue(weekExerciseUser);
-                            }
-                            else{}
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull  DatabaseError error) {
-
-                        }
-                    });
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull  DatabaseError error) {
-
-            }
-        });
+        userInforViewModel = new UserInforViewModel();
     }
 }
