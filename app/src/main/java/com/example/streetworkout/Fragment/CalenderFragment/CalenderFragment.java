@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class CalenderFragment extends Fragment {
@@ -41,7 +41,7 @@ public class CalenderFragment extends Fragment {
     private  View root;
     private RecyclerView recyclerViewExercise;
     private ExercisesEachDayAdapter exercisesEachDayAdapter;
-    private UserInforViewModel userInforViewModel;
+
     private ProgressBar progressBar;
 
     public static WeekExerciseUser weekExerciseUser;
@@ -62,26 +62,21 @@ public class CalenderFragment extends Fragment {
         recyclerViewExercise.setLayoutManager(linearLayoutManager);
 
 
-        userInforViewModel = MainActivity.userInforViewModel;
 
 
-        exercisesEachDayAdapter = new ExercisesEachDayAdapter(this.getActivity(),userInforViewModel.getWeekExerciseDaily().getValue());
+
+        exercisesEachDayAdapter = new ExercisesEachDayAdapter(this.getContext(),MainActivity.userInforViewModel.getWeekExerciseDaily().getValue());
         recyclerViewExercise.setAdapter(exercisesEachDayAdapter);
 
-        userInforViewModel.getWeekExerciseUser().observe(this.getActivity(), new Observer<WeekExerciseUser>() {
-            @Override
-            public void onChanged(WeekExerciseUser weekExerciseUser) {
-                exercisesEachDayAdapter.notifyDataSetChanged();
 
-            }
-        });
-
-        userInforViewModel.getWeekExerciseDaily().observe(this.getActivity(), new Observer<ArrayList<WeekExerciseDaily>>() {
+        MainActivity.userInforViewModel.getWeekExerciseDaily().observe(this.getActivity(), new Observer<ArrayList<WeekExerciseDaily>>() {
             @Override
             public void onChanged(ArrayList<WeekExerciseDaily> weekExerciseDailies) {
-                if(exercisesEachDayAdapter.getItemCount() > 0){
+
+                if(weekExerciseDailies.size() > 0){
                     progressBar = root.findViewById(R.id.main_calendar_frag_progressbar);
                     progressBar.setVisibility(View.GONE);
+                    exercisesEachDayAdapter.notifyDataSetChanged();
                 }
             }
         });

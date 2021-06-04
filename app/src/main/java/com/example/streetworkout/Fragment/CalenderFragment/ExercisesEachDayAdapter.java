@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachDayAdapter.ExercisesViewHolder> {
     Context context;
-    private ArrayList<WeekExerciseDaily> mListWeek;
+    ArrayList<WeekExerciseDaily> mListWeek;
     private String nameExercise;
 
     public ExercisesEachDayAdapter(Context context, ArrayList<WeekExerciseDaily> list) {

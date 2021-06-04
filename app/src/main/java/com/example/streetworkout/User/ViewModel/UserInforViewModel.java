@@ -20,11 +20,11 @@ import java.util.ArrayList;
 public class UserInforViewModel extends ViewModel {
     private MutableLiveData<WeekExerciseUser> weekExerciseUser;
     public LiveData<WeekExerciseUser> getWeekExerciseUser() { return weekExerciseUser;};
-    static WeekExerciseUser mweekExerciseUser;
+    private WeekExerciseUser mweekExerciseUser;
 
     private MutableLiveData<ArrayList<WeekExerciseDaily>> weekExerciseDaily;
     public LiveData<ArrayList<WeekExerciseDaily>> getWeekExerciseDaily() { return weekExerciseDaily;};
-    static ArrayList<WeekExerciseDaily> mweekExerciseDaily;
+    private ArrayList<WeekExerciseDaily> mweekExerciseDaily;
 
     public UserInforViewModel(){
         weekExerciseUser = new MutableLiveData<WeekExerciseUser>();
@@ -53,7 +53,8 @@ public class UserInforViewModel extends ViewModel {
                                 temp.add(snapshotChild.getValue(WeekExerciseDaily.class));
                             }
 
-                            mweekExerciseDaily = temp;
+                            mweekExerciseDaily.clear();
+                            mweekExerciseDaily.addAll(temp);
                             weekExerciseUser.postValue(mweekExerciseUser);
                             weekExerciseDaily.postValue(mweekExerciseDaily);
                         }
@@ -89,7 +90,8 @@ public class UserInforViewModel extends ViewModel {
                                             temp.add(snapshotChild.getValue(WeekExerciseDaily.class));
                                         }
 
-                                        mweekExerciseDaily = temp;
+                                        mweekExerciseDaily.clear();
+                                        mweekExerciseDaily.addAll(temp);
                                         weekExerciseUser.postValue(mweekExerciseUser);
                                         weekExerciseDaily.postValue(mweekExerciseDaily);
                                     }
