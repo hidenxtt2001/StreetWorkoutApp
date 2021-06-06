@@ -1,6 +1,7 @@
 package com.example.streetworkout.Fragment.CalenderFragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercises.DetailsGroupExercises;
 import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseDaily;
 import com.example.streetworkout.R;
 
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachDayAdapter.ExercisesViewHolder> {
     Context context;
     ArrayList<WeekExerciseDaily> mListWeek;
-    private String nameExercise;
+
 
     public ExercisesEachDayAdapter(Context context, ArrayList<WeekExerciseDaily> list) {
         this.mListWeek = list;
@@ -39,6 +41,7 @@ public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachD
         if (weekExerciseDaily == null) {
             return;
         }
+        String nameExercise ="";
 
         switch (position) {
             case 0:
@@ -67,11 +70,16 @@ public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachD
         holder.txtCountDay.setText(String.valueOf(position + 1));
         holder.txtNameDay.setText(nameExercise);
 
+        final String lastNameExercise = nameExercise;
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                String getInfoIdGroup = mListWeek.get(position).getIdGroupExercise();
+                Intent intent = new Intent(v.getContext(), DetailsGroupExercises.class);
+                intent.putExtra("getInfoIdGroup", getInfoIdGroup);
+                intent.putExtra("getNameExercise", lastNameExercise);
+                v.getContext().startActivity(intent);
             }
         });
 

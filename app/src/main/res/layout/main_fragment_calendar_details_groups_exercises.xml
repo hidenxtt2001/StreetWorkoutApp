@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.CalenderFragment.DetailsGroupExercises.DetailsGroupExercises"
-    android:background="@drawable/abs"
-    android:id="@+id/image_background_group_exercises">
+    tools:context=".Fragment.CalenderFragment.DetailsGroupExercises.DetailsGroupExercises">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/image_background_group_exercises"
+        android:scaleType="centerCrop"/>
     
     <View
         android:layout_width="match_parent"
@@ -25,7 +28,8 @@
             android:src="@drawable/logo_back"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="30dp"
-            android:id="@+id/image_button_back"/>
+            android:id="@+id/image_button_back"
+            android:onClick="backCalendarFragment"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -43,13 +47,14 @@
             android:id="@+id/txt_name_group_exercise"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rep Building"
+            android:text="Tabata"
             android:textStyle="bold"
             android:textSize="30sp"
             android:paddingRight="30dp"
             android:paddingTop="10dp"
             android:textColor="@color/white"
-            android:paddingLeft="30dp" />
+            android:paddingLeft="30dp"
+            android:visibility="invisible"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,7 +93,8 @@
                 android:layout_marginStart="10dp"
                 android:text="Legs"
                 android:textSize="18sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:visibility="invisible"/>
 
         </LinearLayout>
     </LinearLayout>
