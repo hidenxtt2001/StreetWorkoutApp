@@ -63,8 +63,6 @@ public class CalenderFragment extends Fragment {
 
 
 
-
-
         exercisesEachDayAdapter = new ExercisesEachDayAdapter(this.getContext(),MainActivity.userInforViewModel.getWeekExerciseDaily().getValue());
         recyclerViewExercise.setAdapter(exercisesEachDayAdapter);
 

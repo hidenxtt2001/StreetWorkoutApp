@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StreetWorkout">
-        <activity android:name=".Fragment.CalenderFragment.DetailsGroupExercises.DetailsGroupExercises"></activity>
+        <activity android:name=".Fragment.CalenderFragment.DetailsGroupExercises.ExerciseWorkoutActivity"></activity>
+        <activity android:name=".Fragment.CalenderFragment.DetailsGroupExercises.DetailsGroupExercises" />
         <activity android:name=".Fragment.TrainningFragment.ExerciseLibrary" />
         <activity android:name=".Login.UserInformation.InputUserProfile" />
         <activity android:name=".SplashScreen.SplashScreen">

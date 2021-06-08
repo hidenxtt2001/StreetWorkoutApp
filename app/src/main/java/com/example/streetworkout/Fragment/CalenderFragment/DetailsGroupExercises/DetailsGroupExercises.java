@@ -3,6 +3,7 @@ package com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercise
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -118,5 +119,14 @@ public class DetailsGroupExercises extends AppCompatActivity {
 
     public void backCalendarFragment(View view) {
         onBackPressed();
+    }
+
+    public void passDataInNextActivity(View view) {
+
+        String getNameExercise = getIntent().getStringExtra("getNameExercise");
+        Intent intent = new Intent(this, ExerciseWorkoutActivity.class);
+        intent.putExtra("getGroupExercise", groupExercise);
+        intent.putExtra("getNameExercise", getNameExercise);
+        startActivity(intent);
     }
 }

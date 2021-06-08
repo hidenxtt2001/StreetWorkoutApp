@@ -131,7 +131,8 @@
             android:layout_alignParentBottom="true"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/main_calendar_fragment_logo_next"
-            android:layout_marginBottom="80dp"/>
+            android:layout_marginBottom="80dp"
+            android:onClick="passDataInNextActivity"/>
     </RelativeLayout>
 
 </RelativeLayout>
