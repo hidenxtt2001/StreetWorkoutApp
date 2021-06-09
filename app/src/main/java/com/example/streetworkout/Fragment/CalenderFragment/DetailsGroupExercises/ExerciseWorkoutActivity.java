@@ -2,6 +2,7 @@ package com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercise
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 
 import com.example.streetworkout.Fragment.CalenderFragment.DetailsExercises.GroupExerciseRound;
 import com.example.streetworkout.Fragment.CalenderFragment.DetailsExercises.GroupExerciseWarmup;
@@ -21,10 +23,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ExerciseWorkoutActivity extends AppCompatActivity {
 
-    private TextView txtNameExercise, txtNameGroup;
+    private TextView txtNameGroup;
     private GroupExercise groupExercise;
     private String getNameExercise;
     private RecyclerView recyclerViewWarmUp, recyclerViewRound;
@@ -40,13 +43,11 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
         setContentView(R.layout.main_fragment_calendar_exercise_workout_activity);
 
         txtNameGroup = findViewById(R.id.txt_name_group_exercise);
-        txtNameExercise = findViewById(R.id.name_exercise);
 
         groupExercise = (GroupExercise)this.getIntent().getSerializableExtra("getGroupExercise");
         getNameExercise = getIntent().getStringExtra("getNameExercise");
 
         txtNameGroup.setText(groupExercise.getNameGroupExercise());
-        txtNameExercise.setText(getNameExercise);
 
         //set up recycler view Warm-up
         listExerciseWarmUp = new ArrayList<Exercise>();
@@ -67,10 +68,6 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
         getDataWarmUp();
         getDataRound();
 
-    }
-
-    public void backActivity(View view) {
-        onBackPressed();
     }
 
     //get data from firebase for warm-up exercise
@@ -137,5 +134,9 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void backActivity(View view) {
+        onBackPressed();
     }
 }

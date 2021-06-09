@@ -24,6 +24,7 @@
     <color name="colorError">#d44000</color>
     <color name="colorFacebook">#1660f5</color>
     <color name="colorGoogle">#d43515</color>
+    <color name="colorSub2">#fafafa</color>
 
     // Border Color Input Text
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/colorSecondary</color>
