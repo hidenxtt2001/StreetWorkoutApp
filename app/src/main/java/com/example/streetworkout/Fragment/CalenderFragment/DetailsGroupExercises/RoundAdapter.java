@@ -1,7 +1,6 @@
 package com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercises;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.streetworkout.Fragment.TrainningFragment.Exercises.Exercise;
-import com.example.streetworkout.Fragment.TrainningFragment.Exercises.ExerciseAdapter;
 import com.example.streetworkout.Fragment.TrainningFragment.Exercises.ExerciseBodyPart;
 import com.example.streetworkout.Fragment.TrainningFragment.Exercises.ExerciseLevelSkill;
 import com.example.streetworkout.Fragment.TrainningFragment.getExLibValue;
@@ -29,32 +27,31 @@ import com.potyvideo.library.AndExoPlayerView;
 
 import java.util.ArrayList;
 
-public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder> {
+public class RoundAdapter extends RecyclerView.Adapter<RoundAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<Exercise> exercisesWarmUp = new ArrayList<>();
+    private ArrayList<Exercise> exercisesRound = new ArrayList<Exercise>();
     private BottomSheetDialog bottomSheetDialog;
-    private FirebaseDatabase reference;
     private getExLibValue bodyPart= new getExLibValue();
     private getExLibValue Lvl= new getExLibValue();
+    private FirebaseDatabase reference;
 
-    public WarmUpAdapter(Context context, ArrayList<Exercise> arrayList){
+    public RoundAdapter(Context context, ArrayList<Exercise>exercisesRound){
         this.context = context;
-        this.exercisesWarmUp = arrayList;
+        this.exercisesRound = exercisesRound;
         bottomSheetDialog =new BottomSheetDialog(context,R.style.BottomSheetDialogTheme );
-
     }
 
     @Override
-    public ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
+    public RoundAdapter.ViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_fragment_training_exercise_items, parent, false);
-        return new WarmUpAdapter.ViewHolder(view);
+        return new RoundAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder( WarmUpAdapter.ViewHolder holder, int position) {
-        Glide.with(context).load(exercisesWarmUp.get(position).getLinkImage()).placeholder(R.drawable.wolf_icon_black).into(holder.disImage);
-        holder.nameExercise.setText(exercisesWarmUp.get(position).getNameExercise());
+    public void onBindViewHolder( RoundAdapter.ViewHolder holder, int position) {
+        Glide.with(context).load(exercisesRound.get(position).getLinkImage()).placeholder(R.drawable.wolf_icon_black).into(holder.disImage);
+        holder.nameExercise.setText(exercisesRound.get(position).getNameExercise());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +62,7 @@ public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return exercisesWarmUp.size();
+        return exercisesRound.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -78,7 +75,6 @@ public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder
             disImage = itemView.findViewById(R.id.disImage);
         }
     }
-
     void clicked(View input, int pos) {
         View bottomSheetView = LayoutInflater.from(context).inflate(R.layout.main_fragment_training_exerciselibrary_bottomsheetdialog, null, false);
 
@@ -92,15 +88,15 @@ public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder
 
         //set item
         TextView setnameExercise = bottomSheetView.findViewById(R.id.title);
-        setnameExercise.setText(exercisesWarmUp.get(pos).getNameExercise());
+        setnameExercise.setText(exercisesRound.get(pos).getNameExercise());
 
         AndExoPlayerView setvideoExercise = bottomSheetView.findViewById(R.id.vid);
-        setvideoExercise.setSource(exercisesWarmUp.get(pos).getLinkVideo().toString());
+        setvideoExercise.setSource(exercisesRound.get(pos).getLinkVideo().toString());
 
 
         //add lvl
         reference = FirebaseDatabase.getInstance();
-        Query query = reference.getReference("Exercises").child("ExerciseLevelSkill").orderByChild("idExercise").equalTo(exercisesWarmUp.get(pos).getIdExercise());
+        Query query = reference.getReference("Exercises").child("ExerciseLevelSkill").orderByChild("idExercise").equalTo(exercisesRound.get(pos).getIdExercise());
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -126,7 +122,7 @@ public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder
             }
         });
 
-        Query query1 = reference.getReference("Exercises").child("ExerciseBodyPart").orderByChild("idExercise").equalTo(exercisesWarmUp.get(pos).getIdExercise());
+        Query query1 = reference.getReference("Exercises").child("ExerciseBodyPart").orderByChild("idExercise").equalTo(exercisesRound.get(pos).getIdExercise());
         query1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -155,5 +151,4 @@ public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder
         bottomSheetDialog.setContentView(bottomSheetView);
         bottomSheetDialog.show();
     }
-
 }
