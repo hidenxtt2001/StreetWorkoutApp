@@ -1,10 +1,14 @@
 package com.example.streetworkout.Fragment.CalenderFragment.DetailsExercises;
 
+import com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercises.GroupExercise;
+
 import java.io.Serializable;
 
 public class GroupExerciseWarmup implements Serializable {
-    private final String idGroupExercise;
-    private final String idExercise;
+    private  String idGroupExercise;
+    private  String idExercise;
+
+    public GroupExerciseWarmup(){}
 
     public GroupExerciseWarmup(String idGroupExercise, String idExercise) {
         this.idGroupExercise = idGroupExercise;

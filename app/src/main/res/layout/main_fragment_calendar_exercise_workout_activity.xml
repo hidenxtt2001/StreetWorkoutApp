@@ -53,10 +53,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_warmup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>
     <androidx.cardview.widget.CardView
@@ -96,10 +93,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_rounded"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>
 

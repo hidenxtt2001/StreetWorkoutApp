@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class ExerciseWorkoutActivity extends AppCompatActivity {
 
     private TextView txtNameExercise, txtNameGroup;
@@ -26,9 +28,9 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
     private String getNameExercise;
     private RecyclerView recyclerViewWarmUp, recyclerViewRounded;
     private DatabaseReference mRef;
-    private GroupExerciseWarmup groupExerciseWarmup;
     private WarmUpAdapter warmUpAdapter;
-    private Exercise exerciseWarmUp;
+    private ArrayList<Exercise> listExerciseWarmUp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,32 +46,46 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
         txtNameGroup.setText(groupExercise.getNameGroupExercise());
         txtNameExercise.setText(getNameExercise);
 
+        //set up recycler view Warm-up
+        listExerciseWarmUp = new ArrayList<Exercise>();
         recyclerViewWarmUp = findViewById(R.id.recyclerView_warmup);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerViewWarmUp.setLayoutManager(linearLayoutManager);
+        warmUpAdapter = new WarmUpAdapter(this, listExerciseWarmUp);
+        recyclerViewWarmUp.setAdapter(warmUpAdapter);
 
-        //get data from firebase
+        getDataWarmUp();
+
+    }
+
+    public void backActivity(View view) {
+        onBackPressed();
+    }
+
+    public void getDataWarmUp(){
+        //get data from firebase for warm-up
         mRef = FirebaseDatabase.getInstance().getReference();
         mRef.child("GroupExercises").child("GroupExerciseWarmup").orderByChild("idGroupExercise").equalTo(groupExercise.getIdGroupExercise()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange( DataSnapshot snapshot) {
                 for (DataSnapshot snap: snapshot.getChildren()) {
-                    groupExerciseWarmup = snap.getValue(GroupExerciseWarmup.class);
-                }
-                mRef.child("Exercises").child("Exercise").orderByChild("idExercise").equalTo(groupExerciseWarmup.getIdExercise()).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange( DataSnapshot snapshot) {
-                        for (DataSnapshot snapShot: snapshot.getChildren()) {
-                            exerciseWarmUp = snapShot.getValue(Exercise.class);
+                    GroupExerciseWarmup groupExerciseWarmup = snap.getValue(GroupExerciseWarmup.class);
+                    mRef.child("Exercises").child("Exercise").orderByChild("idExercise").equalTo(groupExerciseWarmup.getIdExercise()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot snapshot) {
+                            for (DataSnapshot snapShot : snapshot.getChildren()) {
+                                Exercise exerciseWarmUp = snapShot.getValue(Exercise.class);
+                                listExerciseWarmUp.add(exerciseWarmUp);
+                                warmUpAdapter.notifyDataSetChanged();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError error) {
 
                         }
-                    }
-
-                    @Override
-                    public void onCancelled( DatabaseError error) {
-
-                    }
-                });
+                    });
+                }
             }
 
             @Override
@@ -77,10 +93,5 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
 
             }
         });
-
-    }
-
-    public void backActivity(View view) {
-        onBackPressed();
     }
 }
