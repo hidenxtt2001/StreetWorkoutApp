@@ -8,14 +8,14 @@ import androidx.annotation.*;
 import androidx.recyclerview.widget.*;
 
 import com.example.streetworkout.*;
-import com.example.streetworkout.Fragment.TrainningFragment.WeekExercise.*;
+import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.*;
 
 import java.util.*;
 
 public class WeeklyAdapter extends RecyclerView.Adapter<WeeklyAdapter.ViewHolder> {
 
     Context context;
-    ArrayList<WeekExercise> weeklyList = new ArrayList<>();
+    ArrayList<WeekExercise> weeklyList ;
 
     public WeeklyAdapter(Context context, ArrayList<WeekExercise> weeklyList) {
         this.context = context;
@@ -30,8 +30,14 @@ public class WeeklyAdapter extends RecyclerView.Adapter<WeeklyAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder( WeeklyAdapter.ViewHolder holder, int position) {
-        holder.bigWeek.setText(weeklyList.get(position).get);
+        holder.bigWeek.setText(weeklyList.get(position).getNameWeekExercise());
+        holder.smallWeek.setText(weeklyList.get(position).getNameWeekExercise());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
     }
 
     @Override

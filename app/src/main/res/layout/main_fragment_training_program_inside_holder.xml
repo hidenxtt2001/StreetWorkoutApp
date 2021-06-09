@@ -5,20 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#ebebeb"
     >
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/customToolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:background="@color/black">
+        <ImageView
+            android:id="@+id/image_button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="backActivity"
+            android:src="@drawable/logo_back" />
 
         <TextView
             android:id="@+id/program_exercisename"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="25dp"
             android:layout_marginEnd="20dp"
             android:ellipsize="end"
             android:maxLines="1"
@@ -26,16 +33,10 @@
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
-    </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.MaterialToolbar>
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <RelativeLayout
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -47,17 +48,19 @@
                 android:indeterminateTint="@color/colorMain_2" />
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="15dp"
+
 
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/program_recyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never"
 
                     />
 
@@ -66,5 +69,5 @@
 
 
         </RelativeLayout>
-    </ScrollView>
+
 </LinearLayout>

@@ -18,7 +18,6 @@
         <activity android:name=".Fragment.TrainningFragment.ExerciseLibrary"></activity>
         <activity android:name=".Fragment.CalenderFragment.DetailsGroupExercises.ExerciseWorkoutActivity"></activity>
         <activity android:name=".Fragment.CalenderFragment.DetailsGroupExercises.DetailsGroupExercises" />
-        <activity android:name=".Fragment.TrainningFragment.ExerciseLibrary" />
         <activity android:name=".Login.UserInformation.InputUserProfile" />
         <activity android:name=".SplashScreen.SplashScreen">
             <intent-filter>

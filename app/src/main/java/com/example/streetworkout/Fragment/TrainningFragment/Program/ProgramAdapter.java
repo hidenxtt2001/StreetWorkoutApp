@@ -44,15 +44,17 @@ public class ProgramAdapter extends RecyclerView.Adapter<ProgramAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clicked();
+                clicked(programList.get(position));
             }
         });
 
     }
 
-    void clicked()
+    void clicked(ProgramExercise input)
     {
+
         Intent programIntent= new Intent(context, ProgramIntent.class);
+        programIntent.putExtra("data",input);
         context.startActivity(programIntent);
 
     }

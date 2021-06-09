@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
     >
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="15dp"
-        android:elevation="10dp"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="true"
+
 
         >
         <LinearLayout
@@ -34,12 +34,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Week 1"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/nunito_bold"
                     android:textSize="14sp"/>
                 <TextView
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:layout_marginStart="5dp"
                     android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/nunito_bold"
                     android:layout_height="wrap_content"
                     android:text="-"
                     />
@@ -48,7 +52,9 @@
                     android:textSize="14sp"
                     android:layout_marginStart="5dp"
                     android:layout_width="wrap_content"
+                    android:textStyle="bold"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_bold"
                     android:text=" 7 sessions"
                     />
 
@@ -59,11 +65,12 @@
                 android:id="@+id/big_week"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:padding="5dp"
+                android:padding="3dp"
                 android:layout_width="wrap_content"
+                android:fontFamily="@font/nunito_bold"
                 android:layout_height="wrap_content"
                 android:text="Week 1"/>
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>
