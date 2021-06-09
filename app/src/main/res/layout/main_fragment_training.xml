@@ -52,15 +52,15 @@
                 />
         </RelativeLayout>
 
-        <androidx.viewpager2.widget.ViewPager2
+        <androidx.recyclerview.widget.RecyclerView
+            android:orientation="horizontal"
             android:id="@+id/programViewpager"
             android:layout_width="match_parent"
             android:layout_height="170dp"
-            android:paddingStart="30dp"
-            android:paddingEnd="40dp"
+            android:layout_marginEnd="10dp"
             >
 
-        </androidx.viewpager2.widget.ViewPager2>
+        </androidx.recyclerview.widget.RecyclerView>
 
         <RelativeLayout
             android:layout_width="match_parent"

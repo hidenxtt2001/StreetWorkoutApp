@@ -5,9 +5,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.CompositePageTransformer;
-import androidx.viewpager2.widget.MarginPageTransformer;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,16 +13,16 @@ import android.widget.FrameLayout;
 
 import com.example.streetworkout.Fragment.TrainningFragment.Knowledge.Knowledge;
 import com.example.streetworkout.Fragment.TrainningFragment.Knowledge.knowledgeAdapter;
-import com.example.streetworkout.Fragment.TrainningFragment.Program.Program;
-import com.example.streetworkout.Fragment.TrainningFragment.Program.programAdapter;
+import com.example.streetworkout.Fragment.TrainningFragment.Program.ProgramExercise;
+import com.example.streetworkout.Fragment.TrainningFragment.Program.ProgramAdapter;
 import com.example.streetworkout.R;
+import com.google.firebase.database.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class TrainingFragment extends Fragment {
-
+    ProgramAdapter programAdapter ;
 
     public TrainingFragment() {
         // Required empty public constructor
@@ -42,32 +39,41 @@ public class TrainingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view  = inflater.inflate(R.layout.main_fragment_training, container, false);
-        ViewPager2 programVP;
+        RecyclerView programVP;
         programVP= view.findViewById(R.id.programViewpager);
 
-        List<Program> list = new ArrayList<>();
+        ArrayList<ProgramExercise> list = new ArrayList<>();
+
+        programAdapter =new ProgramAdapter(this.getActivity(),list);
+
+        programVP.setAdapter(programAdapter);
 
 
-        list.add(new Program(R.drawable.abs));
-        list.add(new Program(R.drawable.back));
-        list.add(new Program(R.drawable.abs));
+        FirebaseDatabase.getInstance().getReference("ProgramExercises").child("ProgramExercise").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange( DataSnapshot snapshot) {
+                for (DataSnapshot snap: snapshot.getChildren()
+                     ) {
+                    list.add(snap.getValue(ProgramExercise.class));
+                    programAdapter.notifyDataSetChanged();
+
+                }
+
+            }
+            @Override
+            public void onCancelled( DatabaseError error) {
+
+            }
+        });
 
 
 
 
 
 
-        programVP.setClipToPadding(false);
-        programVP.setClipChildren(false);
-        programVP.setOffscreenPageLimit(3);
-        programVP.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
-
-        programVP.setAdapter(new programAdapter(list,programVP));
-
-        CompositePageTransformer transformer = new CompositePageTransformer();
-        transformer.addTransformer(new MarginPageTransformer(30));
-        programVP.setPageTransformer(transformer);
-
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        programVP.setLayoutManager(linearLayoutManager);
 
 
         RecyclerView View;
