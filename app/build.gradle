@@ -73,4 +73,11 @@ dependencies {
     //Video View
     implementation 'com.github.HamidrezaAmz:MagicalExoPlayer:2.0.6'
 
+    //Palette
+    implementation 'androidx.palette:palette:1.0.0'
+
+    //
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:glide:4.12.0'
+
 }
