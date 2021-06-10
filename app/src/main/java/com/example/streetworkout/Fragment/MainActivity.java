@@ -135,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode){
             case RC_LOGINACCOUNT:
                 if(resultCode != RESULT_OK){
-                    loadDataWeekUser();
                     finish();
                 }
                 else {
@@ -145,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     EditUserData.putBoolean("alreadyLogin",true);
                     EditUserData.apply();
                     getSupportFragmentManager().beginTransaction().replace(id.fragment_container, new AccountFragment()).commit();
+                    loadDataWeekUser();
                 }
             case RC_EDITPROFILE:
                 if(resultCode == RESULT_LOGOUT){
