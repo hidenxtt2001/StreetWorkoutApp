@@ -3,9 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/programs_vertical_layout"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="match_parent"
     app:cardCornerRadius="15dp"
+    android:layout_marginStart="10dp"
+
+
 
 
     >
@@ -37,114 +40,16 @@
 
 
             <TextView
-                android:id="@+id/text_excecise_lvl"
+                android:id="@+id/program_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No Equipment Home \nBeginer"
                 android:textColor="@color/colorSub"
-                android:textSize="18sp"
+                android:textSize="24sp"
                 android:fontFamily="@font/nunito_bold"/>
 
 
         </LinearLayout>
-
-
-
-        <LinearLayout
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="15dp"
-            android:orientation="horizontal"
-            android:layout_marginBottom="15dp"
-            android:gravity="center_horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="5dp"
-                    android:src="@drawable/training_vector_love"
-
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="100"
-                    android:textColor="@color/colorSub"
-                    android:textSize="15sp"
-                    android:fontFamily="@font/nunito_regular"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="5dp"
-                    android:src="@drawable/training_vector_chat" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:fontFamily="@font/nunito_regular"
-                    android:text="999"
-                    android:textColor="@color/colorSub"
-                    android:textSize="15sp" />
-
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginBottom="15dp"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal">
-
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/training_vector_fire" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="Beginner"
-                android:textColor="@color/colorSub"
-                android:textSize="15sp"
-                android:fontFamily="@font/nunito_regular"/>
-        </LinearLayout>
-
-
-
 
 
     </RelativeLayout>

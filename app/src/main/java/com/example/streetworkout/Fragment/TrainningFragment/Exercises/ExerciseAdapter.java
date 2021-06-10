@@ -38,6 +38,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
 
     getExLibValue bodyPart= new getExLibValue();
     getExLibValue Lvl= new getExLibValue();
+
     private BottomSheetDialog bottomSheetDialog;
     public ExerciseAdapter(Context context) {
         this.context = context;
@@ -107,9 +108,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data : snapshot.getChildren()
                 ) {
-                    //rename body_muscle_part
                     View setText = LayoutInflater.from(context).inflate(R.layout.main_fragment_training_items_layout, null, false);
-                    //rename cho nay lun--------------------------------\/
                     TextView setbodypart = setText.findViewById(R.id.exerciseItemLayout);
                     ExerciseBodyPart exerciseBodyPart = data.getValue(ExerciseBodyPart.class);
                     if (exerciseBodyPart != null) {

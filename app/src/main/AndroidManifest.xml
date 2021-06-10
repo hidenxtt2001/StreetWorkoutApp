@@ -14,9 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StreetWorkout">
+        <activity android:name=".Fragment.TrainningFragment.ProgramIntent"></activity>
+        <activity android:name=".Fragment.TrainningFragment.ExerciseLibrary"></activity>
         <activity android:name=".Fragment.CalenderFragment.DetailsGroupExercises.ExerciseWorkoutActivity"></activity>
         <activity android:name=".Fragment.CalenderFragment.DetailsGroupExercises.DetailsGroupExercises" />
-        <activity android:name=".Fragment.TrainningFragment.ExerciseLibrary" />
         <activity android:name=".Login.UserInformation.InputUserProfile" />
         <activity android:name=".SplashScreen.SplashScreen">
             <intent-filter>
@@ -49,5 +50,8 @@
             </intent-filter>
         </activity>
     </application>
+    <queries>
+        <package android:name="com.facebook.katana"/>
+    </queries>
 
 </manifest>
