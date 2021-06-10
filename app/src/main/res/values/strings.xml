@@ -40,4 +40,18 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    <string-array name="status">
+        <item>good</item>
+        <item>bad</item>
+        <item>happy</item>
+        <item>love</item>
+        <item>hate</item>
+    </string-array>
+    <string-array name="description">
+        <item>this is random description.</item>
+        <item>this is random description.</item>
+        <item>this is random description.</item>
+        <item>this is random description.</item>
+        <item>this is random description.</item>
+    </string-array>
 </resources>

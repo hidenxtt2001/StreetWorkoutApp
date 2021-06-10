@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +19,22 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
+import com.example.streetworkout.StatusWorkout.StatusWorkout;
 import com.example.streetworkout.User.UserInfor;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 
 public class AccountFragment extends Fragment {
+    //recycler view
+    RecyclerView recyclerView;
+    ArrayList<StatusWorkout> listStatus;
+    AccountFragmentAdapter accountFragmentAdapter;
 
     View root;
     public static UserInfor userInfor;
@@ -67,6 +80,14 @@ public class AccountFragment extends Fragment {
         // Following
         TextView following = root.findViewById(R.id.followingShow);
         following.setText(String.valueOf(userInfor.getStatus().getFollowingStatus()));
+        recyclerView = root.findViewById(R.id.recyclerView);
+        listStatus = new ArrayList<>();
+
+        SetStatus();
+
+        accountFragmentAdapter = new AccountFragmentAdapter(AccountFragment.this.getContext(),listStatus);
+        recyclerView.setAdapter(accountFragmentAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(AccountFragment.this.getContext()));
     }
 
     private void SetupCLickEvent(){
@@ -85,6 +106,28 @@ public class AccountFragment extends Fragment {
         editProfile.putExtra("userProfile",userInfor);
         getActivity().startActivityForResult(editProfile, MainActivity.RC_EDITPROFILE);
         getActivity().overridePendingTransition(R.anim.from_bottom_up_light,R.anim.to_top_light);
+    }
+
+    public void SetStatus()
+    {
+        final UserInfor[] term = new UserInfor[1];
+        FirebaseDatabase.getInstance().getReference().child("UserInfos").child(userInfor.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                term[0] = snapshot.getValue(UserInfor.class);
+
+                StatusWorkout sW = new StatusWorkout("123", userInfor.getUid(), "2313", "20/5/2021");
+                sW.setUserInfor(term[0]);
+
+                listStatus.add(sW);
+                accountFragmentAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 }
