@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp"
-        android:gravity="center_horizontal">
+        android:gravity="center">
         <androidx.cardview.widget.CardView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -33,6 +33,7 @@
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -56,7 +57,12 @@
                 android:textStyle="bold"
                 android:textSize="18sp"/>
         </LinearLayout>
-
+        <ImageView
+            android:id="@+id/isFinish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/main_fragment_calendar_item_week_check"
+            />
     </LinearLayout>
 
 

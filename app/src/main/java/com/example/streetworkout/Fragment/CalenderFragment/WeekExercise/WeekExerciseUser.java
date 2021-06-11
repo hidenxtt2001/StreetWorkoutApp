@@ -83,4 +83,8 @@ public class WeekExerciseUser implements Serializable {
     public void setDay7(boolean day7) {
         this.day7 = day7;
     }
+
+    public boolean checkFinish(){
+        return day1 && day2 && day3 && day4 && day5 && day6 && day7;
+    }
 }

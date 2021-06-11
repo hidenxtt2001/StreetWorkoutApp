@@ -43,8 +43,32 @@ public class UserInforViewModel extends ViewModel {
                 // Check if the data already exists
                 if(snapshot.exists()){
                     mweekExerciseUser = snapshot.getValue(WeekExerciseUser.class);
+                    if(mweekExerciseUser.checkFinish()){
+                        mRef.child("WeekExercises").child("WeekExercise").orderByKey().startAfter(mweekExerciseUser.getIdWeekExercise()).limitToFirst(1).addListenerForSingleValueEvent(
+                                new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        WeekExercise weekExercise = null;
+                                        for (DataSnapshot snap: snapshot.getChildren()
+                                        ) {
+                                            weekExercise = snap.getValue(WeekExercise.class);
+                                        }
+                                        mweekExerciseUser = new WeekExerciseUser(weekExercise.getIdWeekExercise());
+                                        mRef.child("WeekExercises").child("WeekExerciseUser").child(MainActivity.userInfor.getUid()).setValue(mweekExerciseUser);
+                                    }
 
-                    mRef.child("WeekExercises").child("WeekExerciseDaily").orderByChild("idWeekExercise").equalTo(mweekExerciseUser.getIdWeekExercise()).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                }
+                        );
+                        return;
+                    }
+                    weekExerciseUser.postValue(mweekExerciseUser);
+
+
+                    mRef.child("WeekExercises").child("WeekExerciseDaily").orderByChild("idWeekExercise").equalTo(mweekExerciseUser.getIdWeekExercise()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull  DataSnapshot snapshot) {
                             ArrayList<WeekExerciseDaily> temp = new ArrayList<>();
@@ -78,9 +102,9 @@ public class UserInforViewModel extends ViewModel {
                                 for (DataSnapshot snap: snapshot.getChildren()
                                 ) {
                                     weekExercise = snap.getValue(WeekExercise.class);
-                                    break;
                                 }
                                 mweekExerciseUser = new WeekExerciseUser(weekExercise.getIdWeekExercise());
+                                weekExerciseUser.postValue(mweekExerciseUser);
                                 mRef.child("WeekExercises").child("WeekExerciseDaily").orderByChild("idWeekExercise").equalTo(mweekExerciseUser.getIdWeekExercise()).addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull  DataSnapshot snapshot) {
@@ -94,13 +118,15 @@ public class UserInforViewModel extends ViewModel {
                                         mweekExerciseDaily.addAll(temp);
                                         weekExerciseUser.postValue(mweekExerciseUser);
                                         weekExerciseDaily.postValue(mweekExerciseDaily);
+
                                     }
                                     @Override
                                     public void onCancelled(@NonNull  DatabaseError error) {
 
                                     }
                                 });
-                                mRef.child("WeekExercises").child("WeekExerciseUser").child(MainActivity.userInfor.getUid()).setValue(weekExerciseUser);
+                                mRef.child("WeekExercises").child("WeekExerciseUser").child(MainActivity.userInfor.getUid()).setValue(mweekExerciseUser);
+
                             }
                             else{}
 

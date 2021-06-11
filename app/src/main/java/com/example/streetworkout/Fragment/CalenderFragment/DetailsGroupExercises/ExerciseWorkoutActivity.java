@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.streetworkout.Fragment.CalenderFragment.DetailsExercises.GroupExerciseRound;
 import com.example.streetworkout.Fragment.CalenderFragment.DetailsExercises.GroupExerciseWarmup;
+import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseUser;
 import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.Fragment.TrainningFragment.Exercises.Exercise;
 import com.example.streetworkout.R;
@@ -145,9 +146,33 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
     public void completeExercise(View view) {
         checkDayExercise = getIntent().getStringExtra("checkDayExercise");
         String day = "day" + checkDayExercise;
+        WeekExerciseUser k =MainActivity.userInforViewModel.getWeekExerciseUser().getValue();
+        switch (Integer.parseInt(checkDayExercise) ){
+            case 1:
+                k.setDay1(true);
+                break;
+            case 2:
+                k.setDay2(true);
+                break;
+            case 3:
+                k.setDay3(true);
+                break;
+            case 4:
+                k.setDay4(true);
+                break;
+            case 5:
+                k.setDay5(true);
+                break;
+            case 6:
+                k.setDay6(true);
+                break;
+            case 7:
+                k.setDay7(true);
+                break;
+        }
+        mRef.child("WeekExercises").child("WeekExerciseUser").child(MainActivity.userInfor.getUid()).setValue(k);
 
-        mRef.child("WeekExercises").child("WeekExerciseUser").child(MainActivity.userInfor.getUid()).child(day).setValue(true);
-
+        setResult(RESULT_OK);
         finish();
     }
 }

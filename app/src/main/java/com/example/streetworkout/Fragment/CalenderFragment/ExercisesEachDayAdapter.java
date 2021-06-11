@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercises.DetailsGroupExercises;
 import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseDaily;
+import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseUser;
 import com.example.streetworkout.R;
 
 import java.util.ArrayList;
@@ -19,11 +21,12 @@ import java.util.ArrayList;
 public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachDayAdapter.ExercisesViewHolder> {
     Context context;
     ArrayList<WeekExerciseDaily> mListWeek;
+    WeekExerciseUser weekExerciseUsers;
 
-
-    public ExercisesEachDayAdapter(Context context, ArrayList<WeekExerciseDaily> list) {
+    public ExercisesEachDayAdapter(Context context, ArrayList<WeekExerciseDaily> list, WeekExerciseUser weekExerciseUsers) {
         this.mListWeek = list;
         this.context = context;
+        this.weekExerciseUsers = weekExerciseUsers;
     }
 
     @NonNull
@@ -37,6 +40,7 @@ public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachD
 
     @Override
     public void onBindViewHolder(@NonNull ExercisesEachDayAdapter.ExercisesViewHolder holder, int position) {
+        boolean ischeck = false;
         WeekExerciseDaily weekExerciseDaily = mListWeek.get(position);
         if (weekExerciseDaily == null) {
             return;
@@ -46,30 +50,37 @@ public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachD
         switch (position) {
             case 0:
                 nameExercise = "Chest - Triceps";
+                ischeck = weekExerciseUsers.isDay1();
                 break;
             case 1:
                 nameExercise = "Legs";
+                ischeck = weekExerciseUsers.isDay2();
                 break;
             case 2:
                 nameExercise = "Back - Biceps";
+                ischeck = weekExerciseUsers.isDay3();
                 break;
             case 3:
                 nameExercise = "Shoulder";
+                ischeck = weekExerciseUsers.isDay4();
                 break;
             case 4:
                 nameExercise = "Whole body";
+                ischeck = weekExerciseUsers.isDay5();
                 break;
             case 5:
                 nameExercise = "Whole body";
+                ischeck = weekExerciseUsers.isDay6();
                 break;
             case 6:
                 nameExercise = "Abs";
+                ischeck = weekExerciseUsers.isDay7();
                 break;
         }
 
         holder.txtCountDay.setText(String.valueOf(position + 1));
         holder.txtNameDay.setText(nameExercise);
-
+        holder.isFinish.setVisibility(ischeck ? View.VISIBLE : View.INVISIBLE);
         final String lastNameExercise = nameExercise;
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -94,12 +105,13 @@ public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachD
     public static class ExercisesViewHolder extends RecyclerView.ViewHolder {
         public TextView txtNameDay;
         public TextView txtCountDay;
-
+        public ImageView isFinish;
 
         public ExercisesViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNameDay = itemView.findViewById(R.id.name_day);
             txtCountDay = itemView.findViewById(R.id.count_day);
+            isFinish = itemView.findViewById(R.id.isFinish);
         }
     }
 

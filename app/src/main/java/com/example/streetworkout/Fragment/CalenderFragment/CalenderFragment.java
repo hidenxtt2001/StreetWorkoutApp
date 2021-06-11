@@ -63,10 +63,21 @@ public class CalenderFragment extends Fragment {
 
 
 
-        exercisesEachDayAdapter = new ExercisesEachDayAdapter(getContext().getApplicationContext(),MainActivity.userInforViewModel.getWeekExerciseDaily().getValue());
-        recyclerViewExercise.setAdapter(exercisesEachDayAdapter);
 
 
+
+        MainActivity.userInforViewModel.getWeekExerciseUser().observe(this.getActivity(), new Observer<WeekExerciseUser>() {
+            @Override
+            public void onChanged(WeekExerciseUser weekExerciseUser) {
+                if(weekExerciseUser != null)
+                {
+                    exercisesEachDayAdapter = new ExercisesEachDayAdapter(getContext().getApplicationContext(),MainActivity.userInforViewModel.getWeekExerciseDaily().getValue(),MainActivity.userInforViewModel.getWeekExerciseUser().getValue());
+                    recyclerViewExercise.setAdapter(exercisesEachDayAdapter);
+                    exercisesEachDayAdapter.notifyDataSetChanged();
+                }
+
+            }
+        });
         MainActivity.userInforViewModel.getWeekExerciseDaily().observe(this.getActivity(), new Observer<ArrayList<WeekExerciseDaily>>() {
             @Override
             public void onChanged(ArrayList<WeekExerciseDaily> weekExerciseDailies) {
@@ -78,6 +89,7 @@ public class CalenderFragment extends Fragment {
                 }
             }
         });
+
 
         /*exercisesEachDayAdapter.setData(getListExercises());
         recyclerViewExercise.setAdapter(exercisesEachDayAdapter);*/

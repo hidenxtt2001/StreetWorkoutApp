@@ -1,6 +1,7 @@
 package com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercises;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -31,6 +32,7 @@ public class DetailsGroupExercises extends AppCompatActivity {
     private DatabaseReference mRef;
     private ImageView imageBackground;
     private TextView txtNameGroupExercise, txtNameLevel, txtNameExercise;
+    private final int RC_DETAILEXERCISE = 4;
 
     private GroupExercise groupExercise;
 
@@ -129,6 +131,16 @@ public class DetailsGroupExercises extends AppCompatActivity {
         intent.putExtra("getGroupExercise", groupExercise);
         intent.putExtra("getNameExercise", getNameExercise);
         intent.putExtra("checkDayExercise", getDayExercise);
-        startActivity(intent);
+        startActivityForResult(intent,RC_DETAILEXERCISE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case RC_DETAILEXERCISE:
+                if(resultCode == RESULT_OK) finish();
+                break;
+        }
     }
 }
