@@ -71,7 +71,7 @@ public class CalenderFragment extends Fragment {
             public void onChanged(WeekExerciseUser weekExerciseUser) {
                 if(weekExerciseUser != null)
                 {
-                    exercisesEachDayAdapter = new ExercisesEachDayAdapter(getContext().getApplicationContext(),MainActivity.userInforViewModel.getWeekExerciseDaily().getValue(),MainActivity.userInforViewModel.getWeekExerciseUser().getValue());
+                    exercisesEachDayAdapter = new ExercisesEachDayAdapter(getContext(),MainActivity.userInforViewModel.getWeekExerciseDaily().getValue(),MainActivity.userInforViewModel.getWeekExerciseUser().getValue());
                     recyclerViewExercise.setAdapter(exercisesEachDayAdapter);
                     exercisesEachDayAdapter.notifyDataSetChanged();
                 }

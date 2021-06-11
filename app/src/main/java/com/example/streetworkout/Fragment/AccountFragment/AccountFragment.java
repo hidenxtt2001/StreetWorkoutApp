@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,24 +25,30 @@ import com.example.streetworkout.User.UserInfor;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 
 public class AccountFragment extends Fragment {
+    public static UserInfor userInfor;
     //recycler view
     RecyclerView recyclerView;
     ArrayList<StatusWorkout> listStatus;
     AccountFragmentAdapter accountFragmentAdapter;
-
+    boolean isEditProfile= false;
     View root;
-    final UserInfor userInfor;
-    public AccountFragment(UserInfor userInfor) {
+    public AccountFragment() {
         // Required empty public constructor
-        this.userInfor = userInfor;
+
     }
 
 
@@ -140,21 +147,34 @@ public class AccountFragment extends Fragment {
 
     public void SetStatus()
     {
-        final UserInfor[] term = new UserInfor[1];
-        FirebaseDatabase.getInstance().getReference().child("UserInfos").child(userInfor.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("StatusUserExercise").orderByChild("uid").equalTo(userInfor.getUid()).addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                term[0] = snapshot.getValue(UserInfor.class);
-
-                StatusWorkout sW = new StatusWorkout("123", userInfor.getUid(), "2313", "20/5/2021");
-                sW.setUserInfor(term[0]);
-
-                listStatus.add(sW);
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                StatusWorkout k = snapshot.getValue(StatusWorkout.class);
+                k.setUserInfor(userInfor);
+                listStatus.add(k);
                 accountFragmentAdapter.notifyDataSetChanged();
+
+
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable  String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull  DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull  DataSnapshot snapshot, @Nullable  String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull  DatabaseError error) {
 
             }
         });

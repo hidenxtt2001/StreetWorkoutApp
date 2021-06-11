@@ -18,13 +18,18 @@ import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExer
 import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.Fragment.TrainningFragment.Exercises.Exercise;
 import com.example.streetworkout.R;
+import com.example.streetworkout.StatusWorkout.StatusWorkout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 public class ExerciseWorkoutActivity extends AppCompatActivity {
@@ -171,7 +176,10 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
                 break;
         }
         mRef.child("WeekExercises").child("WeekExerciseUser").child(MainActivity.userInfor.getUid()).setValue(k);
-
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        System.out.println(dateFormat.format(date));
+        mRef.child("StatusUserExercise").push().setValue(new StatusWorkout(MainActivity.userInfor.getUid(),groupExercise.getIdGroupExercise(),dateFormat.format(date)));
         setResult(RESULT_OK);
         finish();
     }

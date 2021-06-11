@@ -10,11 +10,10 @@ public class StatusWorkout {
     private UserInfor userInfor;
 
 
+    public StatusWorkout(){}
 
 
-
-    public StatusWorkout(String idStatus, String uid, String idGroupExercise, String dateComplate) {
-        this.idStatus = idStatus;
+    public StatusWorkout( String uid, String idGroupExercise, String dateComplate) {
         this.uid = uid;
         this.idGroupExercise = idGroupExercise;
         this.dateComplate = dateComplate;
