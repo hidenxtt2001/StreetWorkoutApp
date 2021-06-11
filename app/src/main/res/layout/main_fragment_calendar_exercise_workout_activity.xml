@@ -157,5 +157,19 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/complete_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Complete Exercise"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/colorSub"
+        android:background="@drawable/main_fragment_calendar_border"
+        android:onClick="completeExercise">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
 
 </LinearLayout>
