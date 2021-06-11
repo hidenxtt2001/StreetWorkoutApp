@@ -79,6 +79,7 @@ public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachD
                 Intent intent = new Intent(v.getContext(), DetailsGroupExercises.class);
                 intent.putExtra("getInfoIdGroup", getInfoIdGroup);
                 intent.putExtra("getNameExercise", lastNameExercise);
+                intent.putExtra("checkDayExercise",String.valueOf(position+1));
                 v.getContext().startActivity(intent);
             }
         });

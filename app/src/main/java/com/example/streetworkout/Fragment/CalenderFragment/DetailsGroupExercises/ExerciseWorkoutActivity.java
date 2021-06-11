@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.streetworkout.Fragment.CalenderFragment.DetailsExercises.GroupExerciseRound;
 import com.example.streetworkout.Fragment.CalenderFragment.DetailsExercises.GroupExerciseWarmup;
+import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.Fragment.TrainningFragment.Exercises.Exercise;
 import com.example.streetworkout.R;
 import com.google.firebase.database.DataSnapshot;
@@ -35,6 +36,7 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
     private WarmUpAdapter warmUpAdapter;
     private RoundAdapter roundAdapter;
     private ArrayList<Exercise> listExerciseWarmUp, listExerciseRound;
+    private String checkDayExercise;
 
 
     @Override
@@ -138,5 +140,14 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
 
     public void backActivity(View view) {
         onBackPressed();
+    }
+
+    public void completeExercise(View view) {
+        checkDayExercise = getIntent().getStringExtra("checkDayExercise");
+        String day = "day" + checkDayExercise;
+
+        mRef.child("WeekExercises").child("WeekExerciseUser").child(MainActivity.userInfor.getUid()).child(day).setValue(true);
+
+        finish();
     }
 }

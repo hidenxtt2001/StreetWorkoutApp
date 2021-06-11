@@ -124,9 +124,11 @@ public class DetailsGroupExercises extends AppCompatActivity {
     public void passDataInNextActivity(View view) {
 
         String getNameExercise = getIntent().getStringExtra("getNameExercise");
+        String getDayExercise = getIntent().getStringExtra("checkDayExercise");
         Intent intent = new Intent(this, ExerciseWorkoutActivity.class);
         intent.putExtra("getGroupExercise", groupExercise);
         intent.putExtra("getNameExercise", getNameExercise);
+        intent.putExtra("checkDayExercise", getDayExercise);
         startActivity(intent);
     }
 }
