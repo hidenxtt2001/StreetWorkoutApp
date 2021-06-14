@@ -16,20 +16,22 @@
         android:layout_height="match_parent"
         android:background="@drawable/training_dark_linear_gradient"/>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_back"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/image_button_back"
+        android:onClick="backCalendarFragment"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/layout_per">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logo_back"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="30dp"
-            android:id="@+id/image_button_back"
-            android:onClick="backCalendarFragment"/>
+
 
         <TextView
             android:layout_width="match_parent"
