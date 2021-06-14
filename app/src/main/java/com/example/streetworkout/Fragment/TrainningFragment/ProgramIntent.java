@@ -36,7 +36,9 @@ public class ProgramIntent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_training_program_inside_holder);
         programExercise = (ProgramExercise)this.getIntent().getSerializableExtra("data");
+        String nameProgram = getIntent().getStringExtra("nameProgram");
         InitializeElement();
+        name.setText(nameProgram);
         setupforFirebase();
 
     }

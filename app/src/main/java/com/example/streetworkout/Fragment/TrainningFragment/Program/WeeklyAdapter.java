@@ -35,7 +35,9 @@ public class WeeklyAdapter extends RecyclerView.Adapter<WeeklyAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(v.getContext(), DetailWeekly.class);
+                intent.putExtra("getWeekExercise", weeklyList.get(position));
+                v.getContext().startActivity(intent);
             }
         });
     }

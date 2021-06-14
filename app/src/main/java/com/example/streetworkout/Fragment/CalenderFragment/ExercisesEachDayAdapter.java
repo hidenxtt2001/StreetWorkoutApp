@@ -45,36 +45,42 @@ public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachD
         if (weekExerciseDaily == null) {
             return;
         }
-        String nameExercise ="";
-
+        String nameExercise = "";
         switch (position) {
             case 0:
                 nameExercise = "Chest - Triceps";
-                ischeck = weekExerciseUsers.isDay1();
+                if (weekExerciseUsers != null)
+                    ischeck = weekExerciseUsers.isDay1();
                 break;
             case 1:
                 nameExercise = "Legs";
-                ischeck = weekExerciseUsers.isDay2();
+                if (weekExerciseUsers != null)
+                    ischeck = weekExerciseUsers.isDay2();
                 break;
             case 2:
                 nameExercise = "Back - Biceps";
-                ischeck = weekExerciseUsers.isDay3();
+                if (weekExerciseUsers != null)
+                    ischeck = weekExerciseUsers.isDay3();
                 break;
             case 3:
                 nameExercise = "Shoulder";
-                ischeck = weekExerciseUsers.isDay4();
+                if (weekExerciseUsers != null)
+                    ischeck = weekExerciseUsers.isDay4();
                 break;
             case 4:
                 nameExercise = "Whole body";
-                ischeck = weekExerciseUsers.isDay5();
+                if (weekExerciseUsers != null)
+                    ischeck = weekExerciseUsers.isDay5();
                 break;
             case 5:
                 nameExercise = "Whole body";
-                ischeck = weekExerciseUsers.isDay6();
+                if (weekExerciseUsers != null)
+                    ischeck = weekExerciseUsers.isDay6();
                 break;
             case 6:
                 nameExercise = "Abs";
-                ischeck = weekExerciseUsers.isDay7();
+                if (weekExerciseUsers != null)
+                    ischeck = weekExerciseUsers.isDay7();
                 break;
         }
 
@@ -90,7 +96,7 @@ public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachD
                 Intent intent = new Intent(v.getContext(), DetailsGroupExercises.class);
                 intent.putExtra("getInfoIdGroup", getInfoIdGroup);
                 intent.putExtra("getNameExercise", lastNameExercise);
-                intent.putExtra("checkDayExercise",String.valueOf(position+1));
+                intent.putExtra("checkDayExercise", String.valueOf(position + 1));
                 v.getContext().startActivity(intent);
             }
         });
