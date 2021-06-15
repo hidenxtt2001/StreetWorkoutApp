@@ -2,8 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSecondary">
+    android:background="@color/colorSub">
 
-    <!--    //code here, nhớ xóa background ở trên nha!!-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewNewsFeed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
