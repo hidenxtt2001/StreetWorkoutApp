@@ -179,7 +179,8 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
         System.out.println(dateFormat.format(date));
-        mRef.child("StatusUserExercise").push().setValue(new StatusWorkout(MainActivity.userInfor.getUid(),groupExercise.getIdGroupExercise(),dateFormat.format(date)));
+        StatusWorkout z = new StatusWorkout(MainActivity.userInfor.getUid(),groupExercise.getIdGroupExercise(),dateFormat.format(date));
+        mRef.child("StatusUserExercise").push().setValue(z);
         setResult(RESULT_OK);
         finish();
     }

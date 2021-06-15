@@ -39,7 +39,7 @@ public class StatusWorkout {
     public String getDateComplate() { return dateComplate; }
 
     public void setDateComplate( String dateComplate) {
-        this.idGroupExercise = idGroupExercise;
+        this.dateComplate = dateComplate;
     }
 
     public UserInfor getUserInfor() {
