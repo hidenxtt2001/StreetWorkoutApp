@@ -156,7 +156,7 @@ public class AccountFragment extends Fragment {
                 k.setUserInfor(userInfor);
                 listStatus.add(k);
                 accountFragmentAdapter.notifyDataSetChanged();
-
+                
 
             }
 
