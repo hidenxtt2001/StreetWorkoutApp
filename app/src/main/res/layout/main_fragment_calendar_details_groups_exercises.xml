@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginStart="10dp"
-                android:text="Beginner"
+                android:text="Level"
                 android:textSize="18sp"
                 android:textColor="@color/white"/>
 
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginStart="10dp"
-                android:text="Legs"
+                android:text="Path Body"
                 android:textSize="18sp"
                 android:textColor="@color/white"
                 android:visibility="invisible"/>
@@ -101,40 +101,36 @@
         </LinearLayout>
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/imgAnim2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="true"
+        app:srcCompat="@drawable/main_calendar_fragment_circle_button_pulse"
+        android:layout_marginBottom="80dp"/>
 
-        <ImageView
-            android:id="@+id/imgAnim2"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_centerInParent="true"
-            android:scaleType="centerCrop"
-            android:layout_alignParentBottom="true"
-            app:srcCompat="@drawable/main_calendar_fragment_circle_button_pulse"
-            android:layout_marginBottom="80dp"/>
+    <ImageView
+        android:id="@+id/imgAnim"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="true"
+        app:srcCompat="@drawable/main_calendar_fragment_circle_button_pulse"
+        android:layout_marginBottom="80dp"/>
 
-        <ImageView
-            android:id="@+id/imgAnim"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_centerInParent="true"
-            android:scaleType="centerCrop"
-            android:layout_alignParentBottom="true"
-            app:srcCompat="@drawable/main_calendar_fragment_circle_button_pulse"
-            android:layout_marginBottom="80dp"/>
+    <ImageView
+        android:id="@+id/imgMiFoto"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/main_calendar_fragment_logo_next"
+        android:layout_marginBottom="80dp"
+       />
 
-        <ImageView
-            android:id="@+id/imgMiFoto"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_centerInParent="true"
-            android:layout_alignParentBottom="true"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/main_calendar_fragment_logo_next"
-            android:layout_marginBottom="80dp"
-            android:onClick="passDataInNextActivity"/>
-    </RelativeLayout>
 
 </RelativeLayout>

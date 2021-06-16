@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.streetworkout.Fragment.AccountFragment.AccountFragment;
 import com.example.streetworkout.Fragment.AccountFragment.AccountFragmentAdapter;
+import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.StatusWorkout.StatusWorkout;
 import com.example.streetworkout.User.UserInfor;
@@ -75,7 +76,9 @@ public class NewsFeedFragment extends Fragment {
         FirebaseDatabase.getInstance().getReference().child("StatusUserExercise").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
                 StatusWorkout k = snapshot.getValue(StatusWorkout.class);
+                if(k.getUid().equals(MainActivity.userInfor.getUid())) return;
                 FirebaseDatabase.getInstance().getReference().child("UserInfos").child(k.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull  DataSnapshot snapshot) {

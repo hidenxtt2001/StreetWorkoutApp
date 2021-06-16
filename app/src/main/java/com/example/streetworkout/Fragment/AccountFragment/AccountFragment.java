@@ -72,7 +72,7 @@ public class AccountFragment extends Fragment {
 
         return root;
     }
-
+    TextView workoutSucess;
     private void SetupInfor(){
         // Set Avatar Profile
         //
@@ -108,14 +108,8 @@ public class AccountFragment extends Fragment {
         TextView userName = root.findViewById(R.id.userName);
         userName.setText(userInfor.getUserName());
         // Workout Success
-        TextView workoutSucess = root.findViewById(R.id.workoutShow);
-        workoutSucess.setText(String.valueOf(userInfor.getStatus().getWorkoutStatus()));
-        // Follower
-        TextView follower = root.findViewById(R.id.followerShow);
-        follower.setText(String.valueOf(userInfor.getStatus().getFollowersStatus()));
-        // Following
-        TextView following = root.findViewById(R.id.followingShow);
-        following.setText(String.valueOf(userInfor.getStatus().getFollowingStatus()));
+
+
         recyclerView = root.findViewById(R.id.recyclerView);
         listStatus = new ArrayList<>();
 
@@ -146,7 +140,7 @@ public class AccountFragment extends Fragment {
         getActivity().startActivityForResult(editProfile, MainActivity.RC_EDITPROFILE);
         getActivity().overridePendingTransition(R.anim.from_bottom_up_light,R.anim.to_top_light);
     }
-
+    int count_workout =0;
     public void SetStatus()
     {
         FirebaseDatabase.getInstance().getReference().child("StatusUserExercise").orderByChild("uid").equalTo(userInfor.getUid()).addChildEventListener(new ChildEventListener() {
@@ -156,8 +150,6 @@ public class AccountFragment extends Fragment {
                 k.setUserInfor(userInfor);
                 listStatus.add(k);
                 accountFragmentAdapter.notifyDataSetChanged();
-                
-
             }
 
             @Override

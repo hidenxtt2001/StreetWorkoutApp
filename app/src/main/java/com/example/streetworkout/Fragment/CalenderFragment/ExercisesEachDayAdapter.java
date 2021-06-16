@@ -11,10 +11,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercises.DetailsGroupExercises;
+import com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercises.GroupExercise;
 import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseDaily;
 import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseUser;
 import com.example.streetworkout.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -45,59 +53,68 @@ public class ExercisesEachDayAdapter extends RecyclerView.Adapter<ExercisesEachD
         if (weekExerciseDaily == null) {
             return;
         }
-        String nameExercise = "";
         switch (position) {
             case 0:
-                nameExercise = "Chest - Triceps";
+
                 if (weekExerciseUsers != null)
                     ischeck = weekExerciseUsers.isDay1();
                 break;
             case 1:
-                nameExercise = "Legs";
+
                 if (weekExerciseUsers != null)
                     ischeck = weekExerciseUsers.isDay2();
                 break;
             case 2:
-                nameExercise = "Back - Biceps";
+
                 if (weekExerciseUsers != null)
                     ischeck = weekExerciseUsers.isDay3();
                 break;
             case 3:
-                nameExercise = "Shoulder";
+
                 if (weekExerciseUsers != null)
                     ischeck = weekExerciseUsers.isDay4();
                 break;
             case 4:
-                nameExercise = "Whole body";
+
                 if (weekExerciseUsers != null)
                     ischeck = weekExerciseUsers.isDay5();
                 break;
             case 5:
-                nameExercise = "Whole body";
+
                 if (weekExerciseUsers != null)
                     ischeck = weekExerciseUsers.isDay6();
                 break;
             case 6:
-                nameExercise = "Abs";
+
                 if (weekExerciseUsers != null)
                     ischeck = weekExerciseUsers.isDay7();
                 break;
         }
 
         holder.txtCountDay.setText(String.valueOf(position + 1));
-        holder.txtNameDay.setText(nameExercise);
-        holder.isFinish.setVisibility(ischeck ? View.VISIBLE : View.INVISIBLE);
-        final String lastNameExercise = nameExercise;
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.isFinish.setVisibility(ischeck ? View.VISIBLE : View.INVISIBLE);
+        FirebaseDatabase.getInstance().getReference().child("GroupExercises").child("GroupExercise").child(mListWeek.get(position).getIdGroupExercise()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                String getInfoIdGroup = mListWeek.get(position).getIdGroupExercise();
-                Intent intent = new Intent(v.getContext(), DetailsGroupExercises.class);
-                intent.putExtra("getInfoIdGroup", getInfoIdGroup);
-                intent.putExtra("getNameExercise", lastNameExercise);
-                intent.putExtra("checkDayExercise", String.valueOf(position + 1));
-                v.getContext().startActivity(intent);
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                GroupExercise z = snapshot.getValue(GroupExercise.class);
+                holder.txtNameDay.setText(z.getNameGroupExercise());
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(android.view.View v) {
+                        Intent intent = new Intent(v.getContext(), DetailsGroupExercises.class);
+                        intent.putExtra("getInfoIdGroup", z.getIdGroupExercise());
+                        intent.putExtra("getNameExercise", z.getNameGroupExercise());
+                        intent.putExtra("checkDayExercise", String.valueOf(position + 1));
+                        v.getContext().startActivity(intent);
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
             }
         });
 

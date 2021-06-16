@@ -59,13 +59,6 @@
                         android:layout_marginStart="20dp"
                         android:layout_centerVertical="true"
                         android:textColor="@color/colorSub"/>
-                    <ImageView
-                        android:id="@+id/img_extend_dots"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/calendar_extend_dots"/>
                 </RelativeLayout>
             </androidx.appcompat.widget.Toolbar>
 

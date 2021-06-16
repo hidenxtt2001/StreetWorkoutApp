@@ -51,11 +51,11 @@
                 android:id="@+id/name_day"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chest"
-                android:textColor="#4C4C4C"
                 android:layout_marginTop="5dp"
-                android:textStyle="bold"
-                android:textSize="18sp"/>
+                android:text="Exercise"
+                android:textColor="#4C4C4C"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
         <ImageView
             android:id="@+id/isFinish"

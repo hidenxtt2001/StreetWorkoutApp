@@ -202,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
     //load data week exercise user
     public void loadDataWeekUser(){
+        userInforViewModel = new UserInforViewModel();
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
@@ -209,11 +210,11 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(runnable, 1000);
+        handler.postDelayed(runnable, 0);
     }
 
     // Check Week Exercises of User have existed
     public void checkWeek(){
-        userInforViewModel = new UserInforViewModel();
+
     }
 }

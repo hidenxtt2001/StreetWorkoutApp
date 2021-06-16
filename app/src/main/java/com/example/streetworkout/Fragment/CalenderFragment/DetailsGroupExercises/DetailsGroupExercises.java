@@ -2,10 +2,12 @@ package com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercise
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Layout;
@@ -15,6 +17,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.streetworkout.Fragment.CalenderFragment.DetailsExercises.GroupExerciseBodyPart;
+import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DetailsGroupExercises extends AppCompatActivity {
 
@@ -59,7 +64,53 @@ public class DetailsGroupExercises extends AppCompatActivity {
         txtNameExercise.setText(getNameExercise);
         txtNameExercise.setVisibility(View.VISIBLE);
 
+        txtNameLevel.setText(MainActivity.userInfor.getExperienceLevel() == 0 ? "Beginner" :MainActivity.userInfor.getExperienceLevel() == 1 ? "Intermediate" : "Advanced");
+
         mRef = FirebaseDatabase.getInstance().getReference();
+
+        mRef.child("GroupExercises").child("GroupExerciseBodyPart").orderByChild("idGroupExercise").equalTo(getInfoIdGroup).addListenerForSingleValueEvent(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onDataChange(@NonNull  DataSnapshot snapshot) {
+                ArrayList<String> path = new ArrayList<>();
+                for (DataSnapshot snap: snapshot.getChildren()) {
+                    GroupExerciseBodyPart k = snap.getValue(GroupExerciseBodyPart.class);
+                    switch (k.getBodyValue()){
+                        case 0:
+                            path.add("Back");
+                            break;
+                        case 1:
+                            path.add("Biceps");
+                            break;
+                        case 2:
+                            path.add("Legs");
+                            break;
+                        case 3:
+                            path.add("Chest");
+                            break;
+                        case 4:
+                            path.add("Triceps");
+                            break;
+                        case 5:
+                            path.add("Abs");
+                            break;
+                        case 6:
+                            path.add("Shoulder");
+                            break;
+                        case 7:
+                            path.add("Whole Body");
+                            break;
+                    }
+                }
+                txtNameExercise.setText(String.join(", ",path));
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull  DatabaseError error) {
+
+            }
+        });
         //Find id Group Exercise in Firebase
         mRef.child("GroupExercises").child("GroupExercise").orderByChild("idGroupExercise").equalTo(getInfoIdGroup).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -71,6 +122,12 @@ public class DetailsGroupExercises extends AppCompatActivity {
                 txtNameGroupExercise.setText(groupExercise.getNameGroupExercise());
                 txtNameGroupExercise.setVisibility(View.VISIBLE);
                 Glide.with(getApplicationContext()).load(Uri.parse(groupExercise.getLinkImageGroup())).into(imageBackground);
+                imgMisFoto.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        passDataInNextActivity();
+                    }
+                });
             }
 
             @Override
@@ -123,7 +180,7 @@ public class DetailsGroupExercises extends AppCompatActivity {
         onBackPressed();
     }
 
-    public void passDataInNextActivity(View view) {
+    public void passDataInNextActivity() {
 
         String getNameExercise = getIntent().getStringExtra("getNameExercise");
         String getDayExercise = getIntent().getStringExtra("checkDayExercise");

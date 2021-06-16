@@ -60,13 +60,13 @@
     <string-array name="exercise_bodypart">
         <item>Back</item>
         <!-- 0 -->
-        <item>Bicept</item>
+        <item>Biceps</item>
         <!-- 1 -->
         <item>Legs</item>
         <!-- 2 -->
         <item>Chest</item>
         <!-- 3 -->
-        <item>Tricept</item>
+        <item>Triceps</item>
         <!-- 4 -->
         <item>Abs</item>
         <!-- 5 -->

@@ -10,13 +10,11 @@
         android:orientation="vertical">
 
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/mainExcercise"
             android:layout_width="match_parent"
-            android:layout_height="210dp">
-
-
-        </FrameLayout>
+            android:layout_height="210dp"
+            android:orientation="vertical"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -38,18 +36,6 @@
 
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/nunito_semibold"
-                android:text="@string/view_all"
-                android:textColor="@color/colorMain_1"
-                android:textSize="18sp"
-
-
-                />
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
