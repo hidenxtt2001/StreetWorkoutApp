@@ -52,8 +52,9 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -81,11 +82,19 @@
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/dot1"
 
-                    android:text="3 sets"
+                    android:text="2 sets"
                     android:textColor="@color/colorMain"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-            </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" - 15 reps"
+                    android:textColor="@color/colorMain_2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -112,7 +121,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -143,7 +152,14 @@
                 android:textColor="@color/colorMain"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-        </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - 20 reps"
+                android:textColor="@color/colorMain_2"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -46,7 +46,6 @@ public class DetailsGroupExercises extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_calendar_details_groups_exercises);
-
         txtNameGroupExercise = findViewById(R.id.txt_name_group_exercise);
         txtNameExercise = findViewById(R.id.txt_name_exercise);
         txtNameLevel = findViewById(R.id.txt_name_level);

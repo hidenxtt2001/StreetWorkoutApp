@@ -48,18 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Daily Workouts"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:layout_marginStart="20dp"
-                        android:layout_centerVertical="true"
-                        android:textColor="@color/colorSub"/>
-                </RelativeLayout>
+                    android:layout_marginEnd="10dp"/>
             </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
