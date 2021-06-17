@@ -54,45 +54,39 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/warmup"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="Warm-up"
-                    android:textColor="@color/colorMain"
-                    android:textSize="20sp"
+                    android:text="Round"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <View
-                    android:id="@+id/dot1"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
+
+                    android:layout_width="7dp"
+                    android:layout_height="7dp"
                     android:layout_centerVertical="true"
-                    android:layout_margin="10dp"
-                    android:layout_toRightOf="@+id/warmup"
+                    android:layout_margin="7dp"
+                    android:layout_toRightOf="@+id/round"
                     android:background="@drawable/calendar_dot" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/dot1"
-
                     android:text="2 sets"
                     android:textColor="@color/colorMain"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" - 15 reps"
+                    android:text=" - 20 reps"
                     android:textColor="@color/colorMain_2"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -131,15 +125,15 @@
                 android:layout_height="wrap_content"
                 android:text="Round"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <View
                 android:id="@+id/dot2"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
                 android:layout_centerVertical="true"
-                android:layout_margin="10dp"
+                android:layout_margin="7dp"
                 android:layout_toRightOf="@+id/round"
                 android:background="@drawable/calendar_dot" />
 
@@ -150,14 +144,14 @@
                 android:layout_toRightOf="@+id/dot2"
                 android:text="3 sets"
                 android:textColor="@color/colorMain"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=" - 20 reps"
                 android:textColor="@color/colorMain_2"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -180,6 +174,7 @@
         android:layout_margin="20dp"
         android:text="Complete Exercise"
         android:textStyle="bold"
+        android:textAllCaps="false"
         android:textSize="18sp"
         android:textColor="@color/colorSub"
         android:background="@drawable/main_fragment_calendar_border"
