@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         else {
             Gson gson = new Gson();
             userInfor = gson.fromJson(UserData.getString("userProfile", null),UserInfor.class);
-            AccountFragment.userInfor = userInfor;
             loadDataWeekUser();
             getSupportFragmentManager().beginTransaction().replace(id.fragment_container, new AccountFragment()).commit();
         }
@@ -97,12 +96,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+    private Fragment selectedFragment;
     private final BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @SuppressLint("NonConstantResourceId")
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment = null;
+            selectedFragment = null;
 
             switch (item.getItemId()){
                 case id.navigation_item_newsFeed:
@@ -116,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new CalenderFragment();
                     break;
                 case id.navigation_item_account:
-                    AccountFragment.userInfor = userInfor;
                     selectedFragment = new AccountFragment();
                     break;
             }
@@ -139,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     userInfor = (UserInfor) data.getExtras().getSerializable("userProfile");
-                    AccountFragment.userInfor = userInfor;
                     EditUserData.putString("userProfile",new Gson().toJson(userInfor));
                     EditUserData.putBoolean("alreadyLogin",true);
                     EditUserData.apply();
@@ -156,12 +153,11 @@ public class MainActivity extends AppCompatActivity {
                     LoginAccount();
                 }
                 else if (resultCode == RESULT_SAVEPROFILE){
-                    UserInfor temp = (UserInfor) data.getExtras().getSerializable("userProfile");
-                    if(UpdateNewAccount(temp)){
-                        userInfor = temp;
+                    if(UpdateNewAccount(MainActivity.userInfor)){
                         EditUserData.putString("userProfile",new Gson().toJson(userInfor));
                         EditUserData.apply();
-                        AccountFragment.userInfor = userInfor;
+                        if(((AccountFragment)selectedFragment) != null)
+                        ((AccountFragment)selectedFragment).SetupDisplay();
                     }
                     else {
                         //TODO: Show message Error Update Data Account Profile

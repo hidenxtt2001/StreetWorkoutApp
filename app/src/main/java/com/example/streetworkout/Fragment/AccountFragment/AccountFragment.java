@@ -41,7 +41,6 @@ import java.util.Objects;
 
 
 public class AccountFragment extends Fragment {
-    public static UserInfor userInfor;
     //recycler view
     RecyclerView recyclerView;
     ArrayList<StatusWorkout> listStatus;
@@ -76,14 +75,14 @@ public class AccountFragment extends Fragment {
     private void SetupInfor(){
         // Set Avatar Profile
         //
-        switch (userInfor.getLoginTypes()){
+        switch (MainActivity.userInfor.getLoginTypes()){
             case 1:
-                Glide.with(this.getActivity().getApplicationContext()).load(Uri.parse(userInfor.getUrlAvatar())).into((ImageView)root.findViewById(R.id.avatarProfile));
+                Glide.with(this.getActivity().getApplicationContext()).load(Uri.parse(MainActivity.userInfor.getUrlAvatar())).into((ImageView)root.findViewById(R.id.avatarProfile));
                 break;
             case 2:
                 GraphRequest request = GraphRequest.newGraphPathRequest(
                         AccessToken.getCurrentAccessToken(),
-                        "/" + userInfor.getUrlAvatar().replaceAll("\\D+","") + "/picture?redirect=0&type=large",
+                        "/" + MainActivity.userInfor.getUrlAvatar().replaceAll("\\D+","") + "/picture?redirect=0&type=large",
                         new GraphRequest.Callback() {
                             @Override
                             public void onCompleted(GraphResponse response) {
@@ -101,12 +100,7 @@ public class AccountFragment extends Fragment {
                 break;
         }
 
-        // Name
-        TextView nameDislay = root.findViewById(R.id.nameDislay);
-        nameDislay.setText(userInfor.getDisplayName());
-        // Username
-        TextView userName = root.findViewById(R.id.userName);
-        userName.setText(userInfor.getUserName());
+        SetupDisplay();
         // Workout Success
 
 
@@ -118,6 +112,15 @@ public class AccountFragment extends Fragment {
         accountFragmentAdapter = new AccountFragmentAdapter(AccountFragment.this.getContext(),listStatus);
         recyclerView.setAdapter(accountFragmentAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(AccountFragment.this.getContext()));
+    }
+
+    public void SetupDisplay(){
+        // Name
+        TextView nameDislay = root.findViewById(R.id.nameDislay);
+        nameDislay.setText(MainActivity.userInfor.getDisplayName());
+        // Username
+        TextView userName = root.findViewById(R.id.userName);
+        userName.setText(MainActivity.userInfor.getUserName());
     }
 
     private void SetupCLickEvent(){
@@ -136,18 +139,17 @@ public class AccountFragment extends Fragment {
 
     public void EditProfile_Click(View view){
         Intent editProfile = new Intent(getActivity(),AccountEditProfile.class);
-        editProfile.putExtra("userProfile",userInfor);
         getActivity().startActivityForResult(editProfile, MainActivity.RC_EDITPROFILE);
         getActivity().overridePendingTransition(R.anim.from_bottom_up_light,R.anim.to_top_light);
     }
     int count_workout =0;
     public void SetStatus()
     {
-        FirebaseDatabase.getInstance().getReference().child("StatusUserExercise").orderByChild("uid").equalTo(userInfor.getUid()).addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("StatusUserExercise").orderByChild("uid").equalTo(MainActivity.userInfor.getUid()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 StatusWorkout k = snapshot.getValue(StatusWorkout.class);
-                k.setUserInfor(userInfor);
+                k.setUserInfor(MainActivity.userInfor);
                 listStatus.add(k);
                 accountFragmentAdapter.notifyDataSetChanged();
             }
