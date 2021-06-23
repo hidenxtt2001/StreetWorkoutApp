@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
     getExLibValue bodyPart= new getExLibValue();
     getExLibValue Lvl= new getExLibValue();
 
-    private BottomSheetDialog bottomSheetDialog;
+    private static BottomSheetDialog bottomSheetDialog;
     public ExerciseAdapter(Context context) {
         this.context = context;
         bottomSheetDialog =new BottomSheetDialog(context,R.style.BottomSheetDialogTheme );
@@ -55,7 +56,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
 
 
     void clicked(View input, int pos) {
-        if(bottomSheetDialog.isShowing()) return;
+        if(bottomSheetDialog.isShowing()) { bottomSheetDialog.cancel(); return;}
         View bottomSheetView = LayoutInflater.from(context).inflate(R.layout.main_fragment_training_exerciselibrary_bottomsheetdialog, null, false);
 
         //init linearlayout
@@ -71,7 +72,12 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
         setnameExercise.setText(exercises.get(pos).getNameExercise());
 
         AndExoPlayerView setvideoExercise = bottomSheetView.findViewById(R.id.vid);
-        setvideoExercise.setSource(exercises.get(pos).getLinkVideo().toString());
+        try{
+            setvideoExercise.setSource(exercises.get(pos).getLinkVideo().toString());
+        }
+        catch (Exception e){
+            Log.i("Load Video","Load Failed");
+        }
 
 
         //add lvl

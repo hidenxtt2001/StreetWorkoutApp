@@ -23,6 +23,7 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -190,6 +191,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void LoginFacebook_Click(View view) {
         LoginButton loginButton = findViewById(R.id.loginFacebookReal);
+        loginButton.setLoginBehavior(LoginBehavior.WEB_VIEW_ONLY);
         loginButton.performClick();
     }
 
