@@ -71,13 +71,16 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
         TextView setnameExercise = bottomSheetView.findViewById(R.id.title);
         setnameExercise.setText(exercises.get(pos).getNameExercise());
 
-        AndExoPlayerView setvideoExercise = bottomSheetView.findViewById(R.id.vid);
-        try{
-            setvideoExercise.setSource(exercises.get(pos).getLinkVideo().toString());
-        }
-        catch (Exception e){
-            Log.i("Load Video","Load Failed");
-        }
+        VideoView setvideoExercise = bottomSheetView.findViewById(R.id.vid);
+
+        setvideoExercise.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
+        setvideoExercise.setVideoURI(Uri.parse(exercises.get(pos).getLinkVideo().toString()));
+        setvideoExercise.start();
 
 
         //add lvl

@@ -1,12 +1,15 @@
 package com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercises;
 
 import android.content.Context;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -94,8 +97,16 @@ public class WarmUpAdapter extends RecyclerView.Adapter<WarmUpAdapter.ViewHolder
         TextView setnameExercise = bottomSheetView.findViewById(R.id.title);
         setnameExercise.setText(exercisesWarmUp.get(pos).getNameExercise());
 
-        AndExoPlayerView setvideoExercise = bottomSheetView.findViewById(R.id.vid);
-        setvideoExercise.setSource(exercisesWarmUp.get(pos).getLinkVideo().toString());
+        VideoView setvideoExercise = bottomSheetView.findViewById(R.id.vid);
+
+        setvideoExercise.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
+        setvideoExercise.setVideoURI(Uri.parse(exercisesWarmUp.get(pos).getLinkVideo().toString()));
+        setvideoExercise.start();
 
 
         //add lvl

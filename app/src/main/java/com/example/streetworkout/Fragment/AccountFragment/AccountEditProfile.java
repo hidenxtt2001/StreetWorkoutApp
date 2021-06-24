@@ -191,11 +191,13 @@ public class AccountEditProfile extends AppCompatActivity {
     }
 
     public void SaveProfile_Click(View view) {
-        MainActivity.userInfor.setDisplayName(yourname.getText().toString());
-        MainActivity.userInfor.setBirthDay(birthday.getText().toString());
-        MainActivity.userInfor.setCountry(cpp.getSelectedCountryNameCode());
-        MainActivity.userInfor.setGender(spinnerGender.getSelectedItemPosition() == 0 ? "male" : "female");
+        UserInfor temp = MainActivity.userInfor;
+        temp.setDisplayName(yourname.getText().toString());
+        temp.setBirthDay(birthday.getText().toString());
+        temp.setCountry(cpp.getSelectedCountryNameCode());
+        temp.setGender(spinnerGender.getSelectedItemPosition() == 0 ? "male" : "female");
         Intent saveProfile = new Intent();
+        saveProfile.putExtra("tempUser",temp);
         setResult(MainActivity.RESULT_SAVEPROFILE,saveProfile);
         onBackPressed();
     }

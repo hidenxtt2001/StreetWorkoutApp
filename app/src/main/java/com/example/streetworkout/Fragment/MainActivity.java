@@ -13,6 +13,7 @@ import android.os.Looper;
 import android.view.Display;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -153,14 +154,15 @@ public class MainActivity extends AppCompatActivity {
                     LoginAccount();
                 }
                 else if (resultCode == RESULT_SAVEPROFILE){
-                    if(UpdateNewAccount(MainActivity.userInfor)){
+                    if(UpdateNewAccount((UserInfor)data.getExtras().get("tempUser"))){
+                        MainActivity.userInfor = (UserInfor)data.getExtras().get("tempUser");
                         EditUserData.putString("userProfile",new Gson().toJson(userInfor));
                         EditUserData.apply();
                         if(((AccountFragment)selectedFragment) != null)
                         ((AccountFragment)selectedFragment).SetupDisplay();
                     }
                     else {
-                        //TODO: Show message Error Update Data Account Profile
+                        Toast.makeText(this.getApplicationContext(),"Edit Profile Failed",Toast.LENGTH_SHORT).show();
                     }
                 }
         }
