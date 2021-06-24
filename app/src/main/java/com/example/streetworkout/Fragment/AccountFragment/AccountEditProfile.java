@@ -180,7 +180,7 @@ public class AccountEditProfile extends AppCompatActivity {
     }
     @Override
     public boolean onSupportNavigateUp() {
-        onBackPressed();
+        finish();
         return true;
     }
 
@@ -191,11 +191,17 @@ public class AccountEditProfile extends AppCompatActivity {
     }
 
     public void SaveProfile_Click(View view) {
-        UserInfor temp = MainActivity.userInfor;
+        UserInfor temp = new UserInfor();
         temp.setDisplayName(yourname.getText().toString());
         temp.setBirthDay(birthday.getText().toString());
         temp.setCountry(cpp.getSelectedCountryNameCode());
         temp.setGender(spinnerGender.getSelectedItemPosition() == 0 ? "male" : "female");
+        temp.setEmail(MainActivity.userInfor.getEmail());
+        temp.setUserName(MainActivity.userInfor.getUserName());
+        temp.setUrlAvatar(MainActivity.userInfor.getUrlAvatar());
+        temp.setLoginTypes(MainActivity.userInfor.getLoginTypes());
+        temp.setExperienceLevel(MainActivity.userInfor.getExperienceLevel());
+        temp.setUid(MainActivity.userInfor.getUid());
         Intent saveProfile = new Intent();
         saveProfile.putExtra("tempUser",temp);
         setResult(MainActivity.RESULT_SAVEPROFILE,saveProfile);

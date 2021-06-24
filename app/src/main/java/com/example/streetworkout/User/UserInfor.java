@@ -35,6 +35,9 @@ public class UserInfor implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public int getLoginTypes() {
         return loginTypes;

@@ -158,8 +158,10 @@ public class MainActivity extends AppCompatActivity {
                         MainActivity.userInfor = (UserInfor)data.getExtras().get("tempUser");
                         EditUserData.putString("userProfile",new Gson().toJson(userInfor));
                         EditUserData.apply();
+                        Toast.makeText(this.getApplicationContext(),"Edit Profile Success",Toast.LENGTH_SHORT).show();
                         if(((AccountFragment)selectedFragment) != null)
                         ((AccountFragment)selectedFragment).SetupDisplay();
+
                     }
                     else {
                         Toast.makeText(this.getApplicationContext(),"Edit Profile Failed",Toast.LENGTH_SHORT).show();
