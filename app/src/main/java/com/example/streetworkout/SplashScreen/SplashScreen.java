@@ -11,6 +11,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,19 +36,46 @@ import java.util.TimerTask;
 public class SplashScreen extends AppCompatActivity {
 
 
-
+    ImageView imageView;
+    LinearLayout linearLayout;
+    Animation up,down;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        Handler timer = new Handler();
-        Runnable task = new Runnable() {
+        up = AnimationUtils.loadAnimation(this,R.anim.splash_up);
+        up.setFillAfter(true);
+        down = AnimationUtils.loadAnimation(this,R.anim.splash_down);
+        down.setFillAfter(true);
+        imageView = findViewById(R.id.imageView);
+        linearLayout = findViewById(R.id.textView);
+        imageView.setAnimation(up);
+        linearLayout.setAnimation(down);
+
+        down.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void run() {
-                MainAcitityAccess();
+            public void onAnimationStart(Animation animation) {
+
             }
-        };
-        timer.postDelayed(task,500);
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                Handler timer = new Handler();
+                Runnable task = new Runnable() {
+                    @Override
+                    public void run() {
+                        MainAcitityAccess();
+                    }
+                };
+                timer.postDelayed(task, 500);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
     }
 
     @Override

@@ -24,7 +24,7 @@
         <activity android:name=".Fragment.CalenderFragment.DetailsGroupExercises.ExerciseWorkoutActivity" />
         <activity android:name=".Fragment.CalenderFragment.DetailsGroupExercises.DetailsGroupExercises" />
         <activity android:name=".Login.UserInformation.InputUserProfile" />
-        <activity android:name=".SplashScreen.SplashScreen">
+        <activity android:name=".SplashScreen.SplashScreen" android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
