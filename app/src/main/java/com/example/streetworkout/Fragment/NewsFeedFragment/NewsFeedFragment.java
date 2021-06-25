@@ -81,50 +81,6 @@ public class NewsFeedFragment extends Fragment {
 
     private void SetStatus() {
 
-//        FirebaseDatabase.getInstance().getReference().child("StatusUserExercise").addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//
-//                StatusWorkout k = snapshot.getValue(StatusWorkout.class);
-//                if(k.getUid().equals(MainActivity.userInfor.getUid())) return;
-//                FirebaseDatabase.getInstance().getReference().child("UserInfos").child(k.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull  DataSnapshot snapshot) {
-//                        k.setUserInfor(snapshot.getValue(UserInfor.class));
-//                        listStatus.add(k);
-//                        accountFragmentAdapter.notifyDataSetChanged();
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull  DatabaseError error) {
-//
-//                    }
-//                });
-//
-//
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable  String previousChildName) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(@NonNull  DataSnapshot snapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(@NonNull  DataSnapshot snapshot, @Nullable  String previousChildName) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
         FirebaseDatabase.getInstance().getReference().child("StatusUserExercise").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
