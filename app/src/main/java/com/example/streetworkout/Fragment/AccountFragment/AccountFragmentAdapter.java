@@ -1,12 +1,15 @@
 package com.example.streetworkout.Fragment.AccountFragment;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.icu.text.NumberFormat;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercises.GroupExercise;
+import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.StatusWorkout.StatusWorkout;
 import com.example.streetworkout.User.UserInfor;
@@ -48,6 +52,7 @@ public class AccountFragmentAdapter extends RecyclerView.Adapter<AccountFragment
 
     @Override
     public void onBindViewHolder(@NonNull  AccountFragmentAdapter.MyViewHolder holder, int position) {
+        final boolean[] loadFinish = {false};
         StatusWorkout statusWorkout = listStatus.get(position);
         holder.name.setText(statusWorkout.getUserInfor().getUserName());
         Glide.with(context).load(Uri.parse(statusWorkout.getUserInfor().getUrlAvatar())).into((holder.avt));
@@ -58,6 +63,7 @@ public class AccountFragmentAdapter extends RecyclerView.Adapter<AccountFragment
                 Glide.with(context).load(Uri.parse(k.getLinkImageGroup())).into((holder.imageGroup));
                 holder.myText1.setText(k.getNameGroupExercise());
                 holder.textStatus.setText(statusWorkout.getDateComplate());
+                loadFinish[0] = true;
             }
 
             @Override
@@ -65,7 +71,16 @@ public class AccountFragmentAdapter extends RecyclerView.Adapter<AccountFragment
 
             }
         });
-
+        holder.cardStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!loadFinish[0]) return;
+                Intent status = new Intent(context,StatusComment.class);
+                status.putExtra("status",listStatus.get(position));
+                ((Activity)context).startActivity(status);
+                ((Activity)context).overridePendingTransition(R.anim.from_bottom_up_light,R.anim.to_top_light);
+            }
+        });
 
 
 
@@ -81,6 +96,7 @@ public class AccountFragmentAdapter extends RecyclerView.Adapter<AccountFragment
     public class MyViewHolder extends RecyclerView.ViewHolder{
         TextView myText1, myText2, name, textStatus;
         ImageView avt,imageGroup;
+        LinearLayout cardStatus;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             myText1 = itemView.findViewById(R.id.txt1);
@@ -89,6 +105,7 @@ public class AccountFragmentAdapter extends RecyclerView.Adapter<AccountFragment
             textStatus = itemView.findViewById(R.id.status);
             avt = itemView.findViewById(R.id.avatarProfile2);
             imageGroup = itemView.findViewById(R.id.imageGroup);
+            cardStatus = itemView.findViewById(R.id.cardStatus);
         }
     }
 }

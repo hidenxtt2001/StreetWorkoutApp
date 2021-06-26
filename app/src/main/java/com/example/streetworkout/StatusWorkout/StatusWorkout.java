@@ -2,7 +2,9 @@ package com.example.streetworkout.StatusWorkout;
 
 import com.example.streetworkout.User.UserInfor;
 
-public class StatusWorkout {
+import java.io.Serializable;
+
+public class StatusWorkout implements Serializable {
     private String idStatus;
     private String uid;
     private String idGroupExercise;

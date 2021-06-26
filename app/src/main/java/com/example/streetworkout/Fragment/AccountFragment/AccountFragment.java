@@ -34,7 +34,11 @@ import com.google.firebase.database.ValueEventListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Objects;
 
 import java.util.Objects;
@@ -109,7 +113,7 @@ public class AccountFragment extends Fragment {
 
         SetStatus();
 
-        accountFragmentAdapter = new AccountFragmentAdapter(AccountFragment.this.getContext(),listStatus);
+        accountFragmentAdapter = new AccountFragmentAdapter(AccountFragment.this.getActivity(),listStatus);
         recyclerView.setAdapter(accountFragmentAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(AccountFragment.this.getContext()));
     }
@@ -148,9 +152,21 @@ public class AccountFragment extends Fragment {
         FirebaseDatabase.getInstance().getReference().child("StatusUserExercise").orderByChild("uid").equalTo(MainActivity.userInfor.getUid()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
                 StatusWorkout k = snapshot.getValue(StatusWorkout.class);
                 k.setUserInfor(MainActivity.userInfor);
+                k.setIdStatus(snapshot.getKey());
                 listStatus.add(k);
+                Collections.sort(listStatus, new Comparator<StatusWorkout>() {
+                    public int compare(StatusWorkout o1, StatusWorkout o2) {
+                        try {
+                            return parser.parse(o2.getDateComplate()).compareTo(parser.parse(o1.getDateComplate()));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        return 0;
+                    }
+                });
                 accountFragmentAdapter.notifyDataSetChanged();
             }
 

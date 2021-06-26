@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +75,7 @@ public class NewsFeedFragment extends Fragment {
 
         SetStatus();
 
-        accountFragmentAdapter = new AccountFragmentAdapter(NewsFeedFragment.this.getContext(),listStatus);
+        accountFragmentAdapter = new AccountFragmentAdapter(NewsFeedFragment.this.getActivity(),listStatus);
         recyclerView.setAdapter(accountFragmentAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(NewsFeedFragment.this.getContext()));
     }
@@ -87,13 +88,17 @@ public class NewsFeedFragment extends Fragment {
                 listStatus.clear();
                 for ( DataSnapshot i : snapshot.getChildren()) {
 
+                    if(snapshot.getKey().toString().equals("StatusUserExerciseComments"))
+                        continue;
                     StatusWorkout k = i.getValue(StatusWorkout.class);
                     if(k.getUid().equals(MainActivity.userInfor.getUid())) continue;
+                    k.setIdStatus(i.getKey());
                     FirebaseDatabase.getInstance().getReference().child("UserInfos").child(k.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull  DataSnapshot snapshot) {
-                            SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyy");
+                            SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
                             k.setUserInfor(snapshot.getValue(UserInfor.class));
+
                             listStatus.add(k);
                             Collections.sort(listStatus, new Comparator<StatusWorkout>() {
                                 public int compare(StatusWorkout o1, StatusWorkout o2) {
