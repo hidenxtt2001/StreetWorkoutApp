@@ -17,15 +17,22 @@
         android:layout_height="match_parent"
         android:background="@drawable/training_dark_linear_gradient" />
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/image_button_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
         android:onClick="backCalendarFragment"
-        android:src="@drawable/logo_back" />
+        android:src="@drawable/logo_back" />-->
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/customToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        app:navigationIcon="@drawable/ic_back"
+        />
     <LinearLayout
         android:id="@+id/layout_per"
         android:layout_width="match_parent"
@@ -132,7 +139,15 @@
 
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/main_calendar_fragment_logo_next"
-
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/next"
+                android:fontFamily="@font/nunito_black"
+                android:layout_centerInParent="true"
+                android:textColor="@color/colorMain_1"
+                android:textSize="15pt"
                 />
         </RelativeLayout>
     </LinearLayout>

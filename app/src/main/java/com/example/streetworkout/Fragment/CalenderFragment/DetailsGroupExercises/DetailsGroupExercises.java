@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -38,7 +41,7 @@ public class DetailsGroupExercises extends AppCompatActivity {
     private ImageView imageBackground;
     private TextView txtNameGroupExercise, txtNameLevel, txtNameExercise;
     private final int RC_DETAILEXERCISE = 4;
-
+    Toolbar toolbar;
     private GroupExercise groupExercise;
 
 
@@ -46,6 +49,13 @@ public class DetailsGroupExercises extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_calendar_details_groups_exercises);
+
+        toolbar = findViewById(R.id.customToolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         txtNameGroupExercise = findViewById(R.id.txt_name_group_exercise);
         txtNameExercise = findViewById(R.id.txt_name_exercise);
         txtNameLevel = findViewById(R.id.txt_name_level);
@@ -174,6 +184,12 @@ public class DetailsGroupExercises extends AppCompatActivity {
             handlerAnimation.postDelayed(runnableAnim, 1000);
         }
     };
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
 
     public void backCalendarFragment(View view) {
         onBackPressed();

@@ -8,6 +8,7 @@
     tools:context=".Fragment.CalenderFragment.DetailsGroupExercises.ExerciseWorkoutActivity">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/customToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black"
@@ -15,28 +16,13 @@
         android:contentInsetLeft="0dp"
         android:contentInsetEnd="0dp"
         android:contentInsetRight="0dp"
-        android:padding="10dp"
         app:contentInsetEnd="0dp"
         app:contentInsetLeft="0dp"
         app:contentInsetRight="0dp"
+        app:navigationIcon="@drawable/ic_back"
         app:contentInsetStart="0dp"
         app:titleTextColor="@color/white">
 
-        <ImageView
-            android:id="@+id/image_button_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="backActivity"
-            android:src="@drawable/logo_back" />
-
-        <TextView
-            android:id="@+id/txt_name_group_exercise"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="Tabata"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
 
     </androidx.appcompat.widget.Toolbar>
     <ScrollView

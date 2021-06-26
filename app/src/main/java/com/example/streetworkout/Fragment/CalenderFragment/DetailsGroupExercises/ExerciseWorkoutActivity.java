@@ -43,19 +43,25 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
     private RoundAdapter roundAdapter;
     private ArrayList<Exercise> listExerciseWarmUp, listExerciseRound;
     private String checkDayExercise;
-
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_calendar_exercise_workout_activity);
 
-        txtNameGroup = findViewById(R.id.txt_name_group_exercise);
+        toolbar = findViewById(R.id.customToolbar);
+
+
+
+
 
         groupExercise = (GroupExercise)this.getIntent().getSerializableExtra("getGroupExercise");
         getNameExercise = getIntent().getStringExtra("getNameExercise");
+        toolbar.setTitle(groupExercise.getNameGroupExercise());
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        txtNameGroup.setText(groupExercise.getNameGroupExercise());
 
         //set up recycler view Warm-up
         listExerciseWarmUp = new ArrayList<Exercise>();
@@ -144,8 +150,10 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
         });
     }
 
-    public void backActivity(View view) {
+    @Override
+    public boolean onSupportNavigateUp() {
         onBackPressed();
+        return true;
     }
 
     public void completeExercise(View view) {
