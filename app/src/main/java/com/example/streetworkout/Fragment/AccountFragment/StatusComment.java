@@ -35,6 +35,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 public class StatusComment extends AppCompatActivity {
@@ -77,7 +78,7 @@ public class StatusComment extends AppCompatActivity {
         String commentId = UUID.randomUUID().toString();
         String content = commentText.getText().toString();
         commentText.setText("");
-        FirebaseDatabase.getInstance().getReference().child("StatusUserExerciseComments").child(statusWorkout.getIdStatus()).child(commentId).setValue(new Comment(commentId, MainActivity.userInfor.getUid(),content,  Calendar.getInstance().getTime().toString())).addOnSuccessListener(new OnSuccessListener<Void>() {
+        FirebaseDatabase.getInstance().getReference().child("StatusUserExerciseComments").child(statusWorkout.getIdStatus()).child(commentId).setValue(new Comment(commentId, MainActivity.userInfor.getUid(),content,  Calendar.getInstance(Locale.ENGLISH).getTime().toString())).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
 
@@ -90,7 +91,7 @@ public class StatusComment extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
                 if(!snapshot.exists()) return;
-                SimpleDateFormat parser = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+                SimpleDateFormat parser = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
                 Comment comment = snapshot.getValue(Comment.class);
                 FirebaseDatabase.getInstance().getReference().child("UserInfos").child(comment.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

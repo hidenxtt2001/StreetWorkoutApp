@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -47,11 +48,13 @@ public class StatusCommentAdapter extends RecyclerView.Adapter<StatusCommentAdap
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull StatusCommentAdapter.ViewHolder holder, int position) {
-        SimpleDateFormat parser = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+        SimpleDateFormat parser = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
         Comment comment = comments.get(position);
         Date now = Calendar.getInstance().getTime();
+
         try {
-            holder.durationAgo.setText(toDuration((now.getTime() - parser.parse(comment.getDateCreate()).getTime())));
+            Date commentdate = parser.parse(comment.getDateCreate());
+            holder.durationAgo.setText(toDuration((now.getTime() - commentdate.getTime())));
         } catch (ParseException e) {
             e.printStackTrace();
         }
