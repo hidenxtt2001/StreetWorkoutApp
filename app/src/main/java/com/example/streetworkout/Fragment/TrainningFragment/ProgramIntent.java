@@ -6,6 +6,7 @@ import android.widget.*;
 
 import androidx.annotation.*;
 import androidx.appcompat.app.*;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.*;
 
 import com.example.streetworkout.*;
@@ -27,6 +28,7 @@ public class ProgramIntent extends AppCompatActivity {
     TextView name;
     RecyclerView recyclerView;
     WeeklyAdapter weeklyAdapter;
+    Toolbar toolbar;
 
 
 
@@ -35,22 +37,31 @@ public class ProgramIntent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_training_program_inside_holder);
+
+        toolbar = findViewById(R.id.customToolbar);
+
         programExercise = (ProgramExercise)this.getIntent().getSerializableExtra("data");
-        String nameProgram = getIntent().getStringExtra("nameProgram");
+        toolbar.setTitle(programExercise.getNameProgramExercise());
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         InitializeElement();
-        name.setText(nameProgram);
         setupforFirebase();
 
     }
 
-    public void backActivity(View view) {
+    @Override
+    public boolean onSupportNavigateUp() {
         onBackPressed();
+        return true;
     }
+
+
 
      void InitializeElement() {
         loading = findViewById(R.id.program_progressBar);
         recyclerView = findViewById(R.id.program_recyclerView);
-        name = findViewById(R.id.program_exercisename);
         loading.setVisibility(View.VISIBLE);
 
          LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getApplicationContext());
