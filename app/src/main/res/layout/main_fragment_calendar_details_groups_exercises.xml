@@ -33,6 +33,7 @@
         android:layout_alignParentTop="true"
         app:navigationIcon="@drawable/ic_back"
         />
+
     <LinearLayout
         android:id="@+id/layout_per"
         android:layout_width="match_parent"
@@ -138,17 +139,16 @@
                 android:layout_centerInParent="true"
 
                 android:scaleType="centerCrop"
-                app:srcCompat="@drawable/main_calendar_fragment_logo_next"
-                />
+                app:srcCompat="@drawable/main_calendar_fragment_logo_next" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/next"
-                android:fontFamily="@font/nunito_black"
                 android:layout_centerInParent="true"
+                android:fontFamily="@font/nunito_black"
+                android:text="@string/next"
                 android:textColor="@color/colorMain_1"
-                android:textSize="15pt"
-                />
+                android:textSize="15pt" />
         </RelativeLayout>
     </LinearLayout>
 

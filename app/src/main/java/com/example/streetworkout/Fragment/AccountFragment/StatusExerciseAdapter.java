@@ -71,7 +71,7 @@ public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAd
 
             }
         });
-        holder.cardStatus.setOnClickListener(new View.OnClickListener() {
+        holder.commentsPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!loadFinish[0]) return;
@@ -147,16 +147,38 @@ public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAd
                         }
                     });
                 }
+            }
+        });
 
+        FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExerciseComments").child(statusWorkout.getIdStatus()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if(!snapshot.exists()){
+                    holder.textCountComments.setText("0");
+                    return;
+                }
 
+                String countComments = String.valueOf(snapshot.getChildrenCount());
+                holder.textCountComments.setText(countComments);
+            }
 
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
             }
         });
 
-
-
-
+        holder.infoUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(MainActivity.userInfor.getUid().equals(listStatus.get(position).getUid()))
+                    return;
+                Intent infoOtherUser = new Intent(context,AccountWatchOtherUser.class);
+                infoOtherUser.putExtra("infoUser",listStatus.get(position).getUid());
+                ((Activity)context).startActivity(infoOtherUser);
+                ((Activity)context).overridePendingTransition(R.anim.from_bottom_up_light,R.anim.to_top_light);
+            }
+        });
 
 
 
@@ -168,9 +190,9 @@ public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAd
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView myText1, myText2, name, textStatus, textCountLove;
-        ImageView avt,imageGroup, loveStatus;
-        LinearLayout cardStatus;
+        TextView myText1, myText2, name, textStatus, textCountLove, textCountComments;
+        ImageView avt,imageGroup, loveStatus, commentsPost;
+        LinearLayout cardStatus, infoUser;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             myText1 = itemView.findViewById(R.id.txt1);
@@ -182,6 +204,9 @@ public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAd
             cardStatus = itemView.findViewById(R.id.cardStatus);
             loveStatus = itemView.findViewById(R.id.loveStatus);
             textCountLove = itemView.findViewById(R.id.countLoveStatus);
+            textCountComments = itemView.findViewById(R.id.countCommentsStatus);
+            commentsPost = itemView.findViewById(R.id.commentsStatus);
+            infoUser = itemView.findViewById(R.id.infoUser);
         }
     }
 }

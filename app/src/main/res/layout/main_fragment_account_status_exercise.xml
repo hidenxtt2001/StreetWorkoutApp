@@ -24,6 +24,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:id="@+id/infoUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -70,20 +71,36 @@
                 android:layout_marginBottom="10dp">
 
                 <TextView
+                    android:id="@+id/countCommentsStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_gravity="center" />
+                <ImageView
+                    android:id="@+id/commentsStatus"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/comment_icon"/>
+
+                <TextView
                     android:id="@+id/countLoveStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:layout_gravity="center" />
 
                 <ImageView
                     android:id="@+id/loveStatus"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:scaleType="centerCrop"
                     android:layout_margin="10dp"
                     android:src="@drawable/status_exercise_love_disable"/>
+
 
 
             </LinearLayout>
