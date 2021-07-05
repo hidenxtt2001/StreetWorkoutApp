@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercises.GroupExercise;
+import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.StatusWorkout.StatusWorkout;
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +24,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAdapter.MyViewHolder>{
 
@@ -75,6 +80,44 @@ public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAd
             }
         });
 
+        final boolean[] isLoadLove = {false};
+        FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExerciseLove").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                isLoadLove[0] = true;
+
+                if(!snapshot.exists()){
+                    return;
+                }
+
+                String count = String.valueOf(snapshot.getChildrenCount());
+                holder.textCountLove.setText(count);
+                for (DataSnapshot snap: snapshot.getChildren()) {
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+        holder.loveStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isLoadLove[0])
+                    return;
+
+                Map<String, Object> map = new HashMap<>();
+                map.put("uid", MainActivity.userInfor.getUid());
+                FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExerciseLove").child(statusWorkout.getIdStatus()).updateChildren(map);
+                holder.loveStatus.setImageResource(R.drawable.status_exercise_love_enable);
+
+            }
+        });
+
+
+
 
 
 
@@ -87,8 +130,8 @@ public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAd
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView myText1, myText2, name, textStatus;
-        ImageView avt,imageGroup;
+        TextView myText1, myText2, name, textStatus, textCountLove;
+        ImageView avt,imageGroup, loveStatus;
         LinearLayout cardStatus;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,6 +142,8 @@ public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAd
             avt = itemView.findViewById(R.id.avatarProfile2);
             imageGroup = itemView.findViewById(R.id.imageGroup);
             cardStatus = itemView.findViewById(R.id.cardStatus);
+            loveStatus = itemView.findViewById(R.id.loveStatus);
+            textCountLove = itemView.findViewById(R.id.countLoveStatus);
         }
     }
 }
