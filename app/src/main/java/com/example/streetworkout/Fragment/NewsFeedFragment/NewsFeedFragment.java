@@ -56,7 +56,6 @@ public class NewsFeedFragment extends Fragment {
         root = inflater.inflate(R.layout.main_fragment_newsfeed, container, false);
 
         SetUpInfor();
-        SetStatus();
         return root;
 
     }
