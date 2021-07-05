@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -46,6 +47,8 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
     private String checkDayExercise;
     private Toolbar toolbar;
 
+    private static final int RC_STARTEXERCISE = 32;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,16 +56,11 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.customToolbar);
 
-
-
-
-
         groupExercise = (GroupExercise)this.getIntent().getSerializableExtra("getGroupExercise");
         getNameExercise = getIntent().getStringExtra("getNameExercise");
         toolbar.setTitle(groupExercise.getNameGroupExercise());
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         //set up recycler view Warm-up
         listExerciseWarmUp = new ArrayList<Exercise>();
@@ -197,6 +195,7 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
     }
 
     public void startExercise(View view) {
-
+        Intent startExerciseTraining = new Intent(this, StartDetailExerciseActivity.class);
+        startActivityForResult(startExerciseTraining,RC_STARTEXERCISE);
     }
 }

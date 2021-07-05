@@ -19,6 +19,7 @@ import com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercises
 import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.StatusWorkout.StatusWorkout;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAdapter.MyViewHolder>{
@@ -81,19 +83,29 @@ public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAd
         });
 
         final boolean[] isLoadLove = {false};
-        FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExerciseLove").addValueEventListener(new ValueEventListener() {
+        final boolean[] isLove = {false};
+        final String[] idLove = {null};
+        FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExerciseLove").child(statusWorkout.getIdStatus()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 isLoadLove[0] = true;
 
                 if(!snapshot.exists()){
+                    holder.textCountLove.setText("0");
                     return;
                 }
 
                 String count = String.valueOf(snapshot.getChildrenCount());
                 holder.textCountLove.setText(count);
-                for (DataSnapshot snap: snapshot.getChildren()) {
 
+                for(DataSnapshot ds : snapshot.getChildren()) {
+                    String uid = ds.getValue(String.class);
+                    if(uid == MainActivity.userInfor.getUid()){
+                        isLove[0] = true;
+                        holder.loveStatus.setImageResource(R.drawable.status_exercise_love_enable);
+                        idLove[0] = ds.getKey();
+                        break;
+                    }
                 }
             }
 
@@ -102,16 +114,42 @@ public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAd
 
             }
         });
+        final boolean[] isUpdateLove = {false};
         holder.loveStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!isLoadLove[0])
                     return;
+                if(isUpdateLove[0]) return;
+                if(isLove[0]){
 
-                Map<String, Object> map = new HashMap<>();
-                map.put("uid", MainActivity.userInfor.getUid());
-                FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExerciseLove").child(statusWorkout.getIdStatus()).updateChildren(map);
-                holder.loveStatus.setImageResource(R.drawable.status_exercise_love_enable);
+                    isLove[0] = !isLove[0];
+                    holder.loveStatus.setImageResource(R.drawable.status_exercise_love_disable);
+                    FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExerciseLove").child(statusWorkout.getIdStatus()).child(idLove[0]).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            isUpdateLove[0] = false;
+
+                        }
+                    });
+                }
+                else{
+                    isLove[0] = !isLove[0];
+                    holder.loveStatus.setImageResource(R.drawable.status_exercise_love_enable);
+                    String key = FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExerciseLove").child(statusWorkout.getIdStatus()).push().getKey();
+                    Map<String, Object> map = new HashMap<>();
+                    map.put(key, MainActivity.userInfor.getUid());
+                    FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExerciseLove").child(statusWorkout.getIdStatus()).updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            isUpdateLove[0] = false;
+
+                        }
+                    });
+                }
+
+
+
 
             }
         });
