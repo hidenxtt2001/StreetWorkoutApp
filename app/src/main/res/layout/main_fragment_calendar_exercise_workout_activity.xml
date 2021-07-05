@@ -164,6 +164,7 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:visibility="visible"
                 android:id="@+id/complete_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -174,9 +175,21 @@
                 android:textSize="18sp"
                 android:textColor="@color/colorSub"
                 android:background="@drawable/main_fragment_calendar_border"
-                android:onClick="completeExercise">
+                android:onClick="completeExercise"/>
 
-            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/start_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Start Exercise"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textColor="@color/colorSub"
+                android:background="@drawable/main_fragment_calendar_border"
+                android:onClick="startExercise"/>
+
         </LinearLayout>
     </ScrollView>
 

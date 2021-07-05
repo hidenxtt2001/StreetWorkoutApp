@@ -21,7 +21,6 @@ import com.bumptech.glide.Glide;
 import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.StatusWorkout.StatusWorkout;
-import com.example.streetworkout.User.UserInfor;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
@@ -29,7 +28,6 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,16 +37,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Objects;
-
-import java.util.Objects;
 
 
 public class AccountFragment extends Fragment {
     //recycler view
     RecyclerView recyclerView;
     ArrayList<StatusWorkout> listStatus;
-    AccountFragmentAdapter accountFragmentAdapter;
+    StatusExerciseAdapter statusExerciseAdapter;
     boolean isEditProfile= false;
     View root;
     public AccountFragment() {
@@ -113,8 +108,8 @@ public class AccountFragment extends Fragment {
 
         SetStatus();
 
-        accountFragmentAdapter = new AccountFragmentAdapter(AccountFragment.this.getActivity(),listStatus);
-        recyclerView.setAdapter(accountFragmentAdapter);
+        statusExerciseAdapter = new StatusExerciseAdapter(AccountFragment.this.getActivity(),listStatus);
+        recyclerView.setAdapter(statusExerciseAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(AccountFragment.this.getContext()));
     }
 
@@ -149,7 +144,7 @@ public class AccountFragment extends Fragment {
     int count_workout =0;
     public void SetStatus()
     {
-        FirebaseDatabase.getInstance().getReference().child("StatusUserExercise").orderByChild("uid").equalTo(MainActivity.userInfor.getUid()).addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExercise").orderByChild("uid").equalTo(MainActivity.userInfor.getUid()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
@@ -167,7 +162,7 @@ public class AccountFragment extends Fragment {
                         return 0;
                     }
                 });
-                accountFragmentAdapter.notifyDataSetChanged();
+                statusExerciseAdapter.notifyDataSetChanged();
             }
 
             @Override

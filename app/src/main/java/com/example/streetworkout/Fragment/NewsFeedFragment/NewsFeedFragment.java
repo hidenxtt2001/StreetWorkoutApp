@@ -1,26 +1,21 @@
 package com.example.streetworkout.Fragment.NewsFeedFragment;
 
-import android.graphics.Path;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.streetworkout.Fragment.AccountFragment.AccountFragment;
-import com.example.streetworkout.Fragment.AccountFragment.AccountFragmentAdapter;
+import com.example.streetworkout.Fragment.AccountFragment.StatusExerciseAdapter;
 import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.R;
 import com.example.streetworkout.StatusWorkout.StatusWorkout;
 import com.example.streetworkout.User.UserInfor;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,7 +28,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 
 
 public class NewsFeedFragment extends Fragment {
@@ -42,7 +36,7 @@ public class NewsFeedFragment extends Fragment {
     public static UserInfor userInfor;
     RecyclerView recyclerView;
     ArrayList<StatusWorkout> listStatus;
-    AccountFragmentAdapter accountFragmentAdapter;
+    StatusExerciseAdapter statusExerciseAdapter;
 
     public NewsFeedFragment() {
         // Required empty public constructor
@@ -62,7 +56,7 @@ public class NewsFeedFragment extends Fragment {
         root = inflater.inflate(R.layout.main_fragment_newsfeed, container, false);
 
         SetUpInfor();
-
+        SetStatus();
         return root;
 
     }
@@ -75,14 +69,14 @@ public class NewsFeedFragment extends Fragment {
 
         SetStatus();
 
-        accountFragmentAdapter = new AccountFragmentAdapter(NewsFeedFragment.this.getActivity(),listStatus);
-        recyclerView.setAdapter(accountFragmentAdapter);
+        statusExerciseAdapter = new StatusExerciseAdapter(NewsFeedFragment.this.getActivity(),listStatus);
+        recyclerView.setAdapter(statusExerciseAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(NewsFeedFragment.this.getContext()));
     }
 
     private void SetStatus() {
 
-        FirebaseDatabase.getInstance().getReference().child("StatusUserExercise").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExercise").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 listStatus.clear();
@@ -110,7 +104,7 @@ public class NewsFeedFragment extends Fragment {
                                     return 0;
                                 }
                             });
-                            accountFragmentAdapter.notifyDataSetChanged();
+                            statusExerciseAdapter.notifyDataSetChanged();
                         }
 
                         @Override

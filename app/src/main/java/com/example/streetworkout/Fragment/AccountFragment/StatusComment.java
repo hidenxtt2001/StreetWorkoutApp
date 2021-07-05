@@ -78,7 +78,7 @@ public class StatusComment extends AppCompatActivity {
         String commentId = UUID.randomUUID().toString();
         String content = commentText.getText().toString();
         commentText.setText("");
-        FirebaseDatabase.getInstance().getReference().child("StatusUserExerciseComments").child(statusWorkout.getIdStatus()).child(commentId).setValue(new Comment(commentId, MainActivity.userInfor.getUid(),content,  Calendar.getInstance(Locale.ENGLISH).getTime().toString())).addOnSuccessListener(new OnSuccessListener<Void>() {
+        FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExerciseComments").child(statusWorkout.getIdStatus()).child(commentId).setValue(new Comment(commentId, MainActivity.userInfor.getUid(),content,  Calendar.getInstance(Locale.ENGLISH).getTime().toString())).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
 
@@ -87,7 +87,7 @@ public class StatusComment extends AppCompatActivity {
     }
 
     private void ListenCommentChange(){
-        FirebaseDatabase.getInstance().getReference().child("StatusUserExerciseComments").child(statusWorkout.getIdStatus()).addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("StatusExercise").child("StatusUserExerciseComments").child(statusWorkout.getIdStatus()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
                 if(!snapshot.exists()) return;

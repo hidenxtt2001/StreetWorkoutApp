@@ -18,7 +18,8 @@
         android:splitMotionEvents="false"
         android:supportsRtl="true"
         android:theme="@style/Theme.StreetWorkout">
-        <activity android:name=".Fragment.AccountFragment.StatusComment"></activity>
+        <activity android:name=".Fragment.CalenderFragment.DetailsGroupExercises.StartDetailExerciseActivity"></activity>
+        <activity android:name=".Fragment.AccountFragment.StatusComment" />
         <activity android:name=".Fragment.TrainningFragment.Program.DetailWeekly" />
         <activity android:name=".Fragment.TrainningFragment.ProgramIntent" />
         <activity android:name=".Fragment.TrainningFragment.ExerciseLibrary" />

@@ -41,7 +41,8 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
     private DatabaseReference mRef;
     private WarmUpAdapter warmUpAdapter;
     private RoundAdapter roundAdapter;
-    private ArrayList<Exercise> listExerciseWarmUp, listExerciseRound;
+    public  ArrayList<Exercise> listExerciseWarmUp, listExerciseRound;
+    private boolean isLoadWarmUp = false, isLoadRound = false;
     private String checkDayExercise;
     private Toolbar toolbar;
 
@@ -108,6 +109,7 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
                         }
                     });
                 }
+                isLoadWarmUp = true;
             }
 
             @Override
@@ -141,6 +143,7 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
                         }
                     });
                 }
+                isLoadRound = true;
             }
 
             @Override
@@ -188,8 +191,12 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
         Date date = new Date();
         System.out.println(dateFormat.format(date));
         StatusWorkout z = new StatusWorkout(MainActivity.userInfor.getUid(),groupExercise.getIdGroupExercise(),dateFormat.format(date));
-        mRef.child("StatusUserExercise").push().setValue(z);
+        mRef.child("StatusExercise").child("StatusUserExercise").push().setValue(z);
         setResult(RESULT_OK);
         finish();
+    }
+
+    public void startExercise(View view) {
+
     }
 }
