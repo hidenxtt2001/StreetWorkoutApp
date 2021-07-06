@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 
 import com.example.streetworkout.Fragment.AccountFragment.AccountFragment;
 import com.example.streetworkout.Fragment.CalenderFragment.CalenderFragment;
@@ -90,10 +91,13 @@ public class MainActivity extends AppCompatActivity {
             loadDataWeekUser();
             getSupportFragmentManager().beginTransaction().replace(id.fragment_container, new AccountFragment()).commit();
         }
+
+
         // Set up bottom navigation
         BottomNavigationView bottomNavigationView = findViewById(id.main_bottom_navigation);
         bottomNavigationView.getMenu().getItem(3).setChecked(true);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+
 
 
     }
@@ -203,6 +207,17 @@ public class MainActivity extends AppCompatActivity {
     //load data week exercise user
     public void loadDataWeekUser(){
         userInforViewModel = new UserInforViewModel();
+        userInforViewModel.getUserInfor().observe(this, new Observer<UserInfor>() {
+            @Override
+            public void onChanged(UserInfor userInfor) {
+                if(userInfor == null){
+                    onActivityResult(RC_EDITPROFILE,RESULT_LOGOUT,null);
+                }
+                else
+                    MainActivity.userInfor = userInfor;
+            }
+        });
+
         Runnable runnable = new Runnable() {
             @Override
             public void run() {

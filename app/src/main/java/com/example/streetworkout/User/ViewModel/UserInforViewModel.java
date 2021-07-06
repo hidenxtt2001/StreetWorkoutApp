@@ -9,11 +9,14 @@ import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExer
 import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseDaily;
 import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseUser;
 import com.example.streetworkout.Fragment.MainActivity;
+import com.example.streetworkout.User.UserInfor;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -26,7 +29,16 @@ public class UserInforViewModel extends ViewModel {
     public LiveData<ArrayList<WeekExerciseDaily>> getWeekExerciseDaily() { return weekExerciseDaily;};
     private ArrayList<WeekExerciseDaily> mweekExerciseDaily;
 
+    private MutableLiveData<UserInfor> userInforMutableLiveData;
+    public LiveData<UserInfor> getUserInfor() { return userInforMutableLiveData;};
+    public UserInfor userInfor;
+
+
     public UserInforViewModel(){
+
+        // userinfor
+
+
         weekExerciseUser = new MutableLiveData<WeekExerciseUser>();
         weekExerciseUser.setValue(mweekExerciseUser);
 
@@ -143,6 +155,23 @@ public class UserInforViewModel extends ViewModel {
 
             @Override
             public void onCancelled(@NonNull  DatabaseError error) {
+
+            }
+        });
+
+        userInforMutableLiveData = new MutableLiveData<UserInfor>();
+        mRef.child("UserInfos").child(MainActivity.userInfor.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if(!snapshot.exists()){
+                    userInfor = null;
+                }
+                else userInfor =snapshot.getValue(UserInfor.class);
+                userInforMutableLiveData.postValue(userInfor);
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
             }
         });
