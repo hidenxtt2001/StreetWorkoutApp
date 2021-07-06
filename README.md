@@ -11,14 +11,10 @@
 > Ngoài ra, App cho phép người dùng chia sẻ **Quá Trình Tập Luyện**
 
 ## Chức Năng: 
-- Tạo tài khoản
-Tạo tài khoản trong StreetWorkoutApp và bắt đầu tập luyện
-- Tìm kiếm những động tác mà bạn muốn
-Tìm và xem lại những động tác mà bạn muốn tập
-- Lưu lại lịch sử tập luyện
-Lịch sử tập luyện được lưu lại
-- Tương tác cộng đồng
-Mọi người có thể tương tác với nhau thông qua thả tim và bình luận về các bài tập của nhau
+- Tạo tài khoản:Tạo tài khoản trong StreetWorkoutApp và bắt đầu tập luyện
+- Tìm kiếm những động tác mà bạn muốn:Tìm và xem lại những động tác mà bạn muốn tập
+- Lưu lại lịch sử tập luyện:Lịch sử tập luyện được lưu lại
+- Tương tác cộng đồng:Mọi người có thể tương tác với nhau thông qua thả tim và bình luận về các bài tập của nhau
 
 
 ## Yêu Cầu Thiết Bị
