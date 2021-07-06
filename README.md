@@ -2,7 +2,7 @@
 > Phần mềm hỗ trợ tập thể dục tại nhà
 
 <center>
-<img src="app/src/main/res/drawable/wolf_icon_white.png"/>
+<img src="app/src/main/res/drawable/icon_app.png"/>
 </center>
 
 ### Mô tả App
