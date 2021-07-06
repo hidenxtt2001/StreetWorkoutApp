@@ -10,6 +10,7 @@ public class StatusWorkout implements Serializable {
     private String idGroupExercise;
     private String dateComplate;
     private UserInfor userInfor;
+    private String timeComplete;
 
 
     public StatusWorkout(){}
@@ -50,5 +51,13 @@ public class StatusWorkout implements Serializable {
 
     public void setUserInfor(UserInfor userInfor) {
         this.userInfor = userInfor;
+    }
+
+    public String getTimeComplete() {
+        return timeComplete;
+    }
+
+    public void setTimeComplete(String timeComplete) {
+        this.timeComplete = timeComplete;
     }
 }

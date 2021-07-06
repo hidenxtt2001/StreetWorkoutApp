@@ -55,7 +55,9 @@ public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAd
         final boolean[] loadFinish = {false};
         StatusWorkout statusWorkout = listStatus.get(position);
         holder.name.setText(statusWorkout.getUserInfor().getUserName());
+        holder.timeComplete.setText(statusWorkout.getTimeComplete());
         Glide.with(context).load(Uri.parse(statusWorkout.getUserInfor().getUrlAvatar())).into((holder.avt));
+
         FirebaseDatabase.getInstance().getReference().child("GroupExercises").child("GroupExercise").child(statusWorkout.getIdGroupExercise()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull  DataSnapshot snapshot) {
@@ -190,7 +192,7 @@ public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAd
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView myText1, myText2, name, textStatus, textCountLove, textCountComments;
+        TextView myText1, myText2, name, textStatus, textCountLove, textCountComments,timeComplete;
         ImageView avt,imageGroup, loveStatus, commentsPost;
         LinearLayout cardStatus, infoUser;
         public MyViewHolder(@NonNull View itemView) {
@@ -207,6 +209,7 @@ public class StatusExerciseAdapter extends RecyclerView.Adapter<StatusExerciseAd
             textCountComments = itemView.findViewById(R.id.countCommentsStatus);
             commentsPost = itemView.findViewById(R.id.commentsStatus);
             infoUser = itemView.findViewById(R.id.infoUser);
+            timeComplete = itemView.findViewById(R.id.timeComplete);
         }
     }
 }

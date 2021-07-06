@@ -1,6 +1,7 @@
 package com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercises;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -99,6 +101,7 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
                                 listExerciseWarmUp.add(exerciseWarmUp);
                                 warmUpAdapter.notifyDataSetChanged();
                             }
+                            isLoadWarmUp = true;
                         }
 
                         @Override
@@ -107,7 +110,7 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
                         }
                     });
                 }
-                isLoadWarmUp = true;
+
             }
 
             @Override
@@ -133,6 +136,7 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
                                 listExerciseRound.add(exerciseRound);
                                 roundAdapter.notifyDataSetChanged();
                             }
+                            isLoadRound = true;
                         }
 
                         @Override
@@ -141,7 +145,7 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
                         }
                     });
                 }
-                isLoadRound = true;
+
             }
 
             @Override
@@ -157,7 +161,8 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
         return true;
     }
 
-    public void completeExercise(View view) {
+
+   /* public void completeExercise(View view) {
         checkDayExercise = getIntent().getStringExtra("checkDayExercise");
         String day = "day" + checkDayExercise;
         WeekExerciseUser k =MainActivity.userInforViewModel.getWeekExerciseUser().getValue();
@@ -192,10 +197,32 @@ public class ExerciseWorkoutActivity extends AppCompatActivity {
         mRef.child("StatusExercise").child("StatusUserExercise").push().setValue(z);
         setResult(RESULT_OK);
         finish();
-    }
+    }*/
 
     public void startExercise(View view) {
+        if(!isLoadRound || !isLoadRound) return;
+        ArrayList<Exercise> exercises = new ArrayList<>();
+        exercises.addAll(listExerciseWarmUp);
+        exercises.addAll(listExerciseRound);
+        String getDayExercise = getIntent().getStringExtra("checkDayExercise");
         Intent startExerciseTraining = new Intent(this, StartDetailExerciseActivity.class);
+        startExerciseTraining.putExtra("listExercise",exercises);
+        startExerciseTraining.putExtra("groupExercise",groupExercise);
+        startExerciseTraining.putExtra("checkDayExercise", getDayExercise);
         startActivityForResult(startExerciseTraining,RC_STARTEXERCISE);
+
+        this.overridePendingTransition(R.anim.from_bottom_up_light,R.anim.to_top_light);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case RC_STARTEXERCISE:
+                if(resultCode == RESULT_OK){
+                    setResult(RESULT_OK);
+                    finish();
+                }
+        }
     }
 }
