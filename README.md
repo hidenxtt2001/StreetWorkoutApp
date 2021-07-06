@@ -1,5 +1,9 @@
 # StreetWorkoutApp
-> Android Studio Project
+> Phần mềm hỗ trợ tập thể dục tại nhà
+
+<center>
+<img src="app/src/main/res/drawable/background_splash.xml"/>
+</center>
 
 ## Giáo Viên Hướng Dẫn
  - Nguyễn Tấn Toàn
