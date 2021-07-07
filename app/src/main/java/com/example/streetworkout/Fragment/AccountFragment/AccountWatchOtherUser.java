@@ -117,7 +117,7 @@ public class AccountWatchOtherUser extends AppCompatActivity {
 
         setStatus();
 
-        statusExerciseAdapter = new StatusExerciseAdapter(this.getApplicationContext(),listOtherUserStatus);
+        statusExerciseAdapter = new StatusExerciseAdapter(this,listOtherUserStatus);
         recyclerViewOtherUser.setAdapter(statusExerciseAdapter);
         recyclerViewOtherUser.setLayoutManager(new LinearLayoutManager(this.getApplicationContext()));
 
