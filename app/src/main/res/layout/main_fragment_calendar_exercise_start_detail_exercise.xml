@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/layout_per2"
     tools:context=".Fragment.CalenderFragment.DetailsGroupExercises.StartDetailExerciseActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -66,6 +67,7 @@
             app:selectedDotColor="@color/colorSub" />
     </LinearLayout>
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_weight="4"
         android:orientation="vertical"
@@ -95,56 +97,44 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center">
 
-            >
-            <androidx.cardview.widget.CardView
+            <ImageView
+                android:id="@+id/imgAnim4"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_centerInParent="true"
-                android:layout_width="200dp"
-                app:cardCornerRadius="200dp"
-                android:layout_height="200dp"
-                android:backgroundTint="@color/colorTitle_2"
-                android:elevation="0dp"
-                app:cardElevation="0dp"
-                />
-            <androidx.cardview.widget.CardView
+                android:scaleType="centerCrop"
+
+                app:srcCompat="@drawable/main_calendar_fragment_cicrle_button_pulse_complete" />
+
+            <ImageView
+                android:id="@+id/imgAnim3"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_centerInParent="true"
-                android:layout_width="180dp"
-                app:cardCornerRadius="180dp"
-                android:layout_height="180dp"
-                android:backgroundTint="@color/colorTitle_1"
-                android:elevation="0dp"
-                app:cardElevation="0dp"
-                />
+                android:scaleType="centerCrop"
+
+                app:srcCompat="@drawable/main_calendar_fragment_cicrle_button_pulse_complete" />
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/imgMiFoto2"
                 android:layout_centerInParent="true"
                 android:layout_width="160dp"
                 app:cardCornerRadius="160dp"
                 android:layout_height="160dp"
-                android:backgroundTint="@color/colorTitle"
-                android:elevation="0dp"
-                app:cardElevation="0dp"
-                />
-            <androidx.cardview.widget.CardView
-                android:layout_centerInParent="true"
-                android:layout_width="150dp"
-                app:cardCornerRadius="150dp"
-                android:layout_height="150dp"
                 android:backgroundTint="@color/colorMain"
                 android:elevation="0dp"
-                app:cardElevation="0dp"
-                android:onClick="completeExercise"
-                />
+                app:cardElevation="0dp"/>
 
-                <TextView
-                    android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
-                    android:text="COMPLETE"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/nunito_black"
-                    android:textColor="@color/white"
-                    android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/nunito_black"
+                android:text="Complete"
+                android:textColor="@color/colorSub"
+                android:textSize="12pt" />
         </RelativeLayout>
     </LinearLayout>
 

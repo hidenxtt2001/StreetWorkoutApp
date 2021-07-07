@@ -2,14 +2,18 @@ package com.example.streetworkout.Fragment.CalenderFragment.DetailsGroupExercise
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.streetworkout.Fragment.CalenderFragment.WeekExercise.WeekExerciseUser;
 import com.example.streetworkout.Fragment.MainActivity;
 import com.example.streetworkout.Fragment.TrainningFragment.Exercises.Exercise;
@@ -36,12 +40,21 @@ public class StartDetailExerciseActivity extends AppCompatActivity {
     ArrayList<Exercise> exercises;
     GroupExercise groupExercise;
     private DatabaseReference mRef;
+    private ImageView  imgAnim3, imgAnim4;
+    private Handler handlerAnimation;
+    private View view;
+    private CardView imgMisFoto2;
 
     private String checkDayExercise;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment_calendar_exercise_start_detail_exercise);
+
+        init();
+
+        startAni();
+
         mRef = FirebaseDatabase.getInstance().getReference();
         toolbar = findViewById(R.id.customToolbar);
         timer = findViewById(R.id.timer);
@@ -178,4 +191,40 @@ public class StartDetailExerciseActivity extends AppCompatActivity {
         setResult(RESULT_OK);
         finish();
     }
+
+    private void init(){
+        this.handlerAnimation = new Handler();
+        this.view = findViewById(R.id.layout_per2);
+        this.imgAnim3 = findViewById(R.id.imgAnim3);
+        this.imgAnim4 = findViewById(R.id.imgAnim4);
+        this.imgMisFoto2 = findViewById(R.id.imgMiFoto2);
+    }
+
+    private void startAni(){
+        this.runnableAnim.run();
+    }
+
+    private final Runnable runnableAnim = new Runnable() {
+        @Override
+        public void run() {
+            imgAnim3.animate().scaleX(2f).scaleY(2f).alpha(0f).setDuration(1000).withEndAction(new Runnable() {
+                @Override
+                public void run() {
+                    imgAnim3.setScaleX(1f);
+                    imgAnim3.setScaleY(1f);
+                    imgAnim3.setAlpha(1f);
+                }
+            });
+
+            imgAnim4.animate().scaleX(2f).scaleY(2f).alpha(0f).setDuration(700).withEndAction(new Runnable() {
+                @Override
+                public void run() {
+                    imgAnim4.setScaleX(1f);
+                    imgAnim4.setScaleY(1f);
+                    imgAnim4.setAlpha(1f);
+                }
+            });
+            handlerAnimation.postDelayed(runnableAnim, 1000);
+        }
+    };
 }
