@@ -101,8 +101,8 @@
 
             <ImageView
                 android:id="@+id/imgAnim4"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
                 android:layout_centerInParent="true"
                 android:scaleType="centerCrop"
 
@@ -110,19 +110,18 @@
 
             <ImageView
                 android:id="@+id/imgAnim3"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
                 android:layout_centerInParent="true"
                 android:scaleType="centerCrop"
-
                 app:srcCompat="@drawable/main_calendar_fragment_cicrle_button_pulse_complete" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/imgMiFoto2"
                 android:layout_centerInParent="true"
-                android:layout_width="160dp"
-                app:cardCornerRadius="160dp"
-                android:layout_height="160dp"
+                android:layout_width="180dp"
+                app:cardCornerRadius="180dp"
+                android:layout_height="180dp"
                 android:backgroundTint="@color/colorMain"
                 android:elevation="0dp"
                 app:cardElevation="0dp"/>
