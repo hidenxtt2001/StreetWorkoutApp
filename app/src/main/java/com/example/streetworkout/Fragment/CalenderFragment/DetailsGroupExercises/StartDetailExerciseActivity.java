@@ -100,6 +100,13 @@ public class StartDetailExerciseActivity extends AppCompatActivity {
             }
         });
 
+        imgAnim3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                completeExercise(v);
+            }
+        });
+
     }
 
     final int[] millis = {0};
