@@ -20,6 +20,13 @@ public class UserInfor implements Serializable {
     private int loginTypes; // 1 : Google , 2 : Facebook
     private int experienceLevel;
 
+    public UserInfor(String displayName, String email, String gender) {
+        this.displayName = displayName;
+        this.email = email;
+        this.gender = gender;
+        this.status = new Status();
+    }
+
     public Status getStatus() {
         return status;
     }

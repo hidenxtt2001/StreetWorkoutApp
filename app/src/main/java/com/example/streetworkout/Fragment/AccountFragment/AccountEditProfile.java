@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -44,6 +45,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class AccountEditProfile extends AppCompatActivity {
 
@@ -79,22 +81,22 @@ public class AccountEditProfile extends AppCompatActivity {
 
     }
 
-    private void SetupInfor(){
-        switch (MainActivity.userInfor.getLoginTypes()){
+    private void SetupInfor() {
+        switch (MainActivity.userInfor.getLoginTypes()) {
             case 1:
-                Glide.with(this.getApplicationContext()).load(Uri.parse(MainActivity.userInfor.getUrlAvatar())).into((ImageView)findViewById(R.id.avatarProfile));
+                Glide.with(this.getApplicationContext()).load(Uri.parse(MainActivity.userInfor.getUrlAvatar())).into((ImageView) findViewById(R.id.avatarProfile));
                 break;
             case 2:
                 GraphRequest request = GraphRequest.newGraphPathRequest(
                         AccessToken.getCurrentAccessToken(),
-                        "/" + MainActivity.userInfor.getUrlAvatar().replaceAll("\\D+","") + "/picture?redirect=0&type=large",
+                        "/" + MainActivity.userInfor.getUrlAvatar().replaceAll("\\D+", "") + "/picture?redirect=0&type=large",
                         new GraphRequest.Callback() {
                             @Override
                             public void onCompleted(GraphResponse response) {
                                 JSONObject result = response.getJSONObject();
                                 try {
                                     String link = result.getJSONObject("data").getString("url").toString();
-                                    Glide.with(getApplicationContext()).load(Uri.parse(link)).into((ImageView)findViewById(R.id.avatarProfile));
+                                    Glide.with(getApplicationContext()).load(Uri.parse(link)).into((ImageView) findViewById(R.id.avatarProfile));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -125,7 +127,7 @@ public class AccountEditProfile extends AppCompatActivity {
         cpp.setCountryForNameCode(MainActivity.userInfor.getCountry());
         SetupCalendar();
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(AccountEditProfile.this
-        , R.layout.main_fragment_account_editprofile_spinner_text_style, getResources().getStringArray(R.array.names));
+                , R.layout.main_fragment_account_editprofile_spinner_text_style, getResources().getStringArray(R.array.names));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerGender.setAdapter(myAdapter);
         spinnerGender.setSelection(MainActivity.userInfor.getGender().equals("male") ? 0 : 1);
@@ -136,7 +138,7 @@ public class AccountEditProfile extends AppCompatActivity {
         country.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
+                if (hasFocus) {
 
                 }
             }
@@ -178,6 +180,7 @@ public class AccountEditProfile extends AppCompatActivity {
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH));
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         finish();
@@ -187,7 +190,7 @@ public class AccountEditProfile extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.to_down_light,R.anim.from_bottom_down_light);
+        overridePendingTransition(R.anim.to_down_light, R.anim.from_bottom_down_light);
     }
 
     public void SaveProfile_Click(View view) {
@@ -202,14 +205,48 @@ public class AccountEditProfile extends AppCompatActivity {
         temp.setLoginTypes(MainActivity.userInfor.getLoginTypes());
         temp.setExperienceLevel(MainActivity.userInfor.getExperienceLevel());
         temp.setUid(MainActivity.userInfor.getUid());
+        validateInputFields(temp);
         Intent saveProfile = new Intent();
-        saveProfile.putExtra("tempUser",temp);
-        setResult(MainActivity.RESULT_SAVEPROFILE,saveProfile);
+        saveProfile.putExtra("tempUser", temp);
+        setResult(MainActivity.RESULT_SAVEPROFILE, saveProfile);
         onBackPressed();
     }
 
     public void SignOut_Click(View view) {
         setResult(MainActivity.RESULT_LOGOUT);
         onBackPressed();
+    }
+
+    public static boolean validateInputFields(UserInfor _user) {
+        /**
+         *  return false if ..
+         *  ... name = null
+         *  ... gmail = null or email has invalid format
+         *  ... !(sex in ['male', 'female']
+         */
+
+        final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+                "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                        "\\@" +
+                        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                        "(" +
+                        "\\." +
+                        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                        ")+"
+        );
+        if (_user.getDisplayName().isEmpty())
+            return false;
+        if (_user.getEmail().isEmpty()) {
+            return false;
+        }
+        else {
+            if (!EMAIL_ADDRESS_PATTERN.matcher(_user.getEmail()).matches())
+                return false;
+        }
+        if (_user.getGender().isEmpty()) {
+            return false;
+        } else {
+            return _user.getGender().equals("male") || _user.getGender().equals("female");
+        }
     }
 }
