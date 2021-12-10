@@ -56,7 +56,7 @@ dependencies {
     androidTestImplementation "com.google.truth:truth:1.0.1"
 
     implementation 'com.facebook.android:facebook-login:5.15.3'
-    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
+    implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
 
@@ -80,7 +80,7 @@ dependencies {
     implementation 'com.google.android:flexbox:2.0.1'
 
     //Video View
-    implementation 'com.github.HamidrezaAmz:MagicalExoPlayer:2.0.6'
+    //implementation 'com.github.HamidrezaAmz:MagicalExoPlayer:2.0.6'
 
     //Palette
     implementation 'androidx.palette:palette:1.0.0'

@@ -20,6 +20,7 @@ public class WeekExerciseUserTest {
     public void testCheckBoundaryValueForWeekExercise2() {
         _weekExerciseUser = new WeekExerciseUser(true, true, true, true, true, true, false);
         assertThat(_weekExerciseUser.checkFinish()).isFalse();
+
     }
 
     @Test
